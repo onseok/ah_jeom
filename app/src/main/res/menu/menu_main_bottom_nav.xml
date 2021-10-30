@@ -4,17 +4,41 @@
 
     <item
         android:id="@+id/menu_main_btm_nav_home"
-        android:icon="@drawable/ic_total_view_unselected"
+        android:icon="@drawable/ic_home_outlined"
         app:showAsAction="always"
         android:enabled="true"
         android:checkable="true"
-        android:title="@string/main_btm_nav_home_title" />
+        android:title="홈" />
 
     <item
-        android:id="@+id/menu_main_btm_nav_my_page"
-        android:icon="@drawable/ic_setting_view_unselected"
+        android:id="@+id/menu_main_btm_nav_peek"
+        android:icon="@drawable/ic_peek_outlined"
         app:showAsAction="always"
         android:enabled="true"
-        android:title="@string/main_btm_nav_my_page_title" />
+        android:title="옅보기" />
+
+    <item
+        android:id="@+id/menu_main_btm_nav_upload"
+        android:icon="@drawable/ic_upload_outlined"
+        app:showAsAction="always"
+        android:enabled="true"
+        android:checkable="true"
+        android:title="올리기" />
+
+    <item
+        android:id="@+id/menu_main_btm_nav_subscribe"
+        android:icon="@drawable/ic_subscribe_outlined"
+        app:showAsAction="always"
+        android:enabled="true"
+        android:title="구독" />
+
+    <item
+        android:id="@+id/menu_main_btm_nav_save"
+        android:icon="@drawable/ic_save_outlined"
+        app:showAsAction="always"
+        android:enabled="true"
+        android:checkable="true"
+        android:title="보관함" />
+
 
 </menu>
