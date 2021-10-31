@@ -3,9 +3,9 @@ package com.ssac.ah_jeom.src.main
 import android.os.Bundle
 import com.ssac.ah_jeom.R
 import com.ssac.ah_jeom.src.main.home.HomeFragment
-import com.ssac.ah_jeom.src.main.myPage.MyPageFragment
 import com.ssac.ah_jeom.config.BaseActivity
 import com.ssac.ah_jeom.databinding.ActivityMainBinding
+import com.ssac.ah_jeom.src.main.peek.PeekFragment
 
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
 
@@ -23,9 +23,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                         .commitAllowingStateLoss()
                     return@setOnItemSelectedListener true
                 }
-                R.id.menu_main_btm_nav_my_page -> {
+                R.id.menu_main_btm_nav_peek -> {
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.main_frm, MyPageFragment())
+                        .replace(R.id.main_frm, PeekFragment())
                         .commitAllowingStateLoss()
                     return@setOnItemSelectedListener true
                 }
