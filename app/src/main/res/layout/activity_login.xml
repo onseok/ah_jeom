@@ -7,57 +7,51 @@
     android:background="@color/main_black"
     tools:context=".src.login.LoginActivity">
 
-    <!--    <TextView-->
-    <!--        android:id="@+id/activity_login_title_text_first"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginTop="80dp"-->
-    <!--        android:text="간단한 한끼의"-->
-    <!--        android:textColor="@color/white"-->
-    <!--        android:textSize="30sp"-->
-    <!--        app:layout_constraintBottom_toTopOf="@id/activity_login_title_text_second"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintHorizontal_bias="0.15"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-    <!--    <TextView-->
-    <!--        android:id="@+id/activity_login_title_text_second"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginTop="15dp"-->
-    <!--        android:text="예술 식사"-->
-    <!--        android:textColor="@color/white"-->
-    <!--        android:textSize="30sp"-->
-    <!--        app:layout_constraintStart_toStartOf="@id/activity_login_title_text_first"-->
-    <!--        app:layout_constraintTop_toBottomOf="@id/activity_login_title_text_first" />-->
 
     <TextView
+        android:id="@+id/activity_login_main_text"
         android:layout_width="220dp"
         android:layout_height="100dp"
         android:layout_marginStart="28dp"
         android:layout_marginTop="91dp"
         android:layout_marginEnd="112dp"
         android:layout_marginBottom="569dp"
-        android:fontFamily="sans-serif"
+        android:fontFamily="@font/roboto_bold"
         android:letterSpacing="0.02"
         android:lineSpacingExtra="14sp"
-        android:textColor="#ffffff"
+        android:text="간단한 한끼의 예술 식사"
+        android:textColor="@color/white"
         android:textSize="32sp"
         android:textStyle="bold"
+        android:translationZ="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="간단한 한끼의 예술 식사" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!--    <androidx.appcompat.widget.AppCompatImageButton-->
-    <!--        android:id="@+id/activity_login_google_button"-->
-    <!--        android:src="@drawable/login_google_logo"-->
-    <!--        android:backgroundTint="@color/main_black"-->
-    <!--        android:scaleType="centerCrop"-->
-    <!--        android:layout_width="100dp"-->
-    <!--        android:layout_height="100dp"/>-->
+    <TextView
+        android:id="@+id/activity_login_main_start_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="70dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="시작하기"
+        android:textColor="@color/white"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:translationZ="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/activity_login_background_gif"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.5"
+        android:scaleType="centerCrop" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
