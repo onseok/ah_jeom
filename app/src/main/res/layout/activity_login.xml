@@ -37,14 +37,237 @@
         android:fontFamily="@font/roboto_bold"
         android:text="시작하기"
         android:textColor="@color/white"
-        android:visibility="gone"
-        tools:visibility="visible"
         android:textSize="20sp"
         android:textStyle="bold"
         android:translationZ="100dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="invisible" />
+
+    <LinearLayout
+        android:id="@+id/activity_login_google_layout"
+        android:layout_width="304dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="79dp"
+        android:background="@drawable/social_login_background"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_login_main_text"
+        tools:visibility="visible">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/activity_login_google_image"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="10dp"
+            android:src="@drawable/login_google_logo" />
+
+        <TextView
+            android:id="@+id/activity_login_google_text"
+            android:layout_width="122dp"
+            android:layout_height="22dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="구글로 로그인"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/activity_login_kakao_layout"
+        android:layout_width="304dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/social_login_background"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_login_google_layout"
+        tools:visibility="visible">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/activity_login_kakao_image"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="8dp"
+            android:src="@drawable/login_kakao_logo" />
+
+        <TextView
+            android:id="@+id/activity_login_kakao_text"
+            android:layout_width="122dp"
+            android:layout_height="22dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="카카오로 로그인"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/activity_login_naver_layout"
+        android:layout_width="304dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/social_login_background"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_login_kakao_layout"
+        tools:visibility="visible">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/activity_login_naver_image"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="10dp"
+            android:src="@drawable/login_naver_logo" />
+
+        <TextView
+            android:id="@+id/activity_login_naver_text"
+            android:layout_width="122dp"
+            android:layout_height="22dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="네이버로 로그인"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/activity_login_facebook_layout"
+        android:layout_width="304dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/social_login_background"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_login_naver_layout"
+        tools:visibility="visible">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/activity_login_facebook_image"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="10dp"
+            android:src="@drawable/login_facebook_logo" />
+
+        <TextView
+            android:id="@+id/activity_login_facebook_text"
+            android:layout_width="185dp"
+            android:layout_height="22dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="페이스북으로 로그인"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/activity_login_sign_up_layout"
+        android:layout_width="304dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_login_facebook_layout"
+        tools:visibility="visible">
+
+        <TextView
+            android:layout_width="173dp"
+            android:layout_height="19dp"
+            android:layout_gravity="center"
+            android:alpha="0.6"
+            android:fontFamily="@font/roboto_regular"
+            android:text="아직 회원님이 아니신가요?"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="61dp"
+            android:layout_height="19dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="18dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="회원가입"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+
+    <!--    <androidx.appcompat.widget.AppCompatImageView-->
+    <!--        android:id="@+id/activity_login_google_image"-->
+    <!--        android:layout_width="50dp"-->
+    <!--        android:layout_height="50dp"-->
+    <!--        android:layout_marginBottom="70dp"-->
+    <!--        android:alpha="0.9"-->
+    <!--        android:src="@drawable/login_google_logo"-->
+    <!--        android:translationZ="100dp"-->
+    <!--        android:visibility="gone"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toStartOf="@id/activity_login_kakao_image"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        tools:visibility="visible" />-->
+
+    <!--    <androidx.appcompat.widget.AppCompatImageView-->
+    <!--        android:id="@+id/activity_login_kakao_image"-->
+    <!--        android:layout_width="50dp"-->
+    <!--        android:layout_height="50dp"-->
+    <!--        android:layout_marginBottom="70dp"-->
+    <!--        android:alpha="0.9"-->
+    <!--        android:src="@drawable/login_kakao_logo"-->
+    <!--        android:translationZ="100dp"-->
+    <!--        android:visibility="gone"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toStartOf="@id/activity_login_naver_image"-->
+    <!--        app:layout_constraintStart_toEndOf="@id/activity_login_google_image"-->
+    <!--        tools:visibility="visible" />-->
+
+    <!--    <androidx.appcompat.widget.AppCompatImageView-->
+    <!--        android:id="@+id/activity_login_naver_image"-->
+    <!--        android:layout_width="50dp"-->
+    <!--        android:layout_height="50dp"-->
+    <!--        android:layout_marginBottom="70dp"-->
+    <!--        android:alpha="0.9"-->
+    <!--        android:src="@drawable/login_naver_logo"-->
+    <!--        android:translationZ="100dp"-->
+    <!--        android:visibility="gone"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toStartOf="@id/activity_login_facebook_image"-->
+    <!--        app:layout_constraintStart_toEndOf="@id/activity_login_kakao_image"-->
+    <!--        tools:visibility="visible" />-->
+
+    <!--    <androidx.appcompat.widget.AppCompatImageView-->
+    <!--        android:id="@+id/activity_login_facebook_image"-->
+    <!--        android:layout_width="50dp"-->
+    <!--        android:layout_height="50dp"-->
+    <!--        android:layout_marginBottom="70dp"-->
+    <!--        android:alpha="0.9"-->
+    <!--        android:src="@drawable/login_facebook_logo"-->
+    <!--        android:translationZ="100dp"-->
+    <!--        android:visibility="gone"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toEndOf="@id/activity_login_naver_image"-->
+    <!--        tools:visibility="visible" />-->
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/activity_login_background_gif"

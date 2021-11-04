@@ -27,6 +27,27 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
         )
     }
 
+    private val textDisappearDownside: Animation by lazy {
+        AnimationUtils.loadAnimation(
+            this,
+            R.anim.text_disappear_downside
+        )
+    }
+
+    private val loginButtonAppear: Animation by lazy {
+        AnimationUtils.loadAnimation(
+            this,
+            R.anim.login_button_appear
+        )
+    }
+
+    private val backgroundDisappear: Animation by lazy {
+        AnimationUtils.loadAnimation(
+            this,
+            R.anim.background_disappear
+        )
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -42,6 +63,51 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
                     startAnimation(textAppearUpside)
                 }
             }
-        }, 2200)
+        }, 1800)
+
+        binding.activityLoginMainStartText.setOnClickListener{
+            with(binding.activityLoginMainStartText){
+                startAnimation(textDisappearDownside)
+                visibility = View.GONE
+                hideBackgroundGIF()
+                showSocialLoginButton()
+                // 1초 뒤에 시작하기 텍스트가 사라지는 애니메이션을 삭제하여 재터치 방지
+                Handler(Looper.getMainLooper()).postDelayed({
+                    clearAnimation()
+                }, 1000)
+            }
+        }
+
+    }
+
+    private fun showSocialLoginButton() {
+        with(binding.activityLoginGoogleLayout) {
+            visibility = View.VISIBLE
+            startAnimation(loginButtonAppear)
+        }
+        with(binding.activityLoginKakaoLayout) {
+            visibility = View.VISIBLE
+            startAnimation(loginButtonAppear)
+        }
+        with(binding.activityLoginNaverLayout) {
+            visibility = View.VISIBLE
+            startAnimation(loginButtonAppear)
+        }
+        with(binding.activityLoginFacebookLayout) {
+            visibility = View.VISIBLE
+            startAnimation(loginButtonAppear)
+        }
+        with(binding.activityLoginSignUpLayout) {
+            visibility = View.VISIBLE
+            startAnimation(loginButtonAppear)
+        }
+    }
+
+    private fun hideBackgroundGIF() {
+        with(binding.activityLoginBackgroundGif) {
+            startAnimation(backgroundDisappear)
+            visibility = View.INVISIBLE
+        }
+        binding.activityLoginMainStartText.visibility = View.GONE
     }
 }

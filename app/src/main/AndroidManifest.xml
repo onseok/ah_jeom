@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.ssac.ah_jeom">
 
     <application
@@ -17,13 +18,17 @@
 
         <activity
             android:name=".src.login.LoginActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
-            android:exported="true" />
+            android:exported="true"
+            tools:ignore="LockedOrientationActivity" />
 
         <activity
             android:name=".src.splash.SplashActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/SplashTheme"
-            android:exported="true">
+            android:exported="true"
+            tools:ignore="LockedOrientationActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
