@@ -1,5 +1,6 @@
 package com.ssac.ah_jeom.src.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -10,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.ssac.ah_jeom.R
 import com.ssac.ah_jeom.config.BaseActivity
 import com.ssac.ah_jeom.databinding.ActivityLoginBinding
+import com.ssac.ah_jeom.src.userInfo.interests.InterestsActivity
 
 class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::inflate) {
 
@@ -76,6 +78,12 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
                     clearAnimation()
                 }, 1000)
             }
+        }
+
+        // 임시
+        binding.activityLoginKakaoLayout.setOnClickListener {
+            startActivity(Intent(this,InterestsActivity::class.java))
+            overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
         }
 
     }
