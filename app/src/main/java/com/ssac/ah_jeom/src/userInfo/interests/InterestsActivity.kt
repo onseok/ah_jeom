@@ -1,21 +1,20 @@
 package com.ssac.ah_jeom.src.userInfo.interests
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.LinearLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import com.ssac.ah_jeom.R
 import com.ssac.ah_jeom.config.BaseActivity
 import com.ssac.ah_jeom.databinding.ActivityInterestsBinding
 import com.ssac.ah_jeom.src.userInfo.interests.recycler.InterestsRecyclerAdapter
 import com.ssac.ah_jeom.src.userInfo.interests.recycler.InterestsRecyclerAdapter.Companion.NEXT_BUTTON
-import com.ssac.ah_jeom.src.userInfo.interests.recycler.InterestsRecyclerAdapter.Companion.isClicked
 import com.ssac.ah_jeom.src.userInfo.interests.recycler.InterestsRecyclerData
+import com.ssac.ah_jeom.src.userInfo.keyword.KeywordActivity
 
 class InterestsActivity : BaseActivity<ActivityInterestsBinding>(ActivityInterestsBinding::inflate) {
 
     val data: MutableList<InterestsRecyclerData> = mutableListOf()
-    var count: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,8 +31,6 @@ class InterestsActivity : BaseActivity<ActivityInterestsBinding>(ActivityInteres
 
         adapter.notifyDataSetChanged()
 
-
-
         adapter.setOnItemClickListener(object : InterestsRecyclerAdapter.OnItemClickListener {
             override fun onItemClick(v: View, data: InterestsRecyclerData, pos: Int) {
 
@@ -43,10 +40,16 @@ class InterestsActivity : BaseActivity<ActivityInterestsBinding>(ActivityInteres
                 else {
                     binding.activityInterestsBottomBar.setBackgroundColor(resources.getColor(R.color.main_black))
                 }
+
             }
         })
 
         setData()
+
+        binding.activityInterestsBottomBar.setOnClickListener {
+            startActivity(Intent(this, KeywordActivity::class.java))
+            overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
+        }
     }
 
 //    fun judgeNextButton() {

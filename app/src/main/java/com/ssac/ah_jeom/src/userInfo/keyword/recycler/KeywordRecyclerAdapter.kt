@@ -1,40 +1,30 @@
-package com.ssac.ah_jeom.src.userInfo.interests.recycler
+package com.ssac.ah_jeom.src.userInfo.keyword.recycler
 
 import android.content.Context
-import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.ssac.ah_jeom.R
-import com.ssac.ah_jeom.databinding.ActivityInterestsBinding
-import com.ssac.ah_jeom.databinding.ActivityInterestsGridRecyclerItemBinding
-import com.ssac.ah_jeom.src.userInfo.interests.InterestsActivity
+import com.ssac.ah_jeom.databinding.ActivityKeywordGridRecyclerItemBinding
 
-class InterestsRecyclerAdapter(private val context: Context) :
-    RecyclerView.Adapter<InterestsRecyclerAdapter.ProductHolder>() {
+class KeywordRecyclerAdapter(private val context: Context) : RecyclerView.Adapter<KeywordRecyclerAdapter.ProductHolder>(){
 
-    var listData = mutableListOf<InterestsRecyclerData>()
+    var listData = mutableListOf<KeywordRecyclerData>()
 
-
-    interface OnItemClickListener {
-        fun onItemClick(v: View, data: InterestsRecyclerData, pos: Int)
+    interface OnItemClickListener{
+        fun onItemClick(v: View, data: KeywordRecyclerData, pos : Int)
     }
 
-    private var listener: OnItemClickListener? = null
+    private var listener : OnItemClickListener? = null
 
-    fun setOnItemClickListener(listener: OnItemClickListener) {
+    fun setOnItemClickListener(listener : OnItemClickListener) {
         this.listener = listener
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductHolder {
-        val binding = ActivityInterestsGridRecyclerItemBinding.inflate(
-            LayoutInflater.from(parent.context),
-            parent,
-            false
-        )
+        val binding = ActivityKeywordGridRecyclerItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
         // isClicked 배열 false로 초기화
         for (i in 0 until listData.size) {
@@ -54,8 +44,7 @@ class InterestsRecyclerAdapter(private val context: Context) :
     }
 
 
-    inner class ProductHolder(val binding: ActivityInterestsGridRecyclerItemBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    inner class ProductHolder(val binding: ActivityKeywordGridRecyclerItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
         init {
             itemView.setOnClickListener {
@@ -63,10 +52,10 @@ class InterestsRecyclerAdapter(private val context: Context) :
         }
 
 
-        fun setData(data: InterestsRecyclerData) {
+        fun setData(data: KeywordRecyclerData) {
 
             with(binding) {
-                activityInterestsGridText.text = data.interests
+                activityInterestsGridText.text = data.keyword
             }
 
 
@@ -79,7 +68,8 @@ class InterestsRecyclerAdapter(private val context: Context) :
                         binding.activityInterestsGridLayout.setBackgroundResource(R.drawable.grid_item_background_selected)
                         isClicked[pos] = true
                         judgeNextButton()
-                    } else {
+                    }
+                    else {
                         binding.activityInterestsGridLayout.setBackgroundResource(R.drawable.grid_item_background_unselected)
                         isClicked[pos] = false
                         judgeNextButton()
@@ -94,16 +84,13 @@ class InterestsRecyclerAdapter(private val context: Context) :
 
     fun judgeNextButton() {
         NEXT_BUTTON = true in isClicked
-        val activity: InterestsActivity = context as InterestsActivity
-        if (NEXT_BUTTON) {
-            activity.findViewById<LinearLayout>(R.id.activity_interests_bottom_bar)
-                .setBackgroundColor(
-                    Color.parseColor("#3F3FFF")
-                )
-        } else {
-            activity.findViewById<LinearLayout>(R.id.activity_interests_bottom_bar)
-                .setBackgroundColor(Color.parseColor("#1D1D1D"))
-        }
+
+//        if(NEXT_BUTTON) {
+//            binding.activityInterestsBottomBar.setBackgroundColor(resources.getColor(R.color.main_blue))
+//        }
+//        else {
+//            binding.activityInterestsBottomBar.setBackgroundColor(resources.getColor(R.color.main_black))
+//        }
     }
 
     companion object {

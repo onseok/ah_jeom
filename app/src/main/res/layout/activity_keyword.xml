@@ -4,6 +4,129 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".src.userInfo.keyword.KeywordActivity">
+    android:background="@color/white"
+    tools:context=".src.userInfo.interests.InterestsActivity">
+
+    <LinearLayout
+        android:id="@+id/activity_keyword_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/main_black"
+        android:gravity="start"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/activity_keyword_back_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="28dp"
+            android:backgroundTint="@color/transparent"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            android:layout_width="113dp"
+            android:layout_height="22dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="79dp"
+            android:fontFamily="@font/roboto_bold"
+            android:gravity="center"
+            android:text="활동 정보 입력"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/activity_keyword_title_text_first"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="94dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="관심있는 키워드를"
+        android:textColor="@color/main_black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/activity_keyword_title_text_second"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="1dp"
+        android:fontFamily="@font/roboto_thin"
+        android:text="선택해 주세요"
+        android:textColor="@color/main_black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_keyword_title_text_first" />
+
+    <TextView
+        android:id="@+id/activity_keyword_add_all_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="전체추가"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@id/activity_keyword_title_text_second"
+        app:layout_constraintTop_toBottomOf="@id/activity_keyword_title_text_second" />
+
+    <!--    <androidx.core.widget.NestedScrollView-->
+    <!--        android:id="@+id/activity_interests_scroll_view"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="56dp"-->
+    <!--        android:layout_marginEnd="28dp"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="@id/activity_interests_add_all_text"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/activity_interests_add_all_text">-->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/activity_keyword_recycler_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="39dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@id/activity_keyword_bottom_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_keyword_add_all_text"
+        app:layout_constraintVertical_bias="0" />
+
+    <!--    </androidx.core.widget.NestedScrollView>-->
+
+
+    <LinearLayout
+        android:id="@+id/activity_keyword_bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/main_black"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:layout_width="113dp"
+            android:layout_height="22dp"
+            android:layout_gravity="center"
+            android:fontFamily="@font/roboto_bold"
+            android:gravity="center"
+            android:text="다음으로"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
