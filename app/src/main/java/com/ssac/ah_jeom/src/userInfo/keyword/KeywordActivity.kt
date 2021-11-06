@@ -1,20 +1,20 @@
 package com.ssac.ah_jeom.src.userInfo.keyword
 
+import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import com.ssac.ah_jeom.R
 import com.ssac.ah_jeom.config.BaseActivity
 import com.ssac.ah_jeom.databinding.ActivityKeywordBinding
-import com.ssac.ah_jeom.src.userInfo.interests.recycler.InterestsRecyclerAdapter
-import com.ssac.ah_jeom.src.userInfo.interests.recycler.InterestsRecyclerData
+import com.ssac.ah_jeom.src.main.MainActivity
+import com.ssac.ah_jeom.src.userInfo.confirm.ConfirmActivity
 import com.ssac.ah_jeom.src.userInfo.keyword.recycler.KeywordRecyclerAdapter
+import com.ssac.ah_jeom.src.userInfo.keyword.recycler.KeywordRecyclerAdapter.Companion.KEYWORD_NEXT_BUTTON
 import com.ssac.ah_jeom.src.userInfo.keyword.recycler.KeywordRecyclerData
 
 class KeywordActivity : BaseActivity<ActivityKeywordBinding>(ActivityKeywordBinding::inflate) {
 
-    val data: MutableList<KeywordRecyclerData> = mutableListOf()
-    var count: Int = 0
+    private val data: MutableList<KeywordRecyclerData> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,19 +32,20 @@ class KeywordActivity : BaseActivity<ActivityKeywordBinding>(ActivityKeywordBind
         adapter.notifyDataSetChanged()
 
 
-        adapter.setOnItemClickListener(object : KeywordRecyclerAdapter.OnItemClickListener {
-            override fun onItemClick(v: View, data: KeywordRecyclerData, pos: Int) {
-
-                if(KeywordRecyclerAdapter.NEXT_BUTTON) {
-                    binding.activityKeywordBottomBar.setBackgroundColor(resources.getColor(R.color.main_blue))
-                }
-                else {
-                    binding.activityKeywordBottomBar.setBackgroundColor(resources.getColor(R.color.main_black))
-                }
-            }
-        })
-
         setData()
+
+        binding.activityKeywordBottomBar.setOnClickListener {
+
+            if(!KEYWORD_NEXT_BUTTON) {
+                showCustomToast("최소 1개 이상 선택해주세요.")
+                return@setOnClickListener
+            }
+            else {
+                startActivity(Intent(this, ConfirmActivity::class.java))
+                overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
+            }
+
+        }
 
     }
 

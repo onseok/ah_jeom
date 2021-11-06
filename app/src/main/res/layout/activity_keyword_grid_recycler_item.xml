@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/activity_interests_grid_layout"
+    android:id="@+id/activity_keyword_grid_layout"
     android:layout_width="90dp"
     android:layout_height="90dp"
     android:layout_margin="15dp"
@@ -8,7 +8,7 @@
     android:gravity="center">
 
     <TextView
-        android:id="@+id/activity_interests_grid_text"
+        android:id="@+id/activity_keyword_grid_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_bold"

@@ -1,13 +1,16 @@
 package com.ssac.ah_jeom.src.userInfo.keyword.recycler
 
 import android.content.Context
+import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.ssac.ah_jeom.R
 import com.ssac.ah_jeom.databinding.ActivityKeywordGridRecyclerItemBinding
+import com.ssac.ah_jeom.src.userInfo.keyword.KeywordActivity
 
 class KeywordRecyclerAdapter(private val context: Context) : RecyclerView.Adapter<KeywordRecyclerAdapter.ProductHolder>(){
 
@@ -28,7 +31,7 @@ class KeywordRecyclerAdapter(private val context: Context) : RecyclerView.Adapte
 
         // isClicked 배열 false로 초기화
         for (i in 0 until listData.size) {
-            isClicked.add(false)
+            keywordIsClicked.add(false)
         }
 
         return ProductHolder(binding)
@@ -55,7 +58,7 @@ class KeywordRecyclerAdapter(private val context: Context) : RecyclerView.Adapte
         fun setData(data: KeywordRecyclerData) {
 
             with(binding) {
-                activityInterestsGridText.text = data.keyword
+                activityKeywordGridText.text = data.keyword
             }
 
 
@@ -64,37 +67,40 @@ class KeywordRecyclerAdapter(private val context: Context) : RecyclerView.Adapte
                 itemView.setOnClickListener {
                     listener?.onItemClick(itemView, data, pos)
 
-                    if (!isClicked[pos]) {
-                        binding.activityInterestsGridLayout.setBackgroundResource(R.drawable.grid_item_background_selected)
-                        isClicked[pos] = true
+                    if (!keywordIsClicked[pos]) {
+                        binding.activityKeywordGridLayout.setBackgroundResource(R.drawable.grid_item_background_selected)
+                        keywordIsClicked[pos] = true
                         judgeNextButton()
                     }
                     else {
-                        binding.activityInterestsGridLayout.setBackgroundResource(R.drawable.grid_item_background_unselected)
-                        isClicked[pos] = false
+                        binding.activityKeywordGridLayout.setBackgroundResource(R.drawable.grid_item_background_unselected)
+                        keywordIsClicked[pos] = false
                         judgeNextButton()
                     }
 
-                    Log.d("isClicked", NEXT_BUTTON.toString())
+                    Log.d("isClicked", KEYWORD_NEXT_BUTTON.toString())
 
                 }
             }
         }
     }
 
-    fun judgeNextButton() {
-        NEXT_BUTTON = true in isClicked
-
-//        if(NEXT_BUTTON) {
-//            binding.activityInterestsBottomBar.setBackgroundColor(resources.getColor(R.color.main_blue))
-//        }
-//        else {
-//            binding.activityInterestsBottomBar.setBackgroundColor(resources.getColor(R.color.main_black))
-//        }
+    private fun judgeNextButton() {
+        KEYWORD_NEXT_BUTTON= true in keywordIsClicked
+        val activity: KeywordActivity = context as KeywordActivity
+        if (KEYWORD_NEXT_BUTTON) {
+            activity.findViewById<LinearLayout>(R.id.activity_keyword_bottom_bar)
+                .setBackgroundColor(
+                    Color.parseColor("#3F3FFF")
+                )
+        } else {
+            activity.findViewById<LinearLayout>(R.id.activity_keyword_bottom_bar)
+                .setBackgroundColor(Color.parseColor("#1D1D1D"))
+        }
     }
 
     companion object {
-        var NEXT_BUTTON = false
-        var isClicked = mutableListOf<Boolean>()
+        var KEYWORD_NEXT_BUTTON = false
+        var keywordIsClicked = mutableListOf<Boolean>()
     }
 }

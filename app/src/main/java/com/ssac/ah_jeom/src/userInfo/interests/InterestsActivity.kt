@@ -2,13 +2,12 @@ package com.ssac.ah_jeom.src.userInfo.interests
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import com.ssac.ah_jeom.R
 import com.ssac.ah_jeom.config.BaseActivity
 import com.ssac.ah_jeom.databinding.ActivityInterestsBinding
 import com.ssac.ah_jeom.src.userInfo.interests.recycler.InterestsRecyclerAdapter
-import com.ssac.ah_jeom.src.userInfo.interests.recycler.InterestsRecyclerAdapter.Companion.NEXT_BUTTON
+import com.ssac.ah_jeom.src.userInfo.interests.recycler.InterestsRecyclerAdapter.Companion.INTERESTS_NEXT_BUTTON
 import com.ssac.ah_jeom.src.userInfo.interests.recycler.InterestsRecyclerData
 import com.ssac.ah_jeom.src.userInfo.keyword.KeywordActivity
 
@@ -31,37 +30,26 @@ class InterestsActivity : BaseActivity<ActivityInterestsBinding>(ActivityInteres
 
         adapter.notifyDataSetChanged()
 
-        adapter.setOnItemClickListener(object : InterestsRecyclerAdapter.OnItemClickListener {
-            override fun onItemClick(v: View, data: InterestsRecyclerData, pos: Int) {
-
-                if(NEXT_BUTTON) {
-                    binding.activityInterestsBottomBar.setBackgroundColor(resources.getColor(R.color.main_blue))
-                }
-                else {
-                    binding.activityInterestsBottomBar.setBackgroundColor(resources.getColor(R.color.main_black))
-                }
-
-            }
-        })
-
         setData()
 
         binding.activityInterestsBottomBar.setOnClickListener {
-            startActivity(Intent(this, KeywordActivity::class.java))
-            overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
-        }
-    }
 
-//    fun judgeNextButton() {
-//        NEXT_BUTTON = true in isClicked
-//
-//        if(NEXT_BUTTON) {
-//            binding.activityInterestsBottomBar.setBackgroundColor(resources.getColor(R.color.main_blue))
-//        }
-//        else {
-//            binding.activityInterestsBottomBar.setBackgroundColor(resources.getColor(R.color.main_black))
-//        }
-//    }
+            if(!INTERESTS_NEXT_BUTTON) {
+                showCustomToast("최소 1개 이상 선택해주세요.")
+                return@setOnClickListener
+            }
+            else {
+                startActivity(Intent(this, KeywordActivity::class.java))
+                overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
+            }
+
+        }
+
+        binding.activityInterestsAddAllText.setOnClickListener {
+
+        }
+
+    }
 
     override fun onBackPressed() {
         super.onBackPressed()

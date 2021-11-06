@@ -69,7 +69,6 @@ class InterestsRecyclerAdapter(private val context: Context) :
                 activityInterestsGridText.text = data.interests
             }
 
-
             val pos = adapterPosition
             if (pos != RecyclerView.NO_POSITION) {
                 itemView.setOnClickListener {
@@ -85,17 +84,17 @@ class InterestsRecyclerAdapter(private val context: Context) :
                         judgeNextButton()
                     }
 
-                    Log.d("isClicked", NEXT_BUTTON.toString())
+                    Log.d("isClicked", INTERESTS_NEXT_BUTTON.toString())
 
                 }
             }
         }
     }
 
-    fun judgeNextButton() {
-        NEXT_BUTTON = true in isClicked
+    private fun judgeNextButton() {
+        INTERESTS_NEXT_BUTTON = true in isClicked
         val activity: InterestsActivity = context as InterestsActivity
-        if (NEXT_BUTTON) {
+        if (INTERESTS_NEXT_BUTTON) {
             activity.findViewById<LinearLayout>(R.id.activity_interests_bottom_bar)
                 .setBackgroundColor(
                     Color.parseColor("#3F3FFF")
@@ -107,7 +106,7 @@ class InterestsRecyclerAdapter(private val context: Context) :
     }
 
     companion object {
-        var NEXT_BUTTON = false
+        var INTERESTS_NEXT_BUTTON = false
         var isClicked = mutableListOf<Boolean>()
     }
 }

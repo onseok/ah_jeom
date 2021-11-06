@@ -11,6 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ah_jeom">
         <activity
+            android:name=".src.userInfo.confirm.ConfirmActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:exported="false" />
+        <activity
             android:name=".src.userInfo.keyword.KeywordActivity"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />

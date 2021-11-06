@@ -33,7 +33,7 @@
         android:title="구독" />
 
     <item
-        android:id="@+id/menu_main_btm_nav_save"
+        android:id="@+id/menu_main_btm_nav_locker"
         android:icon="@drawable/ic_save_outlined"
         app:showAsAction="always"
         android:enabled="true"

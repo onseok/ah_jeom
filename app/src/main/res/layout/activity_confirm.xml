@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/confirm_background"
+    tools:context=".src.userInfo.confirm.ConfirmActivity">
+
+    <TextView
+        android:id="@+id/activity_confirm_title_text_first"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="94dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="모든 정보를 저장하고"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/activity_confirm_title_text_second"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="1dp"
+        android:fontFamily="@font/roboto_light"
+        android:text="시작하시겠습니까?"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_confirm_title_text_first" />
+
+    <LinearLayout
+        android:id="@+id/activity_confirm_yes_button"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="28dp"
+        app:layout_constraintVertical_bias="0.697"
+        android:layout_marginEnd="28dp"
+        android:background="@drawable/grid_item_background_unselected"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="106dp"
+            android:layout_height="22dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="네, 시작할게요"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/activity_confirm_no_button"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="28dp"
+        android:background="@drawable/grid_item_background_unselected"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_confirm_yes_button">
+
+        <TextView
+            android:layout_width="144dp"
+            android:layout_height="22dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="아니요, 다시 할래요"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
