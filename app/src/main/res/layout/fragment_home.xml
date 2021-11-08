@@ -14,9 +14,10 @@
             android:layout_height="match_parent">
 
             <com.ssac.ah_jeom.util.NestedScrollableHost
-                android:id="@+id/fragment_home_nested_scrollable_host"
+                android:id="@+id/fragment_home_banner_nested_scrollable_host"
                 android:layout_width="304dp"
                 android:layout_height="233dp"
+                android:background="@drawable/black_border"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -24,9 +25,141 @@
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/fragment_home_banner_viewpager"
                     android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/black_border" />
+
+            </com.ssac.ah_jeom.util.NestedScrollableHost>
+
+            <TextView
+                android:id="@+id/fragment_home_best_artist_text"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginTop="80dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="최고의 Artist"
+                android:textColor="@color/main_black"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@id/fragment_home_banner_nested_scrollable_host"
+                app:layout_constraintTop_toBottomOf="@id/fragment_home_banner_nested_scrollable_host" />
+
+            <com.ssac.ah_jeom.util.NestedScrollableHost
+                android:id="@+id/fragment_home_best_artist_nested_scrollable_host"
+                android:layout_width="304dp"
+                android:layout_height="432dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/black_border"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fragment_home_best_artist_text">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/fragment_home_best_artist_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/black_border" />
+
+            </com.ssac.ah_jeom.util.NestedScrollableHost>
+
+            <!-- -->
+
+            <TextView
+                android:id="@+id/fragment_home_interests_text"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginTop="80dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="최애 분야"
+                android:textColor="@color/main_black"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@id/fragment_home_banner_nested_scrollable_host"
+                app:layout_constraintTop_toBottomOf="@id/fragment_home_best_artist_nested_scrollable_host" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/fragment_home_interests_tab_layout"
+                android:layout_width="304dp"
+                android:layout_height="90dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/black_border"
+                app:layout_constraintEnd_toEndOf="@id/fragment_home_best_artist_nested_scrollable_host"
+                app:layout_constraintStart_toStartOf="@id/fragment_home_interests_text"
+                app:layout_constraintTop_toBottomOf="@id/fragment_home_interests_text"
+                app:tabBackground="@drawable/tab_background"
+                app:tabGravity="fill"
+                app:tabIndicator="@color/transparent"
+                app:tabIndicatorColor="@color/transparent"
+                app:tabMinWidth="180dp"
+                app:tabMode="scrollable"
+                app:tabRippleColor="@android:color/transparent"
+                app:tabSelectedTextColor="@color/white"
+                app:tabTextAppearance="@style/fragmentHomeTabTextStyle"
+                app:tabTextColor="@color/main_black" />
+
+            <com.ssac.ah_jeom.util.NestedScrollableHost
+                android:id="@+id/fragment_home_interests_nested_scrollable_host"
+                android:layout_width="304dp"
+                android:layout_height="438dp"
+                android:background="@drawable/black_border"
+                app:layout_constraintEnd_toEndOf="@id/fragment_home_interests_tab_layout"
+                app:layout_constraintStart_toStartOf="@id/fragment_home_interests_tab_layout"
+                app:layout_constraintTop_toBottomOf="@id/fragment_home_interests_tab_layout">
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/fragment_home_interests_viewpager"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent" />
 
             </com.ssac.ah_jeom.util.NestedScrollableHost>
+
+            <!-- -->
+
+            <TextView
+                android:id="@+id/fragment_home_keyword_text"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginTop="80dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="최애 키워드"
+                android:textColor="@color/main_black"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@id/fragment_home_interests_nested_scrollable_host"
+                app:layout_constraintTop_toBottomOf="@id/fragment_home_interests_nested_scrollable_host" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/fragment_home_keyword_tab_layout"
+                android:layout_width="304dp"
+                android:layout_height="90dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/black_border"
+                app:layout_constraintEnd_toEndOf="@id/fragment_home_interests_nested_scrollable_host"
+                app:layout_constraintStart_toStartOf="@id/fragment_home_keyword_text"
+                app:layout_constraintTop_toBottomOf="@id/fragment_home_keyword_text"
+                app:tabBackground="@drawable/tab_background"
+                app:tabGravity="fill"
+                app:tabIndicator="@color/transparent"
+                app:tabIndicatorColor="@color/transparent"
+                app:tabMinWidth="180dp"
+                app:tabMode="scrollable"
+                app:tabRippleColor="@android:color/transparent"
+                app:tabSelectedTextColor="@color/white"
+                app:tabTextAppearance="@style/fragmentHomeTabTextStyle"
+                app:tabTextColor="@color/main_black" />
+
+            <com.ssac.ah_jeom.util.NestedScrollableHost
+                android:id="@+id/fragment_home_keyword_nested_scrollable_host"
+                android:layout_width="304dp"
+                android:layout_height="438dp"
+                android:background="@drawable/black_border"
+                app:layout_constraintEnd_toEndOf="@id/fragment_home_keyword_tab_layout"
+                app:layout_constraintStart_toStartOf="@id/fragment_home_keyword_tab_layout"
+                app:layout_constraintTop_toBottomOf="@id/fragment_home_keyword_tab_layout">
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/fragment_home_keyword_viewpager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </com.ssac.ah_jeom.util.NestedScrollableHost>
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

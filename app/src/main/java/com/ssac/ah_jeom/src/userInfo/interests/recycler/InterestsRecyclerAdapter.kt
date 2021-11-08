@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.ssac.ah_jeom.R
-import com.ssac.ah_jeom.databinding.ActivityInterestsBinding
 import com.ssac.ah_jeom.databinding.ActivityInterestsGridRecyclerItemBinding
 import com.ssac.ah_jeom.src.userInfo.interests.InterestsActivity
 
