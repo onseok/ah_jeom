@@ -1,6 +1,8 @@
 package com.ssac.ah_jeom.src.main
 
 import android.os.Bundle
+import android.util.Log
+import com.kakao.sdk.common.util.Utility
 import com.ssac.ah_jeom.R
 import com.ssac.ah_jeom.src.main.home.HomeFragment
 import com.ssac.ah_jeom.config.BaseActivity
@@ -53,5 +55,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             }
             false
         }
+
     }
 }

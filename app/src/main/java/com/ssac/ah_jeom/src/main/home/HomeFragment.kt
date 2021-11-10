@@ -11,12 +11,10 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import com.ssac.ah_jeom.R
 import com.ssac.ah_jeom.databinding.FragmentHomeBinding
-import com.ssac.ah_jeom.src.main.home.adapter.HomeFragmentBestArtistRecyclerAdapter
-import com.ssac.ah_jeom.src.main.home.adapter.HomeFragmentViewpagerAdapter
-import com.ssac.ah_jeom.src.main.home.adapter.InterestsViewpagerAdapter
-import com.ssac.ah_jeom.src.main.home.adapter.KeywordViewpagerAdapter
+import com.ssac.ah_jeom.src.main.home.adapter.*
 import com.ssac.ah_jeom.src.main.home.fragments.*
 import com.ssac.ah_jeom.src.main.home.models.BestArtist
+import com.ssac.ah_jeom.src.main.home.models.NewArtist
 import kotlin.collections.ArrayList
 
 class HomeFragment : Fragment() {
@@ -99,7 +97,12 @@ class HomeFragment : Fragment() {
                 }.attach()
             }
         }
-
+        
+        // 새로운 아티스트 뷰페이저
+        val newArtistData: MutableList<NewArtist> = newArtistLoadData()
+        var newArtistAdapter = NewArtistViewpagerAdapter()
+        newArtistAdapter.listData = newArtistData
+        binding?.fragmentHomeNewArtistViewpager?.adapter = newArtistAdapter
         
 
         return binding!!.root
@@ -139,11 +142,22 @@ class HomeFragment : Fragment() {
 
         // 임시 mock data, 추후 api 연동으로 바꿀 예정
         listData.add(BestArtist(R.drawable.best_artist_1_temp, "Levan Kenia", R.drawable.best_artist_representative_1_temp))
-//        listData.add(BestArtist())
-//        listData.add(BestArtist())
-
+        listData.add(BestArtist(R.drawable.best_artist_2_temp, "이철원", R.drawable.best_artist_representative_2_temp))
+        listData.add(BestArtist(R.drawable.best_artist_3_temp, "HAna336", R.drawable.best_artist_representative_3_temp))
 
         return listData
+    }
+
+    private fun newArtistLoadData(): MutableList<NewArtist> {
+        val newArtistListData: MutableList<NewArtist> = mutableListOf()
+        
+        // 임시 mock data, 추후 api 연동으로 대체할 예정
+        newArtistListData.add(NewArtist("김새롬", R.drawable.new_artist_profile_image_1_temp, R.drawable.new_artist_art_image_1_first_temp, R.drawable.new_artist_art_image_1_second_temp, "나는 자연을 좋아합니다, 무척 새롭죠.\n그래서 찍는건 즐거워요."))
+        newArtistListData.add(NewArtist("ginhan456", R.drawable.new_artist_profile_image_2_temp, R.drawable.new_artist_art_image_2_first_temp, R.drawable.new_artist_art_image_2_second_temp, "낡은 것을 보면 여러분은\n무엇을 떠올리시나요?"))
+        newArtistListData.add(NewArtist("신재원", R.drawable.new_artist_profile_image_3_temp, R.drawable.new_artist_art_image_3_first_temp, R.drawable.new_artist_art_image_3_second_temp, "예술은 자연이 완결짓지\n못한 것을 완성합니다."))
+
+        return newArtistListData
+
     }
 
 }

@@ -1,14 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".src.main.home.fragments.KeywordSimpleFragment">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="304dp"
+    android:layout_height="438dp"
+    android:layout_gravity="center"
+    android:background="@drawable/black_border"
+    android:orientation="vertical"
+    android:padding="1dp">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/keyword_simple_image_first"
+        android:layout_width="304dp"
+        android:layout_height="270dp"
+        android:background="@drawable/black_border"
+        android:padding="1dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/keyword_simple_1_temp" />
 
-</FrameLayout>
+    <LinearLayout
+        android:layout_width="304dp"
+        android:layout_height="84dp"
+        android:background="@drawable/black_border"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/keyword_simple_image_second"
+            android:layout_width="152dp"
+            android:layout_height="84dp"
+            android:background="@drawable/black_border"
+            android:padding="1dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/keyword_simple_2_temp" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/keyword_simple_image_third"
+            android:layout_width="152dp"
+            android:layout_height="84dp"
+            android:background="@drawable/black_border"
+            android:padding="1dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/keyword_simple_3_temp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="304dp"
+        android:layout_height="84dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/keyword_simple_image_fourth"
+            android:layout_width="152dp"
+            android:layout_height="84dp"
+            android:background="@drawable/black_border"
+            android:padding="1dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/keyword_simple_4_temp" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/keyword_simple_image_fifth"
+            android:layout_width="152dp"
+            android:layout_height="84dp"
+            android:background="@drawable/black_border"
+            android:padding="1dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/keyword_simple_5_temp" />
+
+    </LinearLayout>
+
+</LinearLayout>

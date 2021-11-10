@@ -1,7 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:background="@color/white"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/fragment_peek_top_bar"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/main_black"
+                android:gravity="end"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/fragment_peek_search_button"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:background="@color/transparent"
+                    android:src="@drawable/ic_search_outlined"
+                    android:tint="@color/white" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/fragment_peek_profile_button"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="28dp"
+                    android:background="@color/transparent"
+                    android:src="@drawable/ic_profile_outlined"
+                    android:tint="@color/white" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/fragment_peek_main_layout"
+                android:layout_width="match_parent"
+                android:layout_height="298dp"
+                android:background="@color/main_black"
+                android:gravity="center|top"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fragment_peek_top_bar">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="133dp"
+                    android:layout_height="133dp"
+                    android:layout_marginTop="30dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/peek_main_image_temp" />
+
+                <TextView
+                    android:layout_width="232dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="34dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="&quot;매일 하루가 파티같아!&quot;"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="232dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="Shin jiin"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/fragment_peek_how_about_others_text"
+                android:layout_width="148dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="다른 사람은 어때?"
+                android:textColor="@color/main_black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fragment_peek_main_layout" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/fragment_peek_how_about_others_button"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_marginEnd="28dp"
+                android:backgroundTint="@color/transparent"
+                android:src="@drawable/ic_right"
+                android:tint="@color/main_black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/fragment_peek_how_about_others_text" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/fragment_peek_how_about_others_tab_layout"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="21dp"
+                android:background="@drawable/black_border"
+                app:layout_constraintEnd_toEndOf="@id/fragment_peek_how_about_others_button"
+                app:layout_constraintStart_toStartOf="@id/fragment_peek_how_about_others_text"
+                app:layout_constraintTop_toBottomOf="@id/fragment_peek_how_about_others_text"
+                app:tabBackground="@drawable/tab_background"
+                app:tabGravity="fill"
+                app:tabIndicator="@color/transparent"
+                app:tabIndicatorColor="@color/transparent"
+                app:tabMinWidth="101dp"
+                app:tabMode="scrollable"
+                app:tabRippleColor="@android:color/transparent"
+                app:tabSelectedTextColor="@color/white"
+                app:tabTextAppearance="@style/fragmentHomeTabTextStyle"
+                app:tabTextColor="@color/main_black" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

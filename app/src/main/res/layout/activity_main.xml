@@ -6,50 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".src.main.MainActivity">
 
-    <LinearLayout
-        android:id="@+id/activity_main_top_bar"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/main_black"
-        android:gravity="end"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/activity_main_search_button"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:background="@color/transparent"
-            android:src="@drawable/ic_search_outlined"
-            android:tint="@color/white" />
-
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/activity_main_cart_button"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginStart="12dp"
-            android:background="@color/transparent"
-            android:src="@drawable/ic_cart_outlined"
-            android:tint="@color/white" />
-
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/activity_main_profile_button"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="16dp"
-            android:background="@color/transparent"
-            android:src="@drawable/ic_profile_outlined"
-            android:tint="@color/white" />
-
-
-    </LinearLayout>
-
     <FrameLayout
         android:id="@+id/main_frm"
         android:layout_width="match_parent"

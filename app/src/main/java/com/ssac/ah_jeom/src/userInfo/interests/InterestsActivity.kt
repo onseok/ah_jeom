@@ -2,8 +2,11 @@ package com.ssac.ah_jeom.src.userInfo.interests
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.GridLayoutManager
+import com.kakao.sdk.user.UserApiClient
 import com.ssac.ah_jeom.R
+import com.ssac.ah_jeom.config.ApplicationClass
 import com.ssac.ah_jeom.config.BaseActivity
 import com.ssac.ah_jeom.databinding.ActivityInterestsBinding
 import com.ssac.ah_jeom.src.userInfo.interests.recycler.InterestsRecyclerAdapter
@@ -17,6 +20,11 @@ class InterestsActivity : BaseActivity<ActivityInterestsBinding>(ActivityInteres
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val kakaoAccessToken = intent.getStringExtra("kakaoAccessToken")
+        saveKakaoTokens(kakaoAccessToken.toString())
+
+        Log.d("kakaoAccessToken", kakaoAccessToken.toString())
 
         binding.activityInterestsBackButton.setOnClickListener {
             onBackPressed()
@@ -54,6 +62,27 @@ class InterestsActivity : BaseActivity<ActivityInterestsBinding>(ActivityInteres
     override fun onBackPressed() {
         super.onBackPressed()
         overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
+    }
+
+    private fun saveKakaoTokens(accessToken: String) {
+        // 토큰 정보 보기
+        UserApiClient.instance.accessTokenInfo { tokenInfo, error ->
+            if (error != null) {
+                showCustomToast("토큰 정보 보기 실패")
+            } else if (tokenInfo != null) {
+                showCustomToast("토큰 정보 보기 성공")
+
+                val accessToken = accessToken
+
+                val editor = ApplicationClass.sSharedPreferences.edit()
+
+                editor.putString("kakaoAccessToken", accessToken)
+
+                editor.commit()
+
+                Log.d("accessToken", accessToken)
+            }
+        }
     }
 
     // 추후에 api 연동하면 대체될 것. 지금은 임시 mock data
