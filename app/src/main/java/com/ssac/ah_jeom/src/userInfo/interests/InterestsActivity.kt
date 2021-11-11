@@ -9,12 +9,16 @@ import com.ssac.ah_jeom.R
 import com.ssac.ah_jeom.config.ApplicationClass
 import com.ssac.ah_jeom.config.BaseActivity
 import com.ssac.ah_jeom.databinding.ActivityInterestsBinding
+import com.ssac.ah_jeom.src.login.models.PostLoginRequest
+import com.ssac.ah_jeom.src.userInfo.interests.models.PostInterestsRequest
+import com.ssac.ah_jeom.src.userInfo.interests.models.PostInterestsResponse
 import com.ssac.ah_jeom.src.userInfo.interests.recycler.InterestsRecyclerAdapter
 import com.ssac.ah_jeom.src.userInfo.interests.recycler.InterestsRecyclerAdapter.Companion.INTERESTS_NEXT_BUTTON
+import com.ssac.ah_jeom.src.userInfo.interests.recycler.InterestsRecyclerAdapter.Companion.fieldIdArray
 import com.ssac.ah_jeom.src.userInfo.interests.recycler.InterestsRecyclerData
 import com.ssac.ah_jeom.src.userInfo.keyword.KeywordActivity
 
-class InterestsActivity : BaseActivity<ActivityInterestsBinding>(ActivityInterestsBinding::inflate) {
+class InterestsActivity : BaseActivity<ActivityInterestsBinding>(ActivityInterestsBinding::inflate), InterestsActivityView {
 
     val data: MutableList<InterestsRecyclerData> = mutableListOf()
 
@@ -47,8 +51,10 @@ class InterestsActivity : BaseActivity<ActivityInterestsBinding>(ActivityInteres
                 return@setOnClickListener
             }
             else {
-                startActivity(Intent(this, KeywordActivity::class.java))
-                overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
+                val userId = ApplicationClass.sSharedPreferences.getInt("userId", 0)
+
+                val params =  PostInterestsRequest(fieldId = fieldIdArray)
+                InterestsService(this).tryPostInterests(userId, params)
             }
 
         }
@@ -99,6 +105,17 @@ class InterestsActivity : BaseActivity<ActivityInterestsBinding>(ActivityInteres
         data.add(InterestsRecyclerData("건축"))
         data.add(InterestsRecyclerData("3D"))
         data.add(InterestsRecyclerData("조형"))
+    }
+
+    override fun onPostInterestsSuccess(response: PostInterestsResponse) {
+        if (response.isSuccess) {
+            startActivity(Intent(this, KeywordActivity::class.java))
+            overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
+        }
+    }
+
+    override fun onPostInterestsFailure(message: String) {
+        showCustomToast("오류 : $message")
     }
 
 }

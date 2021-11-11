@@ -4,15 +4,18 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
 import com.ssac.ah_jeom.R
+import com.ssac.ah_jeom.config.ApplicationClass
 import com.ssac.ah_jeom.config.BaseActivity
 import com.ssac.ah_jeom.databinding.ActivityKeywordBinding
-import com.ssac.ah_jeom.src.main.MainActivity
 import com.ssac.ah_jeom.src.userInfo.confirm.ConfirmActivity
+import com.ssac.ah_jeom.src.userInfo.keyword.models.PostKeywordRequest
+import com.ssac.ah_jeom.src.userInfo.keyword.models.PostKeywordResponse
 import com.ssac.ah_jeom.src.userInfo.keyword.recycler.KeywordRecyclerAdapter
 import com.ssac.ah_jeom.src.userInfo.keyword.recycler.KeywordRecyclerAdapter.Companion.KEYWORD_NEXT_BUTTON
+import com.ssac.ah_jeom.src.userInfo.keyword.recycler.KeywordRecyclerAdapter.Companion.fieldIdArray
 import com.ssac.ah_jeom.src.userInfo.keyword.recycler.KeywordRecyclerData
 
-class KeywordActivity : BaseActivity<ActivityKeywordBinding>(ActivityKeywordBinding::inflate) {
+class KeywordActivity : BaseActivity<ActivityKeywordBinding>(ActivityKeywordBinding::inflate), KeywordActivityView {
 
     private val data: MutableList<KeywordRecyclerData> = mutableListOf()
 
@@ -41,8 +44,12 @@ class KeywordActivity : BaseActivity<ActivityKeywordBinding>(ActivityKeywordBind
                 return@setOnClickListener
             }
             else {
-                startActivity(Intent(this, ConfirmActivity::class.java))
-                overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
+
+                val userId = ApplicationClass.sSharedPreferences.getInt("userId", 0)
+
+                val params =  PostKeywordRequest(fieldId = fieldIdArray)
+                KeywordService(this).tryPostKeyword(userId, params)
+
             }
 
         }
@@ -71,5 +78,16 @@ class KeywordActivity : BaseActivity<ActivityKeywordBinding>(ActivityKeywordBind
         data.add(KeywordRecyclerData("무서운"))
         data.add(KeywordRecyclerData("짐승같은"))
         data.add(KeywordRecyclerData("신비로운"))
+    }
+
+    override fun onPostKeywordSuccess(response: PostKeywordResponse) {
+        if(response.isSuccess) {
+            startActivity(Intent(this, ConfirmActivity::class.java))
+            overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
+        }
+    }
+
+    override fun onPostKeywordFailure(message: String) {
+        showCustomToast("오류 : $message")
     }
 }

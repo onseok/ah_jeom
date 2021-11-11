@@ -11,7 +11,7 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/fragment_peek_others_image_first"
-        android:layout_width="304dp"
+        android:layout_width="303dp"
         android:layout_height="177dp"
         android:background="@drawable/black_border"
         android:padding="1dp"
@@ -20,7 +20,7 @@
 
     <LinearLayout
         android:id="@+id/fragment_peek_others_layout_first"
-        android:layout_width="304dp"
+        android:layout_width="303dp"
         android:layout_height="74dp"
         android:background="@drawable/black_border"
         android:orientation="horizontal">
@@ -38,7 +38,7 @@
         </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="230dp"
+            android:layout_width="229dp"
             android:layout_height="74dp"
             android:background="@drawable/black_border">
 
@@ -103,7 +103,7 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/fragment_peek_others_image_second"
-        android:layout_width="304dp"
+        android:layout_width="303dp"
         android:layout_height="177dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/black_border"
@@ -113,7 +113,7 @@
 
     <LinearLayout
         android:id="@+id/fragment_peek_others_layout_second"
-        android:layout_width="304dp"
+        android:layout_width="303dp"
         android:layout_height="74dp"
         android:background="@drawable/black_border"
         android:orientation="horizontal">
@@ -131,7 +131,7 @@
         </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="230dp"
+            android:layout_width="229dp"
             android:layout_height="74dp"
             android:background="@drawable/black_border">
 
@@ -187,8 +187,9 @@
                 app:layout_constraintStart_toEndOf="@id/fragment_peek_others_name_second_text"
                 app:layout_constraintTop_toTopOf="@id/fragment_peek_others_name_second_text" />
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
     </LinearLayout>
 

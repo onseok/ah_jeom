@@ -10,6 +10,7 @@ import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.ssac.ah_jeom.R
 import com.ssac.ah_jeom.databinding.ActivityKeywordGridRecyclerItemBinding
+import com.ssac.ah_jeom.src.userInfo.interests.recycler.InterestsRecyclerAdapter
 import com.ssac.ah_jeom.src.userInfo.keyword.KeywordActivity
 
 class KeywordRecyclerAdapter(private val context: Context) : RecyclerView.Adapter<KeywordRecyclerAdapter.ProductHolder>(){
@@ -70,11 +71,13 @@ class KeywordRecyclerAdapter(private val context: Context) : RecyclerView.Adapte
                     if (!keywordIsClicked[pos]) {
                         binding.activityKeywordGridLayout.setBackgroundResource(R.drawable.grid_item_background_selected)
                         keywordIsClicked[pos] = true
+                        fieldIdArray.add(pos+13)
                         judgeNextButton()
                     }
                     else {
                         binding.activityKeywordGridLayout.setBackgroundResource(R.drawable.grid_item_background_unselected)
                         keywordIsClicked[pos] = false
+                        fieldIdArray.remove(pos+13)
                         judgeNextButton()
                     }
 
@@ -102,5 +105,6 @@ class KeywordRecyclerAdapter(private val context: Context) : RecyclerView.Adapte
     companion object {
         var KEYWORD_NEXT_BUTTON = false
         var keywordIsClicked = mutableListOf<Boolean>()
+        var fieldIdArray = mutableListOf<Int>()
     }
 }

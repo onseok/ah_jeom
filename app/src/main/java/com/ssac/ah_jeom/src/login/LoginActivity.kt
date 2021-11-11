@@ -15,11 +15,14 @@ import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.AuthErrorCause
 import com.kakao.sdk.common.util.Utility
 import com.ssac.ah_jeom.R
+import com.ssac.ah_jeom.config.ApplicationClass
 import com.ssac.ah_jeom.config.BaseActivity
 import com.ssac.ah_jeom.databinding.ActivityLoginBinding
+import com.ssac.ah_jeom.src.login.models.PostLoginRequest
+import com.ssac.ah_jeom.src.login.models.PostLoginResponse
 import com.ssac.ah_jeom.src.userInfo.interests.InterestsActivity
 
-class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::inflate) {
+class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::inflate), LoginActivityView {
 
     private val textAppear: Animation by lazy {
         AnimationUtils.loadAnimation(
@@ -56,6 +59,10 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
         )
     }
 
+    private var kakaoAccessToken: String? = null
+
+    private val kakao = "kakao"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -87,11 +94,6 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
             }
         }
 
-//        // 임시
-//        binding.activityLoginKakaoLayout.setOnClickListener {
-//            startActivity(Intent(this,InterestsActivity::class.java))
-//            overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
-//        }
 
         val callback: (OAuthToken?, Throwable?) -> Unit = { token, error ->
             if (error != null) {
@@ -129,10 +131,11 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
             } else if (token != null) {
                 Toast.makeText(this, "로그인에 성공하였습니다.", Toast.LENGTH_SHORT).show()
                 Log.d("token", token.accessToken)
-                val intent = Intent(this, InterestsActivity::class.java)
-                intent.putExtra("kakaoAccessToken", token.accessToken)
-                startActivity(intent)
-                overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
+                kakaoAccessToken = token.accessToken
+
+                val params =  PostLoginRequest(access_token = token.accessToken)
+                LoginService(this).tryPostLogin(kakao, params)
+
             }
         }
 
@@ -175,6 +178,26 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
             visibility = View.INVISIBLE
         }
         binding.activityLoginMainStartText.visibility = View.GONE
+    }
+
+    override fun onPostLoginSuccess(response: PostLoginResponse) {
+       if (response.result != null) {
+           val editor = ApplicationClass.sSharedPreferences.edit()
+           editor.putString("X-ACCESS-TOKEN", response.result.jwt)
+           editor.putInt("userId", response.result.userId)
+           editor.commit()
+           showCustomToast(response.result.jwt)
+
+           val intent = Intent(this, InterestsActivity::class.java)
+           intent.putExtra("kakaoAccessToken", kakaoAccessToken)
+//           intent.putExtra("userId", response.result.userId)
+           startActivity(intent)
+           overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
+       }
+    }
+
+    override fun onPostLoginFailure(message: String) {
+        showCustomToast("오류 : $message")
     }
 
 

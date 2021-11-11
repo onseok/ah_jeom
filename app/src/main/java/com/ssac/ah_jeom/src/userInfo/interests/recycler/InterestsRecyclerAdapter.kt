@@ -76,10 +76,12 @@ class InterestsRecyclerAdapter(private val context: Context) :
                     if (!isClicked[pos]) {
                         binding.activityInterestsGridLayout.setBackgroundResource(R.drawable.grid_item_background_selected)
                         isClicked[pos] = true
+                        fieldIdArray.add(pos+1)
                         judgeNextButton()
                     } else {
                         binding.activityInterestsGridLayout.setBackgroundResource(R.drawable.grid_item_background_unselected)
                         isClicked[pos] = false
+                        fieldIdArray.remove(pos+1)
                         judgeNextButton()
                     }
 
@@ -107,5 +109,6 @@ class InterestsRecyclerAdapter(private val context: Context) :
     companion object {
         var INTERESTS_NEXT_BUTTON = false
         var isClicked = mutableListOf<Boolean>()
+        var fieldIdArray = mutableListOf<Int>()
     }
 }

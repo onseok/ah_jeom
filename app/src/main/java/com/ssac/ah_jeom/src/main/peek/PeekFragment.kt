@@ -29,7 +29,6 @@ class PeekFragment : Fragment() {
 
     private var binding: FragmentPeekBinding? = null
 
-
     // 뷰가 생성되었을 때 - 프레그먼트와 레이아웃을 연결시켜주는 부분
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
