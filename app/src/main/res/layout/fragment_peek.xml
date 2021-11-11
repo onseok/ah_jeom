@@ -130,6 +130,21 @@
                 app:tabTextAppearance="@style/fragmentHomeTabTextStyle"
                 app:tabTextColor="@color/main_black" />
 
+            <com.ssac.ah_jeom.util.NestedScrollableHost
+                android:id="@+id/fragment_peek_others_nested_scrollable_host"
+                android:layout_width="0dp"
+                android:layout_height="518dp"
+                app:layout_constraintEnd_toEndOf="@id/fragment_peek_how_about_others_tab_layout"
+                app:layout_constraintStart_toStartOf="@id/fragment_peek_how_about_others_tab_layout"
+                app:layout_constraintTop_toBottomOf="@id/fragment_peek_how_about_others_tab_layout">
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/fragment_peek_others_viewpager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </com.ssac.ah_jeom.util.NestedScrollableHost>
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

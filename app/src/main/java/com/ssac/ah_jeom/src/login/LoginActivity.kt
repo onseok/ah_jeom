@@ -13,9 +13,8 @@ import com.bumptech.glide.Glide
 import com.kakao.sdk.auth.LoginClient
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.AuthErrorCause
-import com.kakao.sdk.user.UserApiClient
+import com.kakao.sdk.common.util.Utility
 import com.ssac.ah_jeom.R
-import com.ssac.ah_jeom.config.ApplicationClass
 import com.ssac.ah_jeom.config.BaseActivity
 import com.ssac.ah_jeom.databinding.ActivityLoginBinding
 import com.ssac.ah_jeom.src.userInfo.interests.InterestsActivity
@@ -59,6 +58,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
 
         Glide.with(this).load(R.drawable.login_temporary_gif)
             .into(binding.activityLoginBackgroundGif)
