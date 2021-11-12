@@ -10,4 +10,7 @@
     <color name="main_black">#1D1D1D</color>
     <color name="main_blue">#3F3FFF</color>
 
+    <!-- Util Color -->
+    <color name="gray_transparent">#0E2354</color>
+
 </resources>

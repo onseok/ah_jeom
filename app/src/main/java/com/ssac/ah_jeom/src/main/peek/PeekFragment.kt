@@ -1,5 +1,7 @@
 package com.ssac.ah_jeom.src.main.peek
 
+import android.app.ActivityOptions
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -16,6 +18,7 @@ import com.ssac.ah_jeom.R
 import com.ssac.ah_jeom.config.BaseFragment
 import com.ssac.ah_jeom.databinding.FragmentHomeBinding
 import com.ssac.ah_jeom.databinding.FragmentPeekBinding
+import com.ssac.ah_jeom.src.detail.PeekDetailActivity
 import com.ssac.ah_jeom.src.main.home.adapter.*
 import com.ssac.ah_jeom.src.main.home.fragments.*
 import com.ssac.ah_jeom.src.main.home.models.BestArtist
@@ -57,6 +60,18 @@ class PeekFragment : Fragment() {
                     tab.text = tabTitles[position]
                 }.attach()
             }
+        }
+
+//        val Pair1 = Pair<View,String>(
+//            binding!!.fragmentPeekMainImage, "peek_image")
+//
+//        val Pair2 = Pair<View,String>(
+//            binding!!.fragmentPeekMainImage, "peek_image")
+
+        binding!!.fragmentPeekMainImage.setOnClickListener {
+            val intent = Intent(requireActivity(), PeekDetailActivity::class.java)
+            var options : ActivityOptions = ActivityOptions.makeSceneTransitionAnimation(requireActivity())
+            startActivity(intent, options.toBundle())
         }
 
         return binding!!.root

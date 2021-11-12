@@ -1,196 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".src.main.peek.fragments.OthersBestFragment">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/fragment_peek_others_image_first"
-        android:layout_width="303dp"
-        android:layout_height="177dp"
-        android:background="@drawable/black_border"
-        android:padding="1dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/others_image_1_temp" />
 
-    <LinearLayout
-        android:id="@+id/fragment_peek_others_layout_first"
-        android:layout_width="303dp"
-        android:layout_height="74dp"
-        android:background="@drawable/black_border"
-        android:orientation="horizontal">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        app:cardCornerRadius="6dp"
+        android:elevation="0dp"
+        app:cardElevation="0dp"
+        android:layout_height="match_parent">
 
-        <LinearLayout
-            android:layout_width="74dp"
-            android:layout_height="74dp">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/fragment_peek_others_image_first"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="1dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/others_image_1_temp" />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/fragment_peek_others_profile_image_first"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@color/main_black" />
-
-        </LinearLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="229dp"
-            android:layout_height="74dp"
-            android:background="@drawable/black_border">
-
-            <TextView
-                android:id="@+id/fragment_peek_others_title_first_text"
-                android:layout_width="158dp"
-                android:layout_height="20dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
-                android:ellipsize="end"
-                android:fontFamily="@font/roboto_bold"
-                android:maxLines="1"
-                android:text="&quot;빨간 풍선이 방울방...&quot;"
-                android:textColor="@color/main_black"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:backgroundTint="@color/transparent"
-                android:src="@drawable/ic_more"
-                android:tint="@color/main_black"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/fragment_peek_others_name_first_text"
-                android:layout_width="54dp"
-                android:layout_height="20dp"
-                android:layout_marginTop="10dp"
-                android:ellipsize="end"
-                android:fontFamily="@font/roboto_regular"
-                android:maxLines="1"
-                android:text="이영선"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="@id/fragment_peek_others_title_first_text"
-                app:layout_constraintTop_toBottomOf="@id/fragment_peek_others_title_first_text" />
-
-            <TextView
-                android:id="@+id/fragment_peek_others_download_first_text"
-                android:layout_width="106dp"
-                android:layout_height="20dp"
-                android:layout_marginStart="18dp"
-                android:ellipsize="end"
-                android:fontFamily="@font/roboto_bold"
-                android:maxLines="1"
-                android:text="6.1K회다운"
-                android:textColor="@color/main_black"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@id/fragment_peek_others_name_first_text"
-                app:layout_constraintStart_toEndOf="@id/fragment_peek_others_name_first_text"
-                app:layout_constraintTop_toTopOf="@id/fragment_peek_others_name_first_text" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </LinearLayout>
-
-    <!-- -->
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/fragment_peek_others_image_second"
-        android:layout_width="303dp"
-        android:layout_height="177dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/black_border"
-        android:padding="1dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/others_image_2_temp" />
-
-    <LinearLayout
-        android:id="@+id/fragment_peek_others_layout_second"
-        android:layout_width="303dp"
-        android:layout_height="74dp"
-        android:background="@drawable/black_border"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="74dp"
-            android:layout_height="74dp">
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/fragment_peek_others_profile_image_second"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@color/main_black" />
-
-        </LinearLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="229dp"
-            android:layout_height="74dp"
-            android:background="@drawable/black_border">
-
-            <TextView
-                android:id="@+id/fragment_peek_others_title_second_text"
-                android:layout_width="158dp"
-                android:layout_height="20dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
-                android:ellipsize="end"
-                android:fontFamily="@font/roboto_bold"
-                android:maxLines="1"
-                android:text="&quot;달걀 노른자가 떴다&quot;"
-                android:textColor="@color/main_black"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:backgroundTint="@color/transparent"
-                android:src="@drawable/ic_more"
-                android:tint="@color/main_black"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/fragment_peek_others_name_second_text"
-                android:layout_width="54dp"
-                android:layout_height="20dp"
-                android:layout_marginTop="10dp"
-                android:ellipsize="end"
-                android:fontFamily="@font/roboto_regular"
-                android:maxLines="1"
-                android:text="GJinn..."
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="@id/fragment_peek_others_title_second_text"
-                app:layout_constraintTop_toBottomOf="@id/fragment_peek_others_title_second_text" />
-
-            <TextView
-                android:id="@+id/fragment_peek_others_download_second_text"
-                android:layout_width="106dp"
-                android:layout_height="20dp"
-                android:layout_marginStart="18dp"
-                android:ellipsize="end"
-                android:fontFamily="@font/roboto_bold"
-                android:maxLines="1"
-                android:text="4.8K회다운"
-                android:textColor="@color/main_black"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@id/fragment_peek_others_name_second_text"
-                app:layout_constraintStart_toEndOf="@id/fragment_peek_others_name_second_text"
-                app:layout_constraintTop_toTopOf="@id/fragment_peek_others_name_second_text" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
 
 
-    </LinearLayout>
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/fragment_peek_others_layout_first"-->
+<!--        android:layout_width="303dp"-->
+<!--        android:layout_height="74dp"-->
+<!--        android:background="@drawable/black_border"-->
+<!--        android:orientation="horizontal">-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="74dp"-->
+<!--            android:layout_height="74dp">-->
+
+<!--            <androidx.appcompat.widget.AppCompatImageView-->
+<!--                android:id="@+id/fragment_peek_others_profile_image_first"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:src="@color/main_black" />-->
+
+<!--        </LinearLayout>-->
+
+<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--            android:layout_width="229dp"-->
+<!--            android:layout_height="74dp"-->
+<!--            android:background="@drawable/black_border">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/fragment_peek_others_title_first_text"-->
+<!--                android:layout_width="158dp"-->
+<!--                android:layout_height="20dp"-->
+<!--                android:layout_marginStart="16dp"-->
+<!--                android:layout_marginTop="12dp"-->
+<!--                android:ellipsize="end"-->
+<!--                android:fontFamily="@font/roboto_bold"-->
+<!--                android:maxLines="1"-->
+<!--                android:text="&quot;빨간 풍선이 방울방...&quot;"-->
+<!--                android:textColor="@color/main_black"-->
+<!--                android:textSize="14sp"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--            <androidx.appcompat.widget.AppCompatImageButton-->
+<!--                android:layout_width="36dp"-->
+<!--                android:layout_height="36dp"-->
+<!--                android:backgroundTint="@color/transparent"-->
+<!--                android:src="@drawable/ic_more"-->
+<!--                android:tint="@color/main_black"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/fragment_peek_others_name_first_text"-->
+<!--                android:layout_width="54dp"-->
+<!--                android:layout_height="20dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:ellipsize="end"-->
+<!--                android:fontFamily="@font/roboto_regular"-->
+<!--                android:maxLines="1"-->
+<!--                android:text="이영선"-->
+<!--                android:textSize="14sp"-->
+<!--                app:layout_constraintStart_toStartOf="@id/fragment_peek_others_title_first_text"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/fragment_peek_others_title_first_text" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/fragment_peek_others_download_first_text"-->
+<!--                android:layout_width="106dp"-->
+<!--                android:layout_height="20dp"-->
+<!--                android:layout_marginStart="18dp"-->
+<!--                android:ellipsize="end"-->
+<!--                android:fontFamily="@font/roboto_bold"-->
+<!--                android:maxLines="1"-->
+<!--                android:text="6.1K회다운"-->
+<!--                android:textColor="@color/main_black"-->
+<!--                android:textSize="14sp"-->
+<!--                app:layout_constraintBottom_toBottomOf="@id/fragment_peek_others_name_first_text"-->
+<!--                app:layout_constraintStart_toEndOf="@id/fragment_peek_others_name_first_text"-->
+<!--                app:layout_constraintTop_toTopOf="@id/fragment_peek_others_name_first_text" />-->
+
+
+<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--    </LinearLayout>-->
+
 
 </LinearLayout>

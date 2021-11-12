@@ -6,7 +6,8 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 
 class InterestsViewpagerAdapter(fragmentActivity: FragmentActivity): FragmentStateAdapter(fragmentActivity) {
 
-    var fragmentList = listOf<Fragment>()
+    var fragmentList = mutableListOf<Fragment>()
+
     override fun getItemCount(): Int {
         return fragmentList.size
     }
