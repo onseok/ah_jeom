@@ -106,7 +106,7 @@ class HomeFragment : Fragment(), HomeFragmentView {
         setInterests(response)
 
         // 최애 키워드 탭 레이아웃 설정 (서버, 동적으로)
-        setKeyword()
+        setKeyword(response)
 
         // 최고의 아티스트 뷰페이저 설정
         setBestArtistViewPager()
@@ -163,35 +163,35 @@ class HomeFragment : Fragment(), HomeFragmentView {
             tabTitles.add("추상")
         }
         if (response.field._5 != null) {
-            fragmentList.add(CartoonFragment())
+            fragmentList.add(CartoonFragment(response.field._5[0].img))
             tabTitles.add("만화")
         }
         if (response.field._6 != null) {
-            fragmentList.add(SculptureFragment())
+            fragmentList.add(SculptureFragment(response.field._6[0].img))
             tabTitles.add("조각")
         }
         if (response.field._7 != null) {
-            fragmentList.add(PhotoFragment())
+            fragmentList.add(PhotoFragment(response.field._7[0].img))
             tabTitles.add("사진")
         }
         if (response.field._8 != null) {
-            fragmentList.add(NaturalFragment())
+            fragmentList.add(NaturalFragment(response.field._8[0].img))
             tabTitles.add("자연")
         }
         if (response.field._9 != null) {
-            fragmentList.add(PersonFragment())
+            fragmentList.add(PersonFragment(response.field._9[0].img))
             tabTitles.add("인물")
         }
         if (response.field._10 != null) {
-            fragmentList.add(ArchitectureFragment())
+            fragmentList.add(ArchitectureFragment(response.field._10[0].img))
             tabTitles.add("건축")
         }
         if (response.field._11 != null) {
-            fragmentList.add(ThreeDimensionsFragment())
+            fragmentList.add(ThreeDimensionsFragment(response.field._11[0].img))
             tabTitles.add("3D")
         }
         if (response.field._12 != null) {
-            fragmentList.add(MoldingFragment())
+            fragmentList.add(MoldingFragment(response.field._12[0].img))
             tabTitles.add("조형")
         }
 
@@ -211,7 +211,7 @@ class HomeFragment : Fragment(), HomeFragmentView {
 
     }
 
-    private fun setKeyword() {
+    private fun setKeyword(response: GetHomeResponse) {
         // (최애 키워드) 탭 레이아웃 연결 전 뷰페이저 어댑터 설정
         val keywordFragmentList = listOf(KeywordSimpleFragment(), KeywordFancyFragment(), KeywordStrongFragment(), KeywordComfortableFragment() ,KeywordVividFragment(), KeywordCuteFragment(), KeywordBeautifulFragment(), KeywordHolyFragment(), KeywordAbstractFragment(), KeywordRealisticFragment(), KeywordExaggeratedFragment(), KeywordFunFragment(), KeywordScaryFragment(), KeywordBeastlyFragment(), KeywordMysteriousFragment())
         val keywordAdapter = KeywordViewpagerAdapter(activity as FragmentActivity)

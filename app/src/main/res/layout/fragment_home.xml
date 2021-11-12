@@ -66,7 +66,7 @@
 
             </com.ssac.ah_jeom.util.NestedScrollableHost>
 
-            <!-- 최애 분야 -->
+            <!-- 관심 분야 -->
 
             <TextView
                 android:id="@+id/fragment_home_interests_text"
@@ -74,7 +74,7 @@
                 android:layout_height="28dp"
                 android:layout_marginTop="80dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="최애 분야"
+                android:text="관심 분야"
                 android:textColor="@color/main_black"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="@id/fragment_home_interests_tab_layout"
@@ -121,7 +121,7 @@
 
             </com.ssac.ah_jeom.util.NestedScrollableHost>
 
-            <!-- 최애 키워드 -->
+            <!-- 관심 키워드 -->
 
             <TextView
                 android:id="@+id/fragment_home_keyword_text"
@@ -129,7 +129,7 @@
                 android:layout_height="28dp"
                 android:layout_marginTop="80dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="최애 키워드"
+                android:text="관심 키워드"
                 android:textColor="@color/main_black"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="@id/fragment_home_interests_nested_scrollable_host"
@@ -181,7 +181,7 @@
                 android:layout_height="28dp"
                 android:layout_marginTop="80dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="최고의 Artist"
+                android:text="최고의 아티스트"
                 android:layout_marginStart="28dp"
                 android:textColor="@color/main_black"
                 android:textSize="20sp"
