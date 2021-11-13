@@ -32,6 +32,12 @@ class HomeFragment : Fragment(), HomeFragmentView {
     private val fragmentList = mutableListOf<Fragment>()
     private val tabTitles = mutableListOf<String>()
 
+    private val keywordFragmentList = mutableListOf<Fragment>()
+    private val keywordTabTitles = mutableListOf<String>()
+
+    private val listData: MutableList<BestArtist> = mutableListOf()
+    private val newArtistListData: MutableList<NewArtist> = mutableListOf()
+
     // 뷰가 생성되었을 때 - 프레그먼트와 레이아웃을 연결시켜주는 부분
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -75,24 +81,20 @@ class HomeFragment : Fragment(), HomeFragmentView {
         }
     }
 
-    private fun loadData(): MutableList<BestArtist> {
-        val listData: MutableList<BestArtist> = mutableListOf()
+    private fun loadData(response: GetHomeResponse): MutableList<BestArtist> {
 
-        // 임시 mock data, 추후 api 연동으로 바꿀 예정
-        listData.add(BestArtist(R.drawable.best_artist_1_temp, "Levan Kenia", R.drawable.best_artist_representative_1_temp))
-        listData.add(BestArtist(R.drawable.best_artist_2_temp, "이철원", R.drawable.best_artist_representative_2_temp))
-        listData.add(BestArtist(R.drawable.best_artist_3_temp, "HAna336", R.drawable.best_artist_representative_3_temp))
+        response.best.forEach {
+            listData.add(BestArtist(it.nickname, it.profile))
+        }
 
         return listData
     }
 
-    private fun newArtistLoadData(): MutableList<NewArtist> {
-        val newArtistListData: MutableList<NewArtist> = mutableListOf()
-        
-        // 임시 mock data, 추후 api 연동으로 대체할 예정
-        newArtistListData.add(NewArtist("김새롬", R.drawable.new_artist_profile_image_1_temp, R.drawable.new_artist_art_image_1_first_temp, R.drawable.new_artist_art_image_1_second_temp, "나는 자연을 좋아합니다, 무척 새롭죠.\n그래서 찍는건 즐거워요."))
-        newArtistListData.add(NewArtist("ginhan456", R.drawable.new_artist_profile_image_2_temp, R.drawable.new_artist_art_image_2_first_temp, R.drawable.new_artist_art_image_2_second_temp, "낡은 것을 보면 여러분은\n무엇을 떠올리시나요?"))
-        newArtistListData.add(NewArtist("신재원", R.drawable.new_artist_profile_image_3_temp, R.drawable.new_artist_art_image_3_first_temp, R.drawable.new_artist_art_image_3_second_temp, "예술은 자연이 완결짓지\n못한 것을 완성합니다."))
+    private fun newArtistLoadData(response: GetHomeResponse): MutableList<NewArtist> {
+
+        response.new.forEach {
+            newArtistListData.add(NewArtist(it.nickname, it.profile))
+        }
 
         return newArtistListData
 
@@ -109,10 +111,10 @@ class HomeFragment : Fragment(), HomeFragmentView {
         setKeyword(response)
 
         // 최고의 아티스트 뷰페이저 설정
-        setBestArtistViewPager()
+        setBestArtistViewPager(response)
 
         // 새로운 아티스트 뷰페이저 설정
-        setNewArtistViewPager()
+        setNewArtistViewPager(response)
     }
 
     override fun onGetHomeFailure(message: String) {
@@ -208,18 +210,77 @@ class HomeFragment : Fragment(), HomeFragmentView {
                 }.attach()
             }
         }
-
     }
 
     private fun setKeyword(response: GetHomeResponse) {
+        if (response.kw._13 != null) {
+            // 우선 첫번째 이미지만 서버에서 받아오자! (뷰페이저 구현은 나중에 생각)
+            keywordFragmentList.add(KeywordSimpleFragment(response.kw._13[0].img))
+            keywordTabTitles.add("심플한")
+        }
+        if (response.kw._14 != null) {
+            keywordFragmentList.add(KeywordFancyFragment(response.kw._14[0].img))
+            keywordTabTitles.add("화려한")
+        }
+        if (response.kw._15 != null) {
+            keywordFragmentList.add(KeywordStrongFragment(response.kw._15[0].img))
+            keywordTabTitles.add("강렬한")
+        }
+        if (response.kw._16 != null) {
+            keywordFragmentList.add(KeywordComfortableFragment(response.kw._16[0].img))
+            keywordTabTitles.add("편안한")
+        }
+        if (response.kw._17 != null) {
+            keywordFragmentList.add(KeywordVividFragment(response.kw._17[0].img))
+            keywordTabTitles.add("원색적인")
+        }
+        if (response.kw._18 != null) {
+            keywordFragmentList.add(KeywordCuteFragment(response.kw._18[0].img))
+            keywordTabTitles.add("귀여운")
+        }
+        if (response.kw._19 != null) {
+            keywordFragmentList.add(KeywordBeautifulFragment(response.kw._19[0].img))
+            keywordTabTitles.add("아름다운")
+        }
+        if (response.kw._20 != null) {
+            keywordFragmentList.add(KeywordHolyFragment(response.kw._20[0].img))
+            keywordTabTitles.add("성스러운")
+        }
+        if (response.kw._21 != null) {
+            keywordFragmentList.add(KeywordAbstractFragment(response.kw._21[0].img))
+            keywordTabTitles.add("추상적인")
+        }
+        if (response.kw._22 != null) {
+            keywordFragmentList.add(KeywordRealisticFragment(response.kw._22[0].img))
+            keywordTabTitles.add("실제같은")
+        }
+        if (response.kw._23 != null) {
+            keywordFragmentList.add(KeywordExaggeratedFragment(response.kw._23[0].img))
+            keywordTabTitles.add("과장된")
+        }
+        if (response.kw._24 != null) {
+            keywordFragmentList.add(KeywordFunFragment(response.kw._24[0].img))
+            keywordTabTitles.add("재밌는")
+        }
+        if (response.kw._25 != null) {
+            keywordFragmentList.add(KeywordScaryFragment(response.kw._25[0].img))
+            keywordTabTitles.add("무서운")
+        }
+        if (response.kw._26 != null) {
+            keywordFragmentList.add(KeywordBeastlyFragment(response.kw._26[0].img))
+            keywordTabTitles.add("짐승같은")
+        }
+        if (response.kw._27 != null) {
+            keywordFragmentList.add(KeywordMysteriousFragment(response.kw._27[0].img))
+            keywordTabTitles.add("신비로운")
+        }
+
         // (최애 키워드) 탭 레이아웃 연결 전 뷰페이저 어댑터 설정
-        val keywordFragmentList = listOf(KeywordSimpleFragment(), KeywordFancyFragment(), KeywordStrongFragment(), KeywordComfortableFragment() ,KeywordVividFragment(), KeywordCuteFragment(), KeywordBeautifulFragment(), KeywordHolyFragment(), KeywordAbstractFragment(), KeywordRealisticFragment(), KeywordExaggeratedFragment(), KeywordFunFragment(), KeywordScaryFragment(), KeywordBeastlyFragment(), KeywordMysteriousFragment())
         val keywordAdapter = KeywordViewpagerAdapter(activity as FragmentActivity)
         keywordAdapter.fragmentList = keywordFragmentList
         binding?.fragmentHomeKeywordViewpager?.adapter = keywordAdapter
 
         // (최애 키워드) 탭 레이아웃 연결
-        val keywordTabTitles = listOf("심플한", "화려한", "강렬한", "편안한", "원색적인", "귀여운", "아름다운", "성스러운", "추상적인", "실제같은", "과장된", "재밌는", "무서운", "짐승같은", "신비로운")
         binding?.fragmentHomeKeywordTabLayout?.let {
             binding?.fragmentHomeKeywordViewpager?.let { it1 ->
                 TabLayoutMediator(it, it1) { tab, position ->
@@ -230,18 +291,17 @@ class HomeFragment : Fragment(), HomeFragmentView {
 
     }
 
-    private fun setBestArtistViewPager() {
-        // 최고의 아티스트 데이터 어댑터 연결
-        val bestArtistData: MutableList<BestArtist> = loadData()
-        var bestArtistAdapter = HomeFragmentBestArtistRecyclerAdapter()
+    private fun setBestArtistViewPager(response: GetHomeResponse) {
+        // 최고의 아티스트 뷰페이저
+        val bestArtistData: MutableList<BestArtist> = loadData(response)
+        var bestArtistAdapter = BestArtistViewpagerAdapter()
         bestArtistAdapter.listData = bestArtistData
-        binding?.fragmentHomeBestArtistRecycler?.adapter = bestArtistAdapter
-        binding?.fragmentHomeBestArtistRecycler?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        binding?.fragmentHomeNewArtistViewpager?.adapter = bestArtistAdapter
     }
 
-    private fun setNewArtistViewPager() {
+    private fun setNewArtistViewPager(response: GetHomeResponse) {
         // 새로운 아티스트 뷰페이저
-        val newArtistData: MutableList<NewArtist> = newArtistLoadData()
+        val newArtistData: MutableList<NewArtist> = newArtistLoadData(response)
         var newArtistAdapter = NewArtistViewpagerAdapter()
         newArtistAdapter.listData = newArtistData
         binding?.fragmentHomeNewArtistViewpager?.adapter = newArtistAdapter

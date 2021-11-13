@@ -83,10 +83,10 @@
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/fragment_home_interests_tab_layout"
                 android:layout_width="0dp"
-                android:layout_marginStart="28dp"
-                android:layout_marginEnd="28dp"
                 android:layout_height="48dp"
+                android:layout_marginStart="28dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginEnd="28dp"
                 android:background="@color/transparent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -115,8 +115,8 @@
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/fragment_home_interests_viewpager"
                     android:layout_width="match_parent"
-                    android:background="@drawable/black_border"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:background="@drawable/black_border" />
 
 
             </com.ssac.ah_jeom.util.NestedScrollableHost>
@@ -179,10 +179,10 @@
                 android:id="@+id/fragment_home_best_artist_text"
                 android:layout_width="wrap_content"
                 android:layout_height="28dp"
+                android:layout_marginStart="28dp"
                 android:layout_marginTop="80dp"
                 android:fontFamily="@font/roboto_bold"
                 android:text="최고의 아티스트"
-                android:layout_marginStart="28dp"
                 android:textColor="@color/main_black"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -227,8 +227,8 @@
                 android:id="@+id/fragment_home_new_artist_nested_scrollable_host"
                 android:layout_width="0dp"
                 android:layout_height="346dp"
-                android:layout_marginTop="20dp"
                 android:layout_marginStart="28dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="28dp"
                 android:background="@drawable/black_border"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -245,6 +245,14 @@
 
             </com.ssac.ah_jeom.util.NestedScrollableHost>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fragment_home_new_artist_nested_scrollable_host" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -252,137 +260,3 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!--            &lt;!&ndash; 오늘의 아티스트 &ndash;&gt;-->
-
-    <!--            <TextView-->
-    <!--                android:id="@+id/fragment_home_today_artist_text"-->
-    <!--                android:layout_width="wrap_content"-->
-    <!--                android:layout_height="28dp"-->
-    <!--                android:layout_marginTop="80dp"-->
-    <!--                android:fontFamily="@font/roboto_bold"-->
-    <!--                android:text="오늘의 아티스트"-->
-    <!--                android:textColor="@color/main_black"-->
-    <!--                android:textSize="20sp"-->
-    <!--                app:layout_constraintStart_toStartOf="@id/fragment_home_keyword_nested_scrollable_host"-->
-    <!--                app:layout_constraintTop_toBottomOf="@id/fragment_home_keyword_nested_scrollable_host" />-->
-
-    <!--            <androidx.appcompat.widget.AppCompatImageView-->
-    <!--                android:id="@+id/fragment_home_today_artist_profile_image"-->
-    <!--                android:layout_width="304dp"-->
-    <!--                android:layout_height="232dp"-->
-    <!--                android:layout_marginTop="20dp"-->
-    <!--                android:background="@drawable/black_border"-->
-    <!--                android:scaleType="centerCrop"-->
-    <!--                android:src="@drawable/today_artist_profile_image_1_temp"-->
-    <!--                app:layout_constraintEnd_toEndOf="@id/fragment_home_keyword_nested_scrollable_host"-->
-    <!--                app:layout_constraintStart_toStartOf="@id/fragment_home_today_artist_text"-->
-    <!--                app:layout_constraintTop_toBottomOf="@id/fragment_home_today_artist_text" />-->
-
-    <!--            <LinearLayout-->
-    <!--                android:id="@+id/fragment_home_today_artist_profile_text_layout"-->
-    <!--                android:layout_width="304dp"-->
-    <!--                android:layout_height="90dp"-->
-    <!--                android:background="@drawable/black_border"-->
-    <!--                android:gravity="center"-->
-    <!--                android:orientation="vertical"-->
-    <!--                app:layout_constraintEnd_toEndOf="@id/fragment_home_today_artist_profile_image"-->
-    <!--                app:layout_constraintStart_toStartOf="@id/fragment_home_today_artist_profile_image"-->
-    <!--                app:layout_constraintTop_toBottomOf="@id/fragment_home_today_artist_profile_image">-->
-
-    <!--                <TextView-->
-    <!--                    android:id="@+id/fragment_home_today_artist_profile_name_text"-->
-    <!--                    android:layout_width="126dp"-->
-    <!--                    android:layout_height="20dp"-->
-    <!--                    android:fontFamily="@font/roboto_medium"-->
-    <!--                    android:gravity="center"-->
-    <!--                    android:text="Levan Kenia"-->
-    <!--                    android:textColor="@color/main_black"-->
-    <!--                    android:textSize="16sp" />-->
-
-    <!--                <TextView-->
-    <!--                    android:id="@+id/fragment_home_today_artist_profile_slogan_text"-->
-    <!--                    android:layout_width="205dp"-->
-    <!--                    android:layout_height="26dp"-->
-    <!--                    android:layout_marginTop="16dp"-->
-    <!--                    android:fontFamily="@font/roboto_medium"-->
-    <!--                    android:gravity="center"-->
-    <!--                    android:text="&quot;오늘을 그려내는 미술가&quot;"-->
-    <!--                    android:textColor="@color/main_black"-->
-    <!--                    android:textSize="18sp" />-->
-
-    <!--            </LinearLayout>-->
-
-    <!--            <LinearLayout-->
-    <!--                android:id="@+id/fragment_home_expand_layout"-->
-    <!--                android:layout_width="304dp"-->
-    <!--                android:layout_height="28dp"-->
-    <!--                android:background="@drawable/black_border"-->
-    <!--                android:gravity="center"-->
-    <!--                android:orientation="vertical"-->
-    <!--                app:layout_constraintEnd_toEndOf="@id/fragment_home_today_artist_profile_text_layout"-->
-    <!--                app:layout_constraintStart_toStartOf="@id/fragment_home_today_artist_profile_text_layout"-->
-    <!--                app:layout_constraintTop_toBottomOf="@id/fragment_home_today_artist_profile_text_layout">-->
-
-    <!--                <androidx.appcompat.widget.AppCompatImageButton-->
-    <!--                    android:layout_width="28dp"-->
-    <!--                    android:layout_height="28dp"-->
-    <!--                    android:backgroundTint="@color/transparent"-->
-    <!--                    android:src="@drawable/ic_upside"-->
-    <!--                    android:tint="@color/main_black" />-->
-
-    <!--            </LinearLayout>-->
-
-    <!--            <androidx.constraintlayout.widget.ConstraintLayout-->
-    <!--                android:id="@+id/fragment_home_expand_item_layout"-->
-    <!--                android:layout_width="304dp"-->
-    <!--                android:layout_height="493dp"-->
-    <!--                android:background="@drawable/black_border"-->
-    <!--                app:layout_constraintEnd_toEndOf="@id/fragment_home_expand_layout"-->
-    <!--                app:layout_constraintStart_toStartOf="@id/fragment_home_expand_layout"-->
-    <!--                app:layout_constraintTop_toBottomOf="@id/fragment_home_expand_layout">-->
-
-    <!--                <androidx.appcompat.widget.AppCompatImageView-->
-    <!--                    android:id="@+id/fragment_home_expand_image_first"-->
-    <!--                    android:layout_width="304dp"-->
-    <!--                    android:layout_height="93dp"-->
-    <!--                    android:background="@drawable/black_border"-->
-    <!--                    android:scaleType="centerCrop"-->
-    <!--                    android:src="@drawable/today_artist_expand_item_1_temp"-->
-    <!--                    app:layout_constraintEnd_toEndOf="parent"-->
-    <!--                    app:layout_constraintStart_toStartOf="parent"-->
-    <!--                    app:layout_constraintTop_toTopOf="parent" />-->
-
-    <!--                <androidx.appcompat.widget.AppCompatImageView-->
-    <!--                    android:id="@+id/fragment_home_expand_image_second"-->
-    <!--                    android:layout_width="152dp"-->
-    <!--                    android:layout_height="93dp"-->
-    <!--                    android:background="@drawable/black_border"-->
-    <!--                    android:scaleType="centerCrop"-->
-    <!--                    android:src="@drawable/today_artist_expand_item_2_temp"-->
-    <!--                    app:layout_constraintStart_toStartOf="@id/fragment_home_expand_image_first"-->
-    <!--                    app:layout_constraintTop_toBottomOf="@id/fragment_home_expand_image_first" />-->
-
-    <!--                <androidx.appcompat.widget.AppCompatImageView-->
-    <!--                    android:id="@+id/fragment_home_expand_image_third"-->
-    <!--                    android:layout_width="152dp"-->
-    <!--                    android:layout_height="93dp"-->
-    <!--                    android:background="@drawable/black_border"-->
-    <!--                    android:scaleType="centerCrop"-->
-    <!--                    android:src="@drawable/today_artist_expand_item_3_temp"-->
-    <!--                    app:layout_constraintEnd_toEndOf="@id/fragment_home_expand_image_first"-->
-    <!--                    app:layout_constraintTop_toBottomOf="@id/fragment_home_expand_image_first" />-->
-
-    <!--                <androidx.appcompat.widget.AppCompatImageView-->
-    <!--                    android:id="@+id/fragment_home_expand_image_fourth"-->
-    <!--                    android:layout_width="304dp"-->
-    <!--                    android:layout_height="307dp"-->
-    <!--                    android:background="@drawable/black_border"-->
-    <!--                    android:scaleType="centerCrop"-->
-    <!--                    android:src="@drawable/today_artist_expand_item_4_temp"-->
-    <!--                    app:layout_constraintEnd_toEndOf="parent"-->
-    <!--                    app:layout_constraintStart_toStartOf="parent"-->
-    <!--                    app:layout_constraintTop_toBottomOf="@id/fragment_home_expand_image_second" />-->
-
-
-    <!--            </androidx.constraintlayout.widget.ConstraintLayout>-->

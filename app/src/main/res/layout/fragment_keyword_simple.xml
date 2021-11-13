@@ -1,69 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="304dp"
-    android:layout_height="438dp"
-    android:layout_gravity="center"
-    android:background="@drawable/black_border"
-    android:orientation="vertical"
-    android:padding="1dp">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/keyword_simple_image_first"
-        android:layout_width="304dp"
-        android:layout_height="270dp"
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="0dp"
         android:background="@drawable/black_border"
-        android:padding="1dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/keyword_simple_1_temp" />
-
-    <LinearLayout
-        android:layout_width="304dp"
-        android:layout_height="84dp"
-        android:background="@drawable/black_border"
-        android:orientation="horizontal">
+        android:layout_height="match_parent">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/keyword_simple_image_second"
-            android:layout_width="152dp"
-            android:layout_height="84dp"
-            android:background="@drawable/black_border"
+            android:id="@+id/fragment_keyword_simple_image"
+            android:layout_width="match_parent"
             android:padding="1dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/keyword_simple_2_temp" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/keyword_simple_image_third"
-            android:layout_width="152dp"
-            android:layout_height="84dp"
             android:background="@drawable/black_border"
-            android:padding="1dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/keyword_simple_3_temp" />
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop" />
 
-    </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
-    <LinearLayout
-        android:layout_width="304dp"
-        android:layout_height="84dp">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/keyword_simple_image_fourth"
-            android:layout_width="152dp"
-            android:layout_height="84dp"
-            android:background="@drawable/black_border"
-            android:padding="1dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/keyword_simple_4_temp" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/keyword_simple_image_fifth"
-            android:layout_width="152dp"
-            android:layout_height="84dp"
-            android:background="@drawable/black_border"
-            android:padding="1dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/keyword_simple_5_temp" />
-
-    </LinearLayout>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
