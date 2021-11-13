@@ -18,6 +18,7 @@ import com.ssac.ah_jeom.src.main.home.fragments.*
 import com.ssac.ah_jeom.src.main.home.models.BestArtist
 import com.ssac.ah_jeom.src.main.home.models.GetHomeResponse
 import com.ssac.ah_jeom.src.main.home.models.NewArtist
+import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
 import kotlin.collections.ArrayList
 
 class HomeFragment : Fragment(), HomeFragmentView {
@@ -115,6 +116,8 @@ class HomeFragment : Fragment(), HomeFragmentView {
 
         // 새로운 아티스트 뷰페이저 설정
         setNewArtistViewPager(response)
+
+
     }
 
     override fun onGetHomeFailure(message: String) {
@@ -296,7 +299,13 @@ class HomeFragment : Fragment(), HomeFragmentView {
         val bestArtistData: MutableList<BestArtist> = loadData(response)
         var bestArtistAdapter = BestArtistViewpagerAdapter()
         bestArtistAdapter.listData = bestArtistData
-        binding?.fragmentHomeNewArtistViewpager?.adapter = bestArtistAdapter
+        binding?.fragmentHomeBestArtistViewpager?.adapter = bestArtistAdapter
+
+        // 뷰페이저 인디케이터
+        val dotsIndicator = binding?.bestArtistDotsIndicator
+        val viewPager = binding?.fragmentHomeBestArtistViewpager
+        viewPager?.adapter = bestArtistAdapter
+        dotsIndicator?.setViewPager2(viewPager!!)
     }
 
     private fun setNewArtistViewPager(response: GetHomeResponse) {
@@ -305,6 +314,12 @@ class HomeFragment : Fragment(), HomeFragmentView {
         var newArtistAdapter = NewArtistViewpagerAdapter()
         newArtistAdapter.listData = newArtistData
         binding?.fragmentHomeNewArtistViewpager?.adapter = newArtistAdapter
+
+        // 뷰페이저 인디케이터
+        val dotsIndicator = binding?.newArtistDotsIndicator
+        val viewPager = binding?.fragmentHomeNewArtistViewpager
+        viewPager?.adapter = newArtistAdapter
+        dotsIndicator?.setViewPager2(viewPager!!)
     }
 
 

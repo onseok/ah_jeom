@@ -1,6 +1,7 @@
 package com.ssac.ah_jeom.src.main.home.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -14,6 +15,10 @@ class BestArtistViewpagerAdapter : RecyclerView.Adapter<BestArtistViewpagerAdapt
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PagerViewHolder {
         val binding = FragmentHomeBestArtistItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
+        binding.fragmentHomeBestArtistProfileButton.setOnClickListener {
+            binding.fragmentHomeBestArtistProfileText.visibility = View.VISIBLE
+        }
+
         return PagerViewHolder(binding)
     }
 
@@ -26,15 +31,16 @@ class BestArtistViewpagerAdapter : RecyclerView.Adapter<BestArtistViewpagerAdapt
         val bestArtistProfileImage = listData[position].profileImage
 
         with(holder) {
-//            setName(newArtistName)
+            setName(bestArtistName)
             setProfileImage(bestArtistProfileImage)
         }
     }
 
     inner class PagerViewHolder(val binding: FragmentHomeBestArtistItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        //        fun setName(newArtistName: String) {
-//            binding.fragmentHomeNewArtistProfileNameText.text = newArtistName
-//        }
+        fun setName(newArtistName: String) {
+            binding.fragmentHomeBestArtistProfileText.text = newArtistName
+        }
+
         fun setProfileImage(bestArtistProfileImage: String) {
             Glide.with(itemView).load(bestArtistProfileImage).into(binding.fragmentHomeBestArtistProfileImage)
         }

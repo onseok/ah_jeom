@@ -186,7 +186,6 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
            editor.putString("X-ACCESS-TOKEN", response.result.jwt)
            editor.putInt("userId", response.result.userId)
            editor.commit()
-           showCustomToast(response.result.jwt)
 
            val intent = Intent(this, InterestsActivity::class.java)
            intent.putExtra("kakaoAccessToken", kakaoAccessToken)

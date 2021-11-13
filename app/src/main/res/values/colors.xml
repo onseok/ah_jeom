@@ -11,6 +11,7 @@
     <color name="main_blue">#3F3FFF</color>
 
     <!-- Util Color -->
-    <color name="gray_transparent">#0E2354</color>
+    <color name="gray">#F3F3F3</color>
+
 
 </resources>
