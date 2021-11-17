@@ -1,51 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_marginTop="38dp"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/main_black">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fragment_home_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/main_black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/fragment_home_brand_logo"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:padding="16dp"
+            android:src="@drawable/ah_jeom_logo"
+            android:tint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/fragment_home_search_button"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginEnd="20dp"
+            android:background="@color/transparent"
+            android:src="@drawable/ic_search_outlined"
+            android:tint="@color/white"
+            app:layout_constraintBottom_toBottomOf="@id/fragment_home_profile_button"
+            app:layout_constraintEnd_toStartOf="@id/fragment_home_profile_button"
+            app:layout_constraintTop_toTopOf="@id/fragment_home_profile_button" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/fragment_home_profile_button"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="28dp"
+            android:background="@color/transparent"
+            android:src="@drawable/ic_profile_outlined"
+            android:tint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/fragment_home_top_bar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <LinearLayout
-                android:id="@+id/fragment_home_top_bar"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:background="@color/main_black"
-                android:gravity="end"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/fragment_home_search_button"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:background="@color/transparent"
-                    android:src="@drawable/ic_search_outlined"
-                    android:tint="@color/white" />
-
-                <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/fragment_home_profile_button"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="28dp"
-                    android:background="@color/transparent"
-                    android:src="@drawable/ic_profile_outlined"
-                    android:tint="@color/white" />
-
-
-            </LinearLayout>
 
             <!-- 광고배너 -->
 
@@ -53,73 +70,186 @@
                 android:id="@+id/fragment_home_banner_nested_scrollable_host"
                 android:layout_width="match_parent"
                 android:layout_height="456dp"
-                android:background="@drawable/black_border"
+                android:background="@drawable/image_bottom_round"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/fragment_home_top_bar">
+                app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/fragment_home_banner_viewpager"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/black_border" />
+                    android:background="@drawable/image_bottom_round" />
+
+                <LinearLayout
+                    android:id="@+id/seeAllLinearLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="35dp"
+                    android:background="@drawable/gray_background_round"
+                    android:elevation="2dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="4dp"
+                    android:paddingTop="6dp"
+                    android:paddingRight="4dp"
+                    android:paddingBottom="6dp">
+
+                    <TextView
+                        android:id="@+id/currentBannerTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:textColor="#FFFFFF"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="/"
+                        android:textColor="#C2C2C2"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/totalBannerTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="08"
+                        android:textColor="#C2C2C2"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" | "
+                        android:textColor="#C2C2C2"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="전체보기"
+                        android:textColor="#FFFFFF"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
 
             </com.ssac.ah_jeom.util.NestedScrollableHost>
 
             <!-- 관심 분야 -->
 
+            <View
+                android:id="@+id/fragment_home_top_radius_view"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/background_white_top_radius"
+                android:backgroundTint="@color/main_black"
+                android:translationY="-5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fragment_home_banner_nested_scrollable_host" />
+
             <TextView
                 android:id="@+id/fragment_home_interests_text"
                 android:layout_width="wrap_content"
                 android:layout_height="28dp"
-                android:layout_marginTop="80dp"
+                android:layout_marginTop="0dp"
                 android:fontFamily="@font/roboto_bold"
                 android:text="관심 분야"
-                android:textColor="@color/main_black"
+                android:textColor="@color/white"
                 android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="@id/fragment_home_interests_tab_layout"
-                app:layout_constraintTop_toBottomOf="@id/fragment_home_banner_nested_scrollable_host" />
+                app:layout_constraintStart_toStartOf="@id/fragment_home_interests_frame_layout"
+                app:layout_constraintTop_toBottomOf="@id/fragment_home_top_radius_view" />
 
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/fragment_home_interests_tab_layout"
+            <TextView
+                android:id="@+id/fragment_home_interests_current_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="그래픽"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@id/fragment_home_interests_text"
+                app:layout_constraintEnd_toStartOf="@id/fragment_home_interests_direction_button"
+                app:layout_constraintTop_toTopOf="@id/fragment_home_interests_text" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/fragment_home_interests_direction_button"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:backgroundTint="@color/transparent"
+                android:interpolator="@android:anim/linear_interpolator"
+                android:src="@drawable/ic_down"
+                android:tint="@color/white"
+                app:layout_constraintBottom_toBottomOf="@id/fragment_home_interests_current_text"
+                app:layout_constraintEnd_toEndOf="@id/fragment_home_interests_frame_layout"
+                app:layout_constraintTop_toTopOf="@id/fragment_home_interests_current_text" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/fragment_home_interests_update_layout"
                 android:layout_width="0dp"
-                android:layout_height="48dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/update_layout_background"
+                android:translationZ="100dp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@id/fragment_home_interests_frame_layout"
+                app:layout_constraintStart_toStartOf="@id/fragment_home_interests_frame_layout"
+                app:layout_constraintTop_toBottomOf="@id/fragment_home_interests_direction_button"
+                tools:visibility="visible">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/fragment_home_interests_update_add_recycler_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="30dp"
+                    app:layout_constraintBottom_toTopOf="@id/fragment_home_interests_update_layout_divider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:background="@color/white" />
+
+                <View
+                    android:id="@+id/fragment_home_interests_update_layout_divider"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="13dp"
+                    android:layout_marginEnd="13dp"
+                    android:background="@color/box_border"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/fragment_home_interests_update_delete_recycler_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="30dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_home_interests_update_layout_divider"
+                    tools:background="@color/white" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <FrameLayout
+                android:id="@+id/fragment_home_interests_frame_layout"
+                android:layout_width="0dp"
+                android:layout_height="270dp"
                 android:layout_marginStart="28dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="28dp"
-                android:background="@color/transparent"
+                android:background="@drawable/black_border"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/fragment_home_interests_text"
-                app:tabBackground="@drawable/tab_selector_inset"
-                app:tabGravity="fill"
-                app:tabIndicator="@color/transparent"
-                app:tabIndicatorColor="@color/transparent"
-                app:tabMinWidth="90dp"
-                app:tabMode="scrollable"
-                app:tabRippleColor="@android:color/transparent"
-                app:tabSelectedTextColor="@color/white"
-                app:tabTextAppearance="@style/fragmentHomeTabTextStyle"
-                app:tabTextColor="@color/main_black" />
-
-            <com.ssac.ah_jeom.util.NestedScrollableHost
-                android:id="@+id/fragment_home_interests_nested_scrollable_host"
-                android:layout_width="0dp"
-                android:layout_height="270dp"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/black_border"
-                app:layout_constraintEnd_toEndOf="@id/fragment_home_interests_tab_layout"
-                app:layout_constraintStart_toStartOf="@id/fragment_home_interests_tab_layout"
-                app:layout_constraintTop_toBottomOf="@id/fragment_home_interests_tab_layout">
-
-                <androidx.viewpager2.widget.ViewPager2
-                    android:id="@+id/fragment_home_interests_viewpager"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/black_border" />
-
-
-            </com.ssac.ah_jeom.util.NestedScrollableHost>
+                app:layout_constraintTop_toBottomOf="@id/fragment_home_interests_text" />
 
             <!-- 관심 키워드 -->
 
@@ -130,48 +260,96 @@
                 android:layout_marginTop="80dp"
                 android:fontFamily="@font/roboto_bold"
                 android:text="관심 키워드"
-                android:textColor="@color/main_black"
+                android:textColor="@color/white"
                 android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="@id/fragment_home_interests_nested_scrollable_host"
-                app:layout_constraintTop_toBottomOf="@id/fragment_home_interests_nested_scrollable_host" />
+                app:layout_constraintStart_toStartOf="@id/fragment_home_interests_frame_layout"
+                app:layout_constraintTop_toBottomOf="@id/fragment_home_interests_frame_layout" />
 
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/fragment_home_keyword_tab_layout"
+            <TextView
+                android:id="@+id/fragment_home_keyword_current_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="심플한"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@id/fragment_home_keyword_text"
+                app:layout_constraintEnd_toStartOf="@id/fragment_home_interests_direction_button"
+                app:layout_constraintTop_toTopOf="@id/fragment_home_keyword_text" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/fragment_home_keyword_direction_button"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:backgroundTint="@color/transparent"
+                android:interpolator="@android:anim/linear_interpolator"
+                android:src="@drawable/ic_down"
+                android:tint="@color/white"
+                app:layout_constraintBottom_toBottomOf="@id/fragment_home_keyword_current_text"
+                app:layout_constraintEnd_toEndOf="@id/fragment_home_interests_frame_layout"
+                app:layout_constraintTop_toTopOf="@id/fragment_home_keyword_current_text" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/fragment_home_keyword_update_layout"
                 android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="20dp"
-                android:background="@color/transparent"
-                app:layout_constraintEnd_toEndOf="@id/fragment_home_interests_nested_scrollable_host"
-                app:layout_constraintStart_toStartOf="@id/fragment_home_keyword_text"
-                app:layout_constraintTop_toBottomOf="@id/fragment_home_keyword_text"
-                app:tabBackground="@drawable/tab_selector_inset"
-                app:tabGravity="fill"
-                app:tabIndicator="@color/transparent"
-                app:tabIndicatorColor="@color/transparent"
-                app:tabMinWidth="90dp"
-                app:tabMode="scrollable"
-                app:tabRippleColor="@android:color/transparent"
-                app:tabSelectedTextColor="@color/white"
-                app:tabTextAppearance="@style/fragmentHomeTabTextStyle"
-                app:tabTextColor="@color/main_black" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/update_layout_background"
+                android:translationZ="100dp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@id/fragment_home_keyword_frame_layout"
+                app:layout_constraintStart_toStartOf="@id/fragment_home_keyword_frame_layout"
+                app:layout_constraintTop_toBottomOf="@id/fragment_home_keyword_direction_button"
+                tools:visibility="visible">
 
-            <com.ssac.ah_jeom.util.NestedScrollableHost
-                android:id="@+id/fragment_home_keyword_nested_scrollable_host"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/fragment_home_keyword_update_add_recycler_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="30dp"
+                    app:layout_constraintBottom_toTopOf="@id/fragment_home_keyword_update_layout_divider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:background="@color/white" />
+
+                <View
+                    android:id="@+id/fragment_home_keyword_update_layout_divider"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="13dp"
+                    android:layout_marginEnd="13dp"
+                    android:background="@color/box_border"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/fragment_home_keyword_update_delete_recycler_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="30dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_home_keyword_update_layout_divider"
+                    tools:background="@color/white" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <FrameLayout
+                android:id="@+id/fragment_home_keyword_frame_layout"
                 android:layout_width="0dp"
                 android:layout_height="270dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="28dp"
                 android:background="@drawable/black_border"
-                app:layout_constraintEnd_toEndOf="@id/fragment_home_keyword_tab_layout"
-                app:layout_constraintStart_toStartOf="@id/fragment_home_keyword_tab_layout"
-                app:layout_constraintTop_toBottomOf="@id/fragment_home_keyword_tab_layout">
-
-                <androidx.viewpager2.widget.ViewPager2
-                    android:id="@+id/fragment_home_keyword_viewpager"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-
-            </com.ssac.ah_jeom.util.NestedScrollableHost>
-
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fragment_home_keyword_text" />
 
             <!-- 최고의 아티스트 -->
 
@@ -183,10 +361,10 @@
                 android:layout_marginTop="80dp"
                 android:fontFamily="@font/roboto_bold"
                 android:text="최고의 아티스트"
-                android:textColor="@color/main_black"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/fragment_home_keyword_nested_scrollable_host" />
+                app:layout_constraintTop_toBottomOf="@id/fragment_home_keyword_frame_layout" />
 
             <com.ssac.ah_jeom.util.NestedScrollableHost
                 android:id="@+id/fragment_home_best_artist_nested_scrollable_host"
@@ -198,7 +376,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/fragment_home_best_artist_text"
                 app:layout_constraintTop_toBottomOf="@id/fragment_home_best_artist_text">
-
 
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/fragment_home_best_artist_viewpager"
@@ -219,7 +396,6 @@
                     app:dotsStrokeColor="@color/gray"
                     app:dotsStrokeWidth="4dp" />
 
-
             </com.ssac.ah_jeom.util.NestedScrollableHost>
 
             <!-- 새로운 아티스트 -->
@@ -231,7 +407,7 @@
                 android:layout_marginTop="80dp"
                 android:fontFamily="@font/roboto_bold"
                 android:text="새로운 아티스트"
-                android:textColor="@color/main_black"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="@id/fragment_home_new_artist_nested_scrollable_host"
                 app:layout_constraintTop_toBottomOf="@id/fragment_home_best_artist_nested_scrollable_host" />
@@ -247,7 +423,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/fragment_home_new_artist_text">
-
 
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/fragment_home_new_artist_viewpager"
@@ -268,21 +443,18 @@
                     app:dotsStrokeColor="@color/gray"
                     app:dotsStrokeWidth="4dp" />
 
-
             </com.ssac.ah_jeom.util.NestedScrollableHost>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:background="@color/white"
+                android:background="@color/main_black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/fragment_home_new_artist_nested_scrollable_host" />
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

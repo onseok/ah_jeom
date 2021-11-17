@@ -2,13 +2,11 @@ package com.ssac.ah_jeom.src.main.peek
 
 import android.app.ActivityOptions
 import android.content.Intent
-import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.os.Message
+import android.os.*
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,6 +17,7 @@ import com.ssac.ah_jeom.config.BaseFragment
 import com.ssac.ah_jeom.databinding.FragmentHomeBinding
 import com.ssac.ah_jeom.databinding.FragmentPeekBinding
 import com.ssac.ah_jeom.src.detail.PeekDetailActivity
+import com.ssac.ah_jeom.src.main.MainActivity
 import com.ssac.ah_jeom.src.main.home.adapter.*
 import com.ssac.ah_jeom.src.main.home.fragments.*
 import com.ssac.ah_jeom.src.main.home.models.BestArtist
@@ -48,27 +47,30 @@ class PeekFragment : Fragment() {
         )
         val adapter = OthersViewpagerAdapter(activity as FragmentActivity)
         adapter.fragmentList = fragmentList
-        binding?.fragmentPeekOthersViewpager?.adapter = adapter
+        binding?.fragmentPeekMainViewpager?.adapter = adapter
 
 
         // (최애 분야) 탭 레이아웃 연결
         val tabTitles =
             listOf("베스트", "최근", "급상승")
-        binding?.fragmentPeekHowAboutOthersTabLayout?.let {
-            binding?.fragmentPeekOthersViewpager?.let { it1 ->
+        binding?.fragmentPeekMainTabLayout?.let {
+            binding?.fragmentPeekMainViewpager?.let { it1 ->
                 TabLayoutMediator(it, it1) { tab, position ->
                     tab.text = tabTitles[position]
                 }.attach()
             }
         }
 
-//        val Pair1 = Pair<View,String>(
-//            binding!!.fragmentPeekMainImage, "peek_image")
-//
-//        val Pair2 = Pair<View,String>(
-//            binding!!.fragmentPeekMainImage, "peek_image")
 
-        binding!!.fragmentPeekMainImage.setOnClickListener {
+
+
+        val Pair1 = Pair<View,String>(
+            binding!!.fragmentPeekImageView, "peek_image")
+
+        val Pair2 = Pair<View,String>(
+            binding!!.fragmentPeekImageView, "peek_image")
+
+        binding!!.fragmentPeekImageView.setOnClickListener {
             val intent = Intent(requireActivity(), PeekDetailActivity::class.java)
             var options : ActivityOptions = ActivityOptions.makeSceneTransitionAnimation(requireActivity())
             startActivity(intent, options.toBundle())

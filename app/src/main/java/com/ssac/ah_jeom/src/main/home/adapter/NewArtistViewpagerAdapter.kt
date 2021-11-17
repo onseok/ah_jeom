@@ -69,7 +69,7 @@ class NewArtistViewpagerAdapter :
                 binding.fragmentHomeNewArtistProfileText.startAnimation(blackBackgroundClose)
                 binding.fragmentHomeNewArtistBlackBackground.startAnimation(blackBackgroundClose)
                 binding.fragmentHomeNewArtistProfileButton.startAnimation(profileButtonAppear)
-            }, 4000)
+            }, 3500)
 
         }
 

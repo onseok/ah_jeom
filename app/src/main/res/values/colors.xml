@@ -12,6 +12,9 @@
 
     <!-- Util Color -->
     <color name="gray">#F3F3F3</color>
-
+    <color name="util_blue">#3590D3</color>
+    <color name="util_gray">#B5B5B5</color>
+    <color name="box_background">#202020</color>
+    <color name="box_border">#838383</color>
 
 </resources>

@@ -1,209 +1,179 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/main_black"
+    android:fitsSystemWindows="true">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/fragment_peek_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/fragment_peek_collapsing_tool_bar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="365dp"
+            android:background="@android:color/transparent"
+            android:fitsSystemWindows="true"
+            app:collapsedTitleGravity="center"
+            app:collapsedTitleTextAppearance="@style/TabTextStyle"
+            app:contentScrim="@color/main_black"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|enterAlwaysCollapsed"
+            app:statusBarScrim="@color/main_black"
+            app:titleEnabled="false">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/fragment_peek_image_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fitsSystemWindows="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/fragment_peek_main_image_temp"
+                tools:visibility="gone" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/fragment_peek_tool_bar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_marginTop="30dp"
+                android:background="@android:color/transparent"
+                android:elevation="50dp"
+                android:fitsSystemWindows="true"
+                android:gravity="top"
+                android:paddingStart="10dp"
+                app:layout_collapseMode="pin" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:fitsSystemWindows="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_constraintTop_toBottomOf="@id/fragment_peek_app_bar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <LinearLayout
-                android:id="@+id/fragment_peek_top_bar"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:background="@color/main_black"
-                android:gravity="end"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/fragment_peek_search_button"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:background="@color/transparent"
-                    android:src="@drawable/ic_search_outlined"
-                    android:tint="@color/white" />
-
-                <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/fragment_peek_profile_button"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="28dp"
-                    android:background="@color/transparent"
-                    android:src="@drawable/ic_profile_outlined"
-                    android:tint="@color/white" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/fragment_peek_main_layout"
-                android:layout_width="match_parent"
-                android:layout_height="298dp"
-                android:background="@drawable/main_black_bottom_round"
-                android:gravity="center|top"
-                android:orientation="vertical"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/fragment_peek_top_bar">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/fragment_peek_main_image"
-                    android:layout_width="133dp"
-                    android:layout_height="133dp"
-                    android:layout_marginTop="30dp"
-                    android:transitionName="peek_image"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/peek_main_image_temp" />
-
-                <TextView
-                    android:layout_width="232dp"
-                    android:layout_height="24dp"
-                    android:layout_marginTop="34dp"
-                    android:fontFamily="@font/roboto_bold"
-                    android:gravity="center"
-                    android:text="&quot;매일 하루가 파티같아!&quot;"
-                    android:textColor="@color/white"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:layout_width="232dp"
-                    android:layout_height="20dp"
-                    android:layout_marginTop="6dp"
-                    android:fontFamily="@font/roboto_bold"
-                    android:gravity="center"
-                    android:text="Shin jiin"
-                    android:textColor="@color/white"
-                    android:textSize="14sp" />
-
-            </LinearLayout>
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true">
 
             <TextView
-                android:id="@+id/fragment_peek_how_about_others_text"
-                android:layout_width="148dp"
-                android:layout_height="24dp"
-                android:layout_marginTop="50dp"
-                android:fontFamily="@font/roboto_bold"
-                android:text="다른 사람은 어때?"
-                android:textColor="@color/main_black"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@id/fragment_peek_how_about_others_tab_layout"
-                app:layout_constraintTop_toBottomOf="@id/fragment_peek_main_layout" />
+                android:id="@+id/fragment_peek_main_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:fitsSystemWindows="true"
+                android:text="&quot;매일 하루가 파티같아!&quot;"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/fragment_peek_how_about_others_button"
-                android:layout_width="26dp"
-                android:layout_height="26dp"
-                android:backgroundTint="@color/transparent"
-                android:src="@drawable/ic_right"
-                android:tint="@color/main_black"
-                app:layout_constraintEnd_toEndOf="@id/fragment_peek_how_about_others_tab_layout"
-                app:layout_constraintTop_toTopOf="@id/fragment_peek_how_about_others_text" />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/fragment_peek_main_profile_image"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_marginTop="14dp"
+                android:fitsSystemWindows="true"
+                app:layout_constraintStart_toStartOf="@id/fragment_peek_main_title"
+                app:layout_constraintTop_toBottomOf="@id/fragment_peek_main_title" />
+
+            <TextView
+                android:id="@+id/fragment_peek_main_profile_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fitsSystemWindows="true"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Shin jiin"
+                android:textColor="@color/box_border"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/fragment_peek_main_profile_image"
+                app:layout_constraintStart_toEndOf="@id/fragment_peek_main_profile_image"
+                app:layout_constraintTop_toTopOf="@id/fragment_peek_main_profile_image" />
+
+            <TextView
+                android:id="@+id/fragment_peek_main_profile_download_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fitsSystemWindows="true"
+                android:fontFamily="@font/roboto_bold"
+                android:text="6.1K회 다운"
+                android:textColor="@color/box_border"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/fragment_peek_main_profile_name"
+                app:layout_constraintStart_toEndOf="@id/fragment_peek_main_profile_name"
+                app:layout_constraintTop_toTopOf="@id/fragment_peek_main_profile_name" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/fragment_peek_main_badge_image"
+                android:layout_width="34dp"
+                android:layout_height="62dp"
+                android:layout_marginEnd="18dp"
+                android:fitsSystemWindows="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/icon_badge"
+                app:layout_constraintBottom_toBottomOf="@id/fragment_peek_main_profile_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/fragment_peek_main_title" />
+
+            <!-- -->
 
             <com.google.android.material.tabs.TabLayout
-                android:id="@+id/fragment_peek_how_about_others_tab_layout"
+                android:id="@+id/fragment_peek_main_tab_layout"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="28dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="60dp"
                 android:layout_marginEnd="28dp"
                 android:background="@color/transparent"
+                android:fitsSystemWindows="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/fragment_peek_how_about_others_text"
-                app:tabBackground="@drawable/tab_selector_inset"
+                app:layout_constraintTop_toBottomOf="@id/fragment_peek_main_badge_image"
+                app:tabBackground="@color/transparent"
                 app:tabGravity="fill"
-                app:tabIndicator="@color/transparent"
-                app:tabIndicatorColor="@color/transparent"
+                app:tabIndicatorColor="@color/white"
+                app:tabIndicatorFullWidth="true"
                 app:tabMaxWidth="0dp"
                 app:tabMode="fixed"
                 app:tabRippleColor="@android:color/transparent"
                 app:tabSelectedTextColor="@color/white"
                 app:tabTextAppearance="@style/fragmentHomeTabTextStyle"
-                app:tabTextColor="@color/main_black" />
-
+                app:tabTextColor="@color/box_border" />
 
             <com.ssac.ah_jeom.util.NestedScrollableHost
-                android:id="@+id/fragment_peek_others_nested_scrollable_host"
+                android:id="@+id/fragment_peek_main_nested_scrollable_host"
                 android:layout_width="0dp"
-                android:layout_height="251dp"
-                android:padding="1dp"
+                android:layout_height="295dp"
                 android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toEndOf="@id/fragment_peek_how_about_others_tab_layout"
-                app:layout_constraintStart_toStartOf="@id/fragment_peek_how_about_others_tab_layout"
-                app:layout_constraintTop_toBottomOf="@id/fragment_peek_how_about_others_tab_layout">
+                android:fitsSystemWindows="true"
+                app:layout_constraintEnd_toEndOf="@id/fragment_peek_main_tab_layout"
+                app:layout_constraintStart_toStartOf="@id/fragment_peek_main_tab_layout"
+                app:layout_constraintTop_toBottomOf="@id/fragment_peek_main_tab_layout">
 
                 <androidx.viewpager2.widget.ViewPager2
-                    android:id="@+id/fragment_peek_others_viewpager"
+                    android:id="@+id/fragment_peek_main_viewpager"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:fitsSystemWindows="true" />
 
             </com.ssac.ah_jeom.util.NestedScrollableHost>
-
-            <!-- -->
-
-            <TextView
-                android:id="@+id/fragment_peek_specified_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="64dp"
-                android:fontFamily="@font/roboto_bold"
-                android:text="저장한 옅보기"
-                android:textColor="@color/main_black"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@id/fragment_peek_others_nested_scrollable_host"
-                app:layout_constraintTop_toBottomOf="@id/fragment_peek_others_nested_scrollable_host" />
-
-            <TextView
-                android:id="@+id/fragment_peek_specified_number_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:fontFamily="@font/roboto_bold"
-                android:text="48개"
-                android:textColor="@color/main_black"
-                android:textSize="14sp"
-                app:layout_constraintBaseline_toBaselineOf="@id/fragment_peek_specified_text"
-                app:layout_constraintStart_toEndOf="@id/fragment_peek_specified_text" />
-
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/fragment_peek_specified_button"
-                android:layout_width="26dp"
-                android:layout_height="26dp"
-                android:backgroundTint="@color/transparent"
-                android:src="@drawable/ic_right"
-                android:tint="@color/main_black"
-                app:layout_constraintEnd_toEndOf="@id/fragment_peek_others_nested_scrollable_host"
-                app:layout_constraintTop_toTopOf="@id/fragment_peek_specified_text" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_begin="20dp" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:background="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/fragment_peek_specified_text" />
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+

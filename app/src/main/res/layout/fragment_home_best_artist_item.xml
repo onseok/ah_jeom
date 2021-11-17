@@ -40,10 +40,18 @@
             android:layout_gravity="center"
             android:fontFamily="@font/roboto_bold"
             android:text="Levan Kenia"
+            android:translationZ="10dp"
             android:textColor="@color/white"
             android:textSize="30sp"
             android:visibility="invisible"
             tools:visibility="visible" />
+
+        <View
+            android:id="@+id/fragment_home_best_artist_black_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#951D1D1D"
+            android:visibility="invisible" />
 
     </androidx.cardview.widget.CardView>
 

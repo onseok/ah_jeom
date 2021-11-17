@@ -61,7 +61,6 @@ class InterestsRecyclerAdapter(private val context: Context) :
             }
         }
 
-
         fun setData(data: InterestsRecyclerData) {
 
             with(binding) {

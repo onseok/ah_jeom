@@ -26,6 +26,7 @@ class HomeFragmentViewpagerAdapter(bannerList: ArrayList<Int>) : RecyclerView.Ad
         LayoutInflater.from(parent.context).inflate(
             R.layout.fragment_home_banner_item, parent, false)) {
         val banner: ImageView = itemView.findViewById(R.id.fragment_home_banner_item_image)
+
     }
 
 
