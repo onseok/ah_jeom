@@ -12,6 +12,8 @@ import com.bumptech.glide.Glide
 import com.ssac.ah_jeom.R
 import com.ssac.ah_jeom.databinding.FragmentPeekBinding
 import com.ssac.ah_jeom.src.detail.PeekDetailActivity
+import com.ssac.ah_jeom.src.detail.PeekSavedActivity
+import com.ssac.ah_jeom.src.main.MainActivity
 import com.ssac.ah_jeom.src.main.peek.adapter.PeekMainViewpagerAdapter
 
 class PeekFragment : Fragment() {
@@ -28,6 +30,12 @@ class PeekFragment : Fragment() {
 
         binding!!.fragmentPeekMainViewPager.adapter = PeekMainViewpagerAdapter(getImageList()) // 어댑터 생성
         binding!!.fragmentPeekMainViewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL // 방향을 가로로
+
+        binding!!.fragmentPeekSavedStorageButton.setOnClickListener {
+            startActivity(Intent(requireActivity(), PeekSavedActivity::class.java))
+            (activity as MainActivity).overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
+        }
+
 
 
         val Pair1 = Pair<View,String>(

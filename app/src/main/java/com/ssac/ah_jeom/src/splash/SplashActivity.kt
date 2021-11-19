@@ -78,6 +78,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding
     }
 
     override fun onGetIsValidateFailure(message: String) {
+        showCustomToast(message)
         isValidate = false
     }
 }

@@ -57,4 +57,8 @@
         <item name="android:fontFamily">@font/roboto_bold</item>
     </style>
 
+    <style name="EditTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:textSelectHandle">@color/main_blue</item>
+    </style>
+
 </resources>

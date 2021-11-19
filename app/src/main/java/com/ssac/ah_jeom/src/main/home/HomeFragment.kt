@@ -1,6 +1,7 @@
 package com.ssac.ah_jeom.src.main.home
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.*
 import android.view.LayoutInflater
 import android.view.View
@@ -14,10 +15,13 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.ssac.ah_jeom.R
 import com.ssac.ah_jeom.databinding.FragmentHomeBinding
+import com.ssac.ah_jeom.src.detail.PeekSavedActivity
 import com.ssac.ah_jeom.src.main.MainActivity
 import com.ssac.ah_jeom.src.main.home.adapter.*
 import com.ssac.ah_jeom.src.main.home.fragments.*
 import com.ssac.ah_jeom.src.main.home.models.*
+import com.ssac.ah_jeom.src.profile.ProfileActivity
+import com.ssac.ah_jeom.src.search.SearchActivity
 import kotlin.collections.ArrayList
 
 class HomeFragment : Fragment(), HomeFragmentView {
@@ -112,6 +116,16 @@ class HomeFragment : Fragment(), HomeFragmentView {
                     isRotatedKeyword = false
                 }
             }
+        }
+
+        binding?.fragmentHomeSearchButton?.setOnClickListener {
+            startActivity(Intent(requireActivity(), SearchActivity::class.java))
+            (activity as MainActivity).overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
+        }
+
+        binding?.fragmentHomeProfileButton?.setOnClickListener {
+            startActivity(Intent(requireActivity(), ProfileActivity::class.java))
+            (activity as MainActivity).overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
         }
 
         // 상단 status bar만 투명하게!!

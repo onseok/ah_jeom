@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_black"
+    tools:context=".src.search.SearchActivity">
+
+    <EditText
+        android:id="@+id/activity_search_edit_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="18dp"
+        android:background="@drawable/white_button_background"
+        android:drawableEnd="@drawable/ic_search_outlined"
+        android:drawableTint="@color/box_border"
+        android:enabled="true"
+        android:focusable="true"
+        android:fontFamily="@font/roboto_bold"
+        android:hint="검색어를 입력하세요."
+        android:inputType="text"
+        android:padding="17dp"
+        android:textColor="@color/box_border"
+        android:textCursorDrawable="@drawable/color_cursor"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:theme="@style/EditTextStyle" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/activity_search_recommended_search_keyword_recycler_view"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="@id/activity_search_edit_text"
+        app:layout_constraintStart_toStartOf="@id/activity_search_edit_text"
+        app:layout_constraintTop_toBottomOf="@id/activity_search_edit_text" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/activity_search_edit_text"
+        app:layout_constraintStart_toStartOf="@id/activity_search_edit_text"
+        app:layout_constraintTop_toBottomOf="@id/activity_search_recommended_search_keyword_recycler_view">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/activity_search_related_image_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

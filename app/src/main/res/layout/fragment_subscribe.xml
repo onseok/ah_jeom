@@ -1,7 +1,220 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:background="@color/white"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_marginTop="38dp"
+    android:background="@color/main_black">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fragment_subscribe_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/main_black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/fragment_subscribe_brand_logo"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:padding="16dp"
+            android:src="@drawable/ah_jeom_logo"
+            android:tint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/fragment_subscribe_search_button"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginEnd="20dp"
+            android:background="@color/transparent"
+            android:src="@drawable/ic_search_outlined"
+            android:tint="@color/white"
+            app:layout_constraintBottom_toBottomOf="@id/fragment_subscribe_profile_button"
+            app:layout_constraintEnd_toStartOf="@id/fragment_subscribe_profile_button"
+            app:layout_constraintTop_toTopOf="@id/fragment_subscribe_profile_button" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/fragment_subscribe_profile_button"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="28dp"
+            android:background="@color/transparent"
+            android:src="@drawable/ic_profile_outlined"
+            android:tint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="55dp"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.ssac.ah_jeom.util.NestedScrollableHost
+                android:id="@+id/fragment_subscribe_illustration_nested_scrollable_host"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/fragment_subscribe_illustration_view_pager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </com.ssac.ah_jeom.util.NestedScrollableHost>
+
+            <TextView
+                android:id="@+id/fragment_subscribe_main_text_first"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="60dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="구독 = 구매"
+                android:textColor="@color/white"
+                android:textSize="32sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fragment_subscribe_illustration_nested_scrollable_host" />
+
+            <TextView
+                android:id="@+id/fragment_subscribe_main_text_second"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="구매 = 사랑"
+                android:textColor="@color/white"
+                android:textSize="32sp"
+                app:layout_constraintStart_toStartOf="@id/fragment_subscribe_main_text_first"
+                app:layout_constraintTop_toBottomOf="@id/fragment_subscribe_main_text_first" />
+
+            <TextView
+                android:id="@+id/fragment_subscribe_sub_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/roboto_medium"
+                android:lineSpacingExtra="10sp"
+                android:text="많은 구매 = 많은 작품!\n다양한이미지 다운이 가능합니다"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fragment_subscribe_main_text_second" />
+
+            <com.ssac.ah_jeom.util.NestedScrollableHost
+                android:id="@+id/fragment_subscribe_main_nested_scrollable_host"
+                android:layout_width="0dp"
+                android:layout_height="280dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="28dp"
+                android:background="@drawable/black_border"
+                android:backgroundTint="@color/transparent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/fragment_subscribe_sub_text"
+                app:layout_constraintTop_toBottomOf="@id/fragment_subscribe_sub_text">
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/fragment_subscribe_main_viewpager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/black_border"
+                    android:backgroundTint="@color/transparent" />
+
+                <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
+                    android:id="@+id/fragment_subscribe_main_indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|bottom"
+                    android:layout_marginBottom="16dp"
+                    app:dotsColor="@color/white"
+                    app:dotsCornerRadius="8dp"
+                    app:dotsSize="8dp"
+                    app:dotsSpacing="4dp"
+                    app:dotsStrokeColor="@color/gray"
+                    app:dotsStrokeWidth="4dp" />
+
+            </com.ssac.ah_jeom.util.NestedScrollableHost>
+
+            <TextView
+                android:id="@+id/fragment_subscribe_impression_artist_list_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="85dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="눈도장 찍은 작가"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fragment_subscribe_main_nested_scrollable_host" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/fragment_subscribe_impression_artist_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="28dp"
+                android:backgroundTint="@color/transparent"
+                android:src="@drawable/ic_right"
+                android:tint="@color/white"
+                android:translationZ="10dp"
+                app:layout_constraintBottom_toBottomOf="@id/fragment_subscribe_impression_artist_list_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/fragment_subscribe_impression_artist_list_text" />
+
+            <TextView
+                android:id="@+id/fragment_subscribe_subscribe_artist_list_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="85dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="구독 작가 리스트"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fragment_subscribe_impression_artist_list_text" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/fragment_subscribe_subscribe_artist_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="28dp"
+                android:backgroundTint="@color/transparent"
+                android:src="@drawable/ic_right"
+                android:tint="@color/white"
+                android:translationZ="10dp"
+                app:layout_constraintBottom_toBottomOf="@id/fragment_subscribe_subscribe_artist_list_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/fragment_subscribe_subscribe_artist_list_text" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:background="@color/main_black"
+                app:layout_constraintEnd_toEndOf="@id/fragment_subscribe_subscribe_artist_button"
+                app:layout_constraintStart_toStartOf="@id/fragment_subscribe_subscribe_artist_list_text"
+                app:layout_constraintTop_toBottomOf="@id/fragment_subscribe_subscribe_artist_list_text" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

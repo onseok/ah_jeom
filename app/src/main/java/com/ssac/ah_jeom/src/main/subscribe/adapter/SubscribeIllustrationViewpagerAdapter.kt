@@ -1,4 +1,4 @@
-package com.ssac.ah_jeom.src.main.peek.adapter
+package com.ssac.ah_jeom.src.main.subscribe.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.ssac.ah_jeom.R
 
-class PeekMainViewpagerAdapter(imageList: ArrayList<Int>) : RecyclerView.Adapter<PeekMainViewpagerAdapter.PagerViewHolder>() {
+class SubscribeIllustrationViewpagerAdapter(imageList: ArrayList<Int>) : RecyclerView.Adapter<SubscribeIllustrationViewpagerAdapter.PagerViewHolder>() {
 
     var item = imageList
 
@@ -19,8 +19,8 @@ class PeekMainViewpagerAdapter(imageList: ArrayList<Int>) : RecyclerView.Adapter
     }
 
     inner class PagerViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder
-        (LayoutInflater.from(parent.context).inflate(R.layout.peek_character_image_list_item, parent, false)){
+        (LayoutInflater.from(parent.context).inflate(R.layout.subscribe_character_image_list_item, parent, false)){
 
-        val image = itemView.findViewById<ImageView>(R.id.peek_character_image_view)!!
+        val image = itemView.findViewById<ImageView>(R.id.subscribe_character_image_view)!!
     }
 }

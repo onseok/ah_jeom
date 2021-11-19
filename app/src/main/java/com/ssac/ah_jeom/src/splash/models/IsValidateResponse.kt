@@ -7,3 +7,8 @@ data class IsValidateResponse(
     @SerializedName("code") val code: Int,
     @SerializedName("message") val message: String
 )
+
+
+
+
+

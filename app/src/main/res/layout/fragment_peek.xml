@@ -146,15 +146,16 @@
                 android:id="@+id/fragment_peek_how_about_others_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:tint="@color/white"
                 android:layout_marginEnd="18dp"
                 android:backgroundTint="@color/transparent"
                 android:src="@drawable/ic_right"
+                android:tint="@color/white"
                 app:layout_constraintBottom_toBottomOf="@id/fragment_peek_how_about_others_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/fragment_peek_how_about_others_text" />
 
             <com.ssac.ah_jeom.util.NestedScrollableHost
+                android:id="@+id/fragment_peek_main_nested_scrollable_host"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="39dp"
@@ -165,9 +166,35 @@
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/fragment_peek_main_view_pager"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
 
             </com.ssac.ah_jeom.util.NestedScrollableHost>
+
+            <!-- -->
+
+            <TextView
+                android:id="@+id/fragment_peek_saved_storage_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="82dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="내가 저장한 옅보기"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@id/fragment_peek_how_about_others_text"
+                app:layout_constraintTop_toBottomOf="@id/fragment_peek_main_nested_scrollable_host" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/fragment_peek_saved_storage_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="18dp"
+                android:backgroundTint="@color/transparent"
+                android:src="@drawable/ic_right"
+                android:tint="@color/white"
+                app:layout_constraintBottom_toBottomOf="@id/fragment_peek_saved_storage_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/fragment_peek_saved_storage_text" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

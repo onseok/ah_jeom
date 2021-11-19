@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_search_recommended_search_keyword_text"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="15dp"
+    android:fontFamily="@font/roboto_bold"
+    android:padding="5dp"
+    android:text="빈센트 반 고흐"
+    android:textColor="@color/box_border"
+    android:textSize="14sp" />

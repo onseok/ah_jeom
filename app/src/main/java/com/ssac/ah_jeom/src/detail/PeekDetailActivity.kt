@@ -49,4 +49,11 @@ class PeekDetailActivity : BaseActivity<ActivityPeekDetailBinding>(ActivityPeekD
         data.add(PeekDetailRecyclerData(R.drawable.peek_detail_image_7_temp))
         data.add(PeekDetailRecyclerData(R.drawable.peek_detail_image_8_temp))
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
+    }
+
+
 }
