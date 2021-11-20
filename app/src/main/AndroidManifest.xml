@@ -15,9 +15,13 @@
         android:theme="@style/Theme.Ah_jeom"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".src.main.subscribe.bestArtist.BestArtistActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".src.search.SearchActivity"
             android:exported="true"
-            android:theme="@style/AppTheme.NoActionBar"  />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".src.profile.settings.manual.ManualActivity"
             android:exported="true"
