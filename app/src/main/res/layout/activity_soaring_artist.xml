@@ -46,6 +46,7 @@
         app:layout_constraintTop_toBottomOf="@id/activity_soaring_title_first" />
 
     <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/activity_soaring_main_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="96dp"
@@ -54,5 +55,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/activity_soaring_small_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_medium"
+        android:text="업데이트 후에\n다시 만나요"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@id/activity_soaring_main_image"
+        app:layout_constraintTop_toTopOf="@id/activity_soaring_main_image" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

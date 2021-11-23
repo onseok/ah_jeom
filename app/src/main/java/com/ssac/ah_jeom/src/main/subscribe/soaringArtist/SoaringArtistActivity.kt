@@ -1,11 +1,15 @@
 package com.ssac.ah_jeom.src.main.subscribe.soaringArtist
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.ssac.ah_jeom.config.BaseActivity
+import com.ssac.ah_jeom.databinding.ActivitySoaringArtistBinding
 
-class SoaringArtistActivity : AppCompatActivity() {
+class SoaringArtistActivity : BaseActivity<ActivitySoaringArtistBinding>(
+    ActivitySoaringArtistBinding::inflate) {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_soaring_artist)
+
+
     }
 }
