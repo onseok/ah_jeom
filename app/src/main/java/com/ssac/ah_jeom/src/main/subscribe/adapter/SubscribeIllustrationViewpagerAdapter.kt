@@ -12,6 +12,8 @@ import com.ssac.ah_jeom.databinding.SubscribeCharacterImageListItemBinding
 import com.ssac.ah_jeom.src.main.MainActivity
 import com.ssac.ah_jeom.src.main.subscribe.bestArtist.BestArtistActivity
 import com.ssac.ah_jeom.src.main.subscribe.models.SubscribeIllustrationData
+import com.ssac.ah_jeom.src.main.subscribe.recentlyArtist.RecentlyArtistActivity
+import com.ssac.ah_jeom.src.main.subscribe.soaringArtist.SoaringArtistActivity
 
 class SubscribeIllustrationViewpagerAdapter(private val context: Context) :
     RecyclerView.Adapter<SubscribeIllustrationViewpagerAdapter.PagerViewHolder>() {
@@ -78,10 +80,20 @@ class SubscribeIllustrationViewpagerAdapter(private val context: Context) :
                             )
                         }
                         1 -> {
-
+                            val intent = Intent(itemView.context, RecentlyArtistActivity::class.java)
+                            itemView.context.startActivity(intent)
+                            (itemView.context as MainActivity).overridePendingTransition(
+                                R.anim.activity_fade_in,
+                                R.anim.activity_fade_out
+                            )
                         }
                         2 -> {
-
+                            val intent = Intent(itemView.context, SoaringArtistActivity::class.java)
+                            itemView.context.startActivity(intent)
+                            (itemView.context as MainActivity).overridePendingTransition(
+                                R.anim.activity_fade_in,
+                                R.anim.activity_fade_out
+                            )
                         }
                     }
 

@@ -34,10 +34,10 @@ class RecentlyArtistActivity : BaseActivity<ActivityRecentlyArtistBinding>(Activ
     // 추후 API 연동 예정
     private fun loadData(): MutableList<RecentlyArtistRecyclerData> {
 
-        data.add(RecentlyArtistRecyclerData(R.drawable.best_artist_recycler_image_1_temp, R.drawable.ic_platinum_icon, "Livia Kim", "208M명의 구독자", "백금아식"))
-        data.add(RecentlyArtistRecyclerData(R.drawable.best_artist_recycler_image_2_temp, R.drawable.ic_gold_icon, "PoNA668", "146M명의 구독자", "골드아식"))
-        data.add(RecentlyArtistRecyclerData(R.drawable.best_artist_recycler_image_3_temp, R.drawable.ic_silver_icon, "피시앤췹스", "798.6K명의 구독자", "실버아식"))
-        data.add(RecentlyArtistRecyclerData(R.drawable.best_artist_recycler_image_4_temp, R.drawable.ic_standard_icon , "Levan Kenia", "676.8K명의 구독자", "평타아식"))
+        data.add(RecentlyArtistRecyclerData(R.drawable.recently_artist_recycler_image_1_temp, R.drawable.ic_poo_icon, "김창완", "1명의 구독자", "응아아식"))
+        data.add(RecentlyArtistRecyclerData(R.drawable.recently_artist_recycler_image_2_temp, R.drawable.ic_copper_icon, "FOLRO", "4명의 구독자", "구리아식"))
+        data.add(RecentlyArtistRecyclerData(R.drawable.recently_artist_recycler_image_3_temp, R.drawable.ic_poo_icon, "루이지애나", "0명의 구독자", "응아아식"))
+        data.add(RecentlyArtistRecyclerData(R.drawable.recently_artist_recycler_image_4_temp, R.drawable.ic_copper_icon , "최지우", "9명의 구독자", "구리아식"))
 
         return data
     }

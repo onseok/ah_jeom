@@ -154,32 +154,6 @@
             </com.ssac.ah_jeom.util.NestedScrollableHost>
 
             <TextView
-                android:id="@+id/fragment_subscribe_impression_artist_list_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="85dp"
-                android:fontFamily="@font/roboto_bold"
-                android:text="눈도장 찍은 작가"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/fragment_subscribe_main_nested_scrollable_host" />
-
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/fragment_subscribe_impression_artist_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="28dp"
-                android:backgroundTint="@color/transparent"
-                android:src="@drawable/ic_right"
-                android:tint="@color/white"
-                android:translationZ="10dp"
-                app:layout_constraintBottom_toBottomOf="@id/fragment_subscribe_impression_artist_list_text"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/fragment_subscribe_impression_artist_list_text" />
-
-            <TextView
                 android:id="@+id/fragment_subscribe_subscribe_artist_list_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -190,7 +164,7 @@
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/fragment_subscribe_impression_artist_list_text" />
+                app:layout_constraintTop_toBottomOf="@id/fragment_subscribe_main_nested_scrollable_host" />
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/fragment_subscribe_subscribe_artist_button"

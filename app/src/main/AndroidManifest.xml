@@ -15,6 +15,21 @@
         android:theme="@style/Theme.Ah_jeom"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".src.detail.artDetail.ArtDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".src.detail.artistDetail.artistReview.ArtistReviewActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".src.detail.artistDetail.ArtistDetailActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".src.main.subscribe.subscribeArtist.SubscribeArtistActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".src.main.subscribe.soaringArtist.SoaringArtistActivity"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />

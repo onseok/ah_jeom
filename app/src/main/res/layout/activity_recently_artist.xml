@@ -18,7 +18,7 @@
                 android:id="@+id/activity_recently_artist_main_layout"
                 android:layout_width="match_parent"
                 android:layout_height="288dp"
-                android:background="@drawable/best_artist_layout_background"
+                android:background="@drawable/recently_artist_layout_background"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">

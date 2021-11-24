@@ -1,19 +1,17 @@
-package com.ssac.ah_jeom.src.main.subscribe.soaringArtist
+package com.ssac.ah_jeom.src.detail.artDetail
 
 import android.os.Bundle
 import com.ssac.ah_jeom.R
 import com.ssac.ah_jeom.config.BaseActivity
-import com.ssac.ah_jeom.databinding.ActivitySoaringArtistBinding
+import com.ssac.ah_jeom.databinding.ActivityArtDetailBinding
 
-class SoaringArtistActivity : BaseActivity<ActivitySoaringArtistBinding>(
-    ActivitySoaringArtistBinding::inflate) {
+class ArtDetailActivity : BaseActivity<ActivityArtDetailBinding>(ActivityArtDetailBinding::inflate) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding.activitySoaringBackButton.setOnClickListener {
-            onBackPressed()
-        }
+        
+
     }
 
     override fun onBackPressed() {

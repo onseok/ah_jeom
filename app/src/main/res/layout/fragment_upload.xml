@@ -6,40 +6,73 @@
     android:background="@color/main_black">
 
     <TextView
-        android:id="@+id/fragment_upload_title_text"
+        android:id="@+id/fragment_upload_title_text_first"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="94dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="90dp"
         android:fontFamily="@font/roboto_bold"
-        android:letterSpacing="0.02"
-        android:lineSpacingExtra="12sp"
-        android:text="어떤 방법으로\n등록하시겠습니까?"
+        android:text="작품을 올려"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="32sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/fragment_upload_title_text_second"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="게시하세요!"
+        android:textColor="@color/white"
+        android:textSize="32sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fragment_upload_title_text_first" />
+
+    <TextView
+        android:id="@+id/fragment_upload_sub_title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/roboto_regular"
+        android:text="사람들에게 나의 작품을\n홍보하고 판매하세요"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@id/fragment_upload_title_text_second"
+        app:layout_constraintTop_toBottomOf="@id/fragment_upload_title_text_second" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/fragment_upload_character_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/upload_character"
+        app:layout_constraintBottom_toBottomOf="@id/fragment_upload_art_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fragment_upload_sub_title_text" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/fragment_upload_only_image_layout"
+        android:id="@+id/fragment_upload_art_layout"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="28dp"
         android:layout_marginEnd="28dp"
-        android:background="@drawable/white_border_round"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/blue_fill_round"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.788">
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
-            android:id="@+id/fragment_upload_only_image_text"
+            android:id="@+id/fragment_upload_art_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:fontFamily="@font/roboto_bold"
-            android:text="이미지만 등록하기"
+            android:text="작품 게시하기"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -51,45 +84,9 @@
             android:layout_height="26dp"
             android:layout_marginEnd="20dp"
             android:src="@drawable/ic_right"
-            app:layout_constraintBottom_toBottomOf="@id/fragment_upload_only_image_text"
+            app:layout_constraintBottom_toBottomOf="@id/fragment_upload_art_text"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/fragment_upload_only_image_text" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/fragment_upload_art_and_image_layout"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="38dp"
-        android:layout_marginEnd="28dp"
-        android:background="@drawable/blue_fill_round"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fragment_upload_only_image_layout">
-
-        <TextView
-            android:id="@+id/fragment_upload_art_and_image_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:fontFamily="@font/roboto_bold"
-            android:text="작품 + 이미지 등록하기"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="26dp"
-            android:layout_height="26dp"
-            android:layout_marginEnd="20dp"
-            android:src="@drawable/ic_right"
-            app:layout_constraintBottom_toBottomOf="@id/fragment_upload_art_and_image_text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/fragment_upload_art_and_image_text" />
+            app:layout_constraintTop_toTopOf="@id/fragment_upload_art_text" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -69,17 +69,17 @@
 
     </LinearLayout>
 
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/activity_recently_artist_recycler_subscribe_button"
-        android:layout_width="26dp"
-        android:layout_height="26dp"
-        android:layout_marginStart="10dp"
-        android:backgroundTint="@color/transparent"
-        android:elevation="0dp"
-        android:src="@drawable/ic_subscribe_outlined"
-        android:tint="@color/white"
-        app:layout_constraintBottom_toBottomOf="@id/activity_recently_artist_recycler_rate_layout"
-        app:layout_constraintStart_toEndOf="@id/activity_recently_artist_recycler_rate_layout"
-        app:layout_constraintTop_toTopOf="@id/activity_recently_artist_recycler_rate_layout" />
+<!--    <androidx.appcompat.widget.AppCompatImageButton-->
+<!--        android:id="@+id/activity_recently_artist_recycler_subscribe_button"-->
+<!--        android:layout_width="26dp"-->
+<!--        android:layout_height="26dp"-->
+<!--        android:layout_marginStart="10dp"-->
+<!--        android:backgroundTint="@color/transparent"-->
+<!--        android:elevation="0dp"-->
+<!--        android:src="@drawable/ic_subscribe_outlined"-->
+<!--        android:tint="@color/white"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/activity_recently_artist_recycler_rate_layout"-->
+<!--        app:layout_constraintStart_toEndOf="@id/activity_recently_artist_recycler_rate_layout"-->
+<!--        app:layout_constraintTop_toTopOf="@id/activity_recently_artist_recycler_rate_layout" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

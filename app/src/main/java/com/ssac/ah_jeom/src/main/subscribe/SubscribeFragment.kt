@@ -1,5 +1,6 @@
 package com.ssac.ah_jeom.src.main.subscribe
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,10 +9,12 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.ssac.ah_jeom.R
 import com.ssac.ah_jeom.databinding.FragmentSubscribeBinding
+import com.ssac.ah_jeom.src.main.MainActivity
 import com.ssac.ah_jeom.src.main.subscribe.adapter.SubscribeIllustrationViewpagerAdapter
 import com.ssac.ah_jeom.src.main.subscribe.adapter.SubscribeMainViewpagerAdapter
 import com.ssac.ah_jeom.src.main.subscribe.models.SubscribeIllustrationData
 import com.ssac.ah_jeom.src.main.subscribe.models.SubscribeImageData
+import com.ssac.ah_jeom.src.main.subscribe.subscribeArtist.SubscribeArtistActivity
 
 class SubscribeFragment : Fragment() {
 
@@ -32,27 +35,14 @@ class SubscribeFragment : Fragment() {
 
         setSubscribeMainViewpager()
 
-//        SubscribeIllustrationViewpagerAdapter(requireActivity()).setOnItemClickListener(object :
-//            SubscribeIllustrationViewpagerAdapter.OnItemClickListener {
-//            override fun onItemClick(v: View, data: SubscribeIllustrationData, pos: Int) {
-//                Log.d("viewpager", pos.toString())
-//                when (pos) {
-//                    0 -> {
-//                        startActivity(Intent(requireActivity(), BestArtistActivity::class.java))
-//                        (activity as MainActivity).overridePendingTransition(
-//                            R.anim.activity_fade_in,
-//                            R.anim.activity_fade_out
-//                        )
-//                    }
-//                    1 -> {
-//
-//                    }
-//                    2 -> {
-//
-//                    }
-//                }
-//            }
-//        })
+        binding!!.fragmentSubscribeSubscribeArtistButton.setOnClickListener {
+            val intent = Intent(requireActivity(), SubscribeArtistActivity::class.java)
+            startActivity(intent)
+            (activity as MainActivity).overridePendingTransition(
+                R.anim.activity_fade_in,
+                R.anim.activity_fade_out
+            )
+        }
 
         return binding!!.root
     }
