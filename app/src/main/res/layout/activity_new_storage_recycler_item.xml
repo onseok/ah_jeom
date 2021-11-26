@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="80dp"
+    android:background="@color/main_black">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/activity_new_storage_profile_image"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:src="@drawable/best_storage_profile_image_temp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/activity_new_storage_profile_name_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="릴라안"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/activity_new_storage_profile_image"
+        app:layout_constraintTop_toTopOf="@id/activity_new_storage_profile_image" />
+
+    <TextView
+        android:id="@+id/activity_new_storage_download_number_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="308K회 다운"
+        android:textColor="@color/box_border"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/activity_new_storage_profile_image"
+        app:layout_constraintTop_toBottomOf="@id/activity_new_storage_profile_name_text" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/activity_new_storage_main_card_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/transparent"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="0dp"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintTop_toBottomOf="@id/activity_new_storage_profile_image">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/activity_new_storage_main_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/best_storage_main_image_temp" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/activity_new_storage_art_title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="얼음 스크류바 BOOM"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_new_storage_main_card_view" />
+
+    <TextView
+        android:id="@+id/activity_new_storage_liked_number_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="좋아요 86.6K개"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_new_storage_art_title_text" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/activity_new_storage_like_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/transparent"
+        android:src="@drawable/ic_like_outlined"
+        android:tint="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/activity_new_storage_liked_number_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/activity_new_storage_liked_number_text" />
+
+    <View
+        android:id="@+id/activity_new_storage_border"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/box_border"
+        app:layout_constraintTop_toBottomOf="@id/activity_new_storage_liked_number_text" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

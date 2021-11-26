@@ -176,7 +176,7 @@ class HomeFragment : Fragment(), HomeFragmentView {
 
     private fun loadData(response: GetHomeResponse): MutableList<BestArtist> {
 
-        response.best.forEach {
+        response.result.best.forEach {
             listData.add(BestArtist(it.nickname, it.profile))
         }
 
@@ -185,7 +185,7 @@ class HomeFragment : Fragment(), HomeFragmentView {
 
     private fun newArtistLoadData(response: GetHomeResponse): MutableList<NewArtist> {
 
-        response.new.forEach {
+        response.result.new.forEach {
             newArtistListData.add(NewArtist(it.nickname, it.profile))
         }
 
@@ -250,8 +250,8 @@ class HomeFragment : Fragment(), HomeFragmentView {
 
     private fun setInterests(response: GetHomeResponse) {
 
-        if (response.field._12 != null) {
-            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_interests_frame_layout, MoldingFragment(response.field._12[0].img))
+        if (response.result.field._12 != null) {
+            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_interests_frame_layout, MoldingFragment(response.result.field._12[0].img))
             transaction.addToBackStack(null)
             transaction.commit()
             binding?.fragmentHomeInterestsCurrentText?.text = "조형"
@@ -261,8 +261,8 @@ class HomeFragment : Fragment(), HomeFragmentView {
             deleteInterestsData.add(UpdateInterestsRecyclerData("조형"))
         }
 
-        if (response.field._11 != null) {
-            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_interests_frame_layout, ThreeDimensionsFragment(response.field._11[0].img))
+        if (response.result.field._11 != null) {
+            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_interests_frame_layout, ThreeDimensionsFragment(response.result.field._11[0].img))
             transaction.addToBackStack(null)
             transaction.commit()
             binding?.fragmentHomeInterestsCurrentText?.text = "3D"
@@ -272,8 +272,8 @@ class HomeFragment : Fragment(), HomeFragmentView {
             deleteInterestsData.add(UpdateInterestsRecyclerData("3D"))
         }
 
-        if (response.field._10 != null) {
-            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_interests_frame_layout, ArchitectureFragment(response.field._10[0].img))
+        if (response.result.field._10 != null) {
+            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_interests_frame_layout, ArchitectureFragment(response.result.field._10[0].img))
             transaction.addToBackStack(null)
             transaction.commit()
             binding?.fragmentHomeInterestsCurrentText?.text = "건축"
@@ -283,8 +283,8 @@ class HomeFragment : Fragment(), HomeFragmentView {
             deleteInterestsData.add(UpdateInterestsRecyclerData("건축"))
         }
 
-        if (response.field._9 != null) {
-            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_interests_frame_layout, PersonFragment(response.field._9[0].img))
+        if (response.result.field._9 != null) {
+            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_interests_frame_layout, PersonFragment(response.result.field._9[0].img))
             transaction.addToBackStack(null)
             transaction.commit()
             binding?.fragmentHomeInterestsCurrentText?.text = "인물"
@@ -294,8 +294,8 @@ class HomeFragment : Fragment(), HomeFragmentView {
             deleteInterestsData.add(UpdateInterestsRecyclerData("인물"))
         }
 
-        if (response.field._8 != null) {
-            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_interests_frame_layout, NaturalFragment(response.field._8[0].img))
+        if (response.result.field._8 != null) {
+            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_interests_frame_layout, NaturalFragment(response.result.field._8[0].img))
             transaction.addToBackStack(null)
             transaction.commit()
             binding?.fragmentHomeInterestsCurrentText?.text = "자연"
@@ -305,8 +305,8 @@ class HomeFragment : Fragment(), HomeFragmentView {
             deleteInterestsData.add(UpdateInterestsRecyclerData("자연"))
         }
 
-        if (response.field._7 != null) {
-            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_interests_frame_layout, PhotoFragment(response.field._7[0].img))
+        if (response.result.field._7 != null) {
+            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_interests_frame_layout, PhotoFragment(response.result.field._7[0].img))
             transaction.addToBackStack(null)
             transaction.commit()
             binding?.fragmentHomeInterestsCurrentText?.text = "사진"
@@ -316,8 +316,8 @@ class HomeFragment : Fragment(), HomeFragmentView {
             deleteInterestsData.add(UpdateInterestsRecyclerData("사진"))
         }
 
-        if (response.field._6 != null) {
-            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_interests_frame_layout, SculptureFragment(response.field._6[0].img))
+        if (response.result.field._6 != null) {
+            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_interests_frame_layout, SculptureFragment(response.result.field._6[0].img))
             transaction.addToBackStack(null)
             transaction.commit()
             binding?.fragmentHomeInterestsCurrentText?.text = "조각"
@@ -327,8 +327,8 @@ class HomeFragment : Fragment(), HomeFragmentView {
             deleteInterestsData.add(UpdateInterestsRecyclerData("조각"))
         }
 
-        if (response.field._5 != null) {
-            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_interests_frame_layout, CartoonFragment(response.field._5[0].img))
+        if (response.result.field._5 != null) {
+            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_interests_frame_layout, CartoonFragment(response.result.field._5[0].img))
             transaction.addToBackStack(null)
             transaction.commit()
             binding?.fragmentHomeInterestsCurrentText?.text = "만화"
@@ -338,8 +338,8 @@ class HomeFragment : Fragment(), HomeFragmentView {
             deleteInterestsData.add(UpdateInterestsRecyclerData("만화"))
         }
 
-        if (response.field._4 != null) {
-            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_interests_frame_layout, AbstractFragment(response.field._4[0].img))
+        if (response.result.field._4 != null) {
+            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_interests_frame_layout, AbstractFragment(response.result.field._4[0].img))
             transaction.addToBackStack(null)
             transaction.commit()
             binding?.fragmentHomeInterestsCurrentText?.text = "추상"
@@ -349,8 +349,8 @@ class HomeFragment : Fragment(), HomeFragmentView {
             deleteInterestsData.add(UpdateInterestsRecyclerData("추상"))
         }
 
-        if (response.field._3 != null) {
-            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_interests_frame_layout, ModernArtFragment(response.field._3[0].img))
+        if (response.result.field._3 != null) {
+            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_interests_frame_layout, ModernArtFragment(response.result.field._3[0].img))
             transaction.addToBackStack(null)
             transaction.commit()
             binding?.fragmentHomeInterestsCurrentText?.text = "현대미술"
@@ -360,8 +360,8 @@ class HomeFragment : Fragment(), HomeFragmentView {
             deleteInterestsData.add(UpdateInterestsRecyclerData("현대미술"))
         }
 
-        if (response.field._2 != null) {
-            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_interests_frame_layout, IllustrationFragment(response.field._2[0].img))
+        if (response.result.field._2 != null) {
+            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_interests_frame_layout, IllustrationFragment(response.result.field._2[0].img))
             transaction.addToBackStack(null)
             transaction.commit()
             binding?.fragmentHomeInterestsCurrentText?.text = "일러스트"
@@ -371,9 +371,9 @@ class HomeFragment : Fragment(), HomeFragmentView {
             deleteInterestsData.add(UpdateInterestsRecyclerData("일러스트"))
         }
 
-        if (response.field._1 != null) {
+        if (response.result.field._1 != null) {
             // 우선 첫번째 이미지만 서버에서 받아오자! (뷰페이저 구현은 나중에 생각)
-            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_interests_frame_layout, GraphicFragment(response.field._1[0].img))
+            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_interests_frame_layout, GraphicFragment(response.result.field._1[0].img))
             transaction.addToBackStack(null)
             transaction.commit()
             binding?.fragmentHomeInterestsCurrentText?.text = "그래픽"
@@ -393,8 +393,8 @@ class HomeFragment : Fragment(), HomeFragmentView {
 
     private fun setKeyword(response: GetHomeResponse) {
 
-        if (response.kw._27 != null) {
-            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_keyword_frame_layout, KeywordMysteriousFragment(response.kw._27[0].img))
+        if (response.result.kw._27 != null) {
+            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_keyword_frame_layout, KeywordMysteriousFragment(response.result.kw._27[0].img))
             transaction.addToBackStack(null)
             transaction.commit()
             binding?.fragmentHomeKeywordCurrentText?.text = "신비로운"
@@ -404,8 +404,8 @@ class HomeFragment : Fragment(), HomeFragmentView {
             deleteKeywordData.add(UpdateKeywordRecyclerData("신비로운"))
         }
 
-        if (response.kw._26 != null) {
-            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_keyword_frame_layout, KeywordBeastlyFragment(response.kw._26[0].img))
+        if (response.result.kw._26 != null) {
+            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_keyword_frame_layout, KeywordBeastlyFragment(response.result.kw._26[0].img))
             transaction.addToBackStack(null)
             transaction.commit()
             binding?.fragmentHomeKeywordCurrentText?.text = "짐승같은"
@@ -415,8 +415,8 @@ class HomeFragment : Fragment(), HomeFragmentView {
             deleteKeywordData.add(UpdateKeywordRecyclerData("짐승같은"))
         }
 
-        if (response.kw._25 != null) {
-            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_keyword_frame_layout, KeywordScaryFragment(response.kw._25[0].img))
+        if (response.result.kw._25 != null) {
+            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_keyword_frame_layout, KeywordScaryFragment(response.result.kw._25[0].img))
             transaction.addToBackStack(null)
             transaction.commit()
             binding?.fragmentHomeKeywordCurrentText?.text = "무서운"
@@ -426,8 +426,8 @@ class HomeFragment : Fragment(), HomeFragmentView {
             deleteKeywordData.add(UpdateKeywordRecyclerData("무서운"))
         }
 
-        if (response.kw._24 != null) {
-            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_keyword_frame_layout, KeywordFunFragment(response.kw._24[0].img))
+        if (response.result.kw._24 != null) {
+            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_keyword_frame_layout, KeywordFunFragment(response.result.kw._24[0].img))
             transaction.addToBackStack(null)
             transaction.commit()
             binding?.fragmentHomeKeywordCurrentText?.text = "재밌는"
@@ -437,8 +437,8 @@ class HomeFragment : Fragment(), HomeFragmentView {
             deleteKeywordData.add(UpdateKeywordRecyclerData("재밌는"))
         }
 
-        if (response.kw._23 != null) {
-            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_keyword_frame_layout, KeywordExaggeratedFragment(response.kw._23[0].img))
+        if (response.result.kw._23 != null) {
+            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_keyword_frame_layout, KeywordExaggeratedFragment(response.result.kw._23[0].img))
             transaction.addToBackStack(null)
             transaction.commit()
             binding?.fragmentHomeKeywordCurrentText?.text = "과장된"
@@ -449,8 +449,8 @@ class HomeFragment : Fragment(), HomeFragmentView {
         }
 
 
-        if (response.kw._22 != null) {
-            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_keyword_frame_layout, KeywordRealisticFragment(response.kw._22[0].img))
+        if (response.result.kw._22 != null) {
+            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_keyword_frame_layout, KeywordRealisticFragment(response.result.kw._22[0].img))
             transaction.addToBackStack(null)
             transaction.commit()
             binding?.fragmentHomeKeywordCurrentText?.text = "실제같은"
@@ -460,8 +460,8 @@ class HomeFragment : Fragment(), HomeFragmentView {
             deleteKeywordData.add(UpdateKeywordRecyclerData("실제같은"))
         }
 
-        if (response.kw._21 != null) {
-            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_keyword_frame_layout, KeywordAbstractFragment(response.kw._21[0].img))
+        if (response.result.kw._21 != null) {
+            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_keyword_frame_layout, KeywordAbstractFragment(response.result.kw._21[0].img))
             transaction.addToBackStack(null)
             transaction.commit()
             binding?.fragmentHomeKeywordCurrentText?.text = "추상적인"
@@ -471,8 +471,8 @@ class HomeFragment : Fragment(), HomeFragmentView {
             deleteKeywordData.add(UpdateKeywordRecyclerData("추상적인"))
         }
 
-        if (response.kw._20 != null) {
-            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_keyword_frame_layout, KeywordHolyFragment(response.kw._20[0].img))
+        if (response.result.kw._20 != null) {
+            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_keyword_frame_layout, KeywordHolyFragment(response.result.kw._20[0].img))
             transaction.addToBackStack(null)
             transaction.commit()
             binding?.fragmentHomeKeywordCurrentText?.text = "성스러운"
@@ -482,8 +482,8 @@ class HomeFragment : Fragment(), HomeFragmentView {
             deleteKeywordData.add(UpdateKeywordRecyclerData("성스러운"))
         }
 
-        if (response.kw._19 != null) {
-            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_keyword_frame_layout, KeywordBeautifulFragment(response.kw._19[0].img))
+        if (response.result.kw._19 != null) {
+            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_keyword_frame_layout, KeywordBeautifulFragment(response.result.kw._19[0].img))
             transaction.addToBackStack(null)
             transaction.commit()
             binding?.fragmentHomeKeywordCurrentText?.text = "아름다운"
@@ -493,8 +493,8 @@ class HomeFragment : Fragment(), HomeFragmentView {
             deleteKeywordData.add(UpdateKeywordRecyclerData("아름다운"))
         }
 
-        if (response.kw._18 != null) {
-            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_keyword_frame_layout, KeywordCuteFragment(response.kw._18[0].img))
+        if (response.result.kw._18 != null) {
+            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_keyword_frame_layout, KeywordCuteFragment(response.result.kw._18[0].img))
             transaction.addToBackStack(null)
             transaction.commit()
             binding?.fragmentHomeKeywordCurrentText?.text = "귀여운"
@@ -504,8 +504,8 @@ class HomeFragment : Fragment(), HomeFragmentView {
             deleteKeywordData.add(UpdateKeywordRecyclerData("귀여운"))
         }
 
-        if (response.kw._17 != null) {
-            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_keyword_frame_layout, KeywordVividFragment(response.kw._17[0].img))
+        if (response.result.kw._17 != null) {
+            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_keyword_frame_layout, KeywordVividFragment(response.result.kw._17[0].img))
             transaction.addToBackStack(null)
             transaction.commit()
             binding?.fragmentHomeKeywordCurrentText?.text = "원색적인"
@@ -515,8 +515,8 @@ class HomeFragment : Fragment(), HomeFragmentView {
             deleteKeywordData.add(UpdateKeywordRecyclerData("원색적인"))
         }
 
-        if (response.kw._16 != null) {
-            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_keyword_frame_layout, KeywordComfortableFragment(response.kw._16[0].img))
+        if (response.result.kw._16 != null) {
+            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_keyword_frame_layout, KeywordComfortableFragment(response.result.kw._16[0].img))
             transaction.addToBackStack(null)
             transaction.commit()
             binding?.fragmentHomeKeywordCurrentText?.text = "편안한"
@@ -526,8 +526,8 @@ class HomeFragment : Fragment(), HomeFragmentView {
             deleteKeywordData.add(UpdateKeywordRecyclerData("편안한"))
         }
 
-        if (response.kw._15 != null) {
-            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_keyword_frame_layout, KeywordStrongFragment(response.kw._15[0].img))
+        if (response.result.kw._15 != null) {
+            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_keyword_frame_layout, KeywordStrongFragment(response.result.kw._15[0].img))
             transaction.addToBackStack(null)
             transaction.commit()
             binding?.fragmentHomeKeywordCurrentText?.text = "강렬한"
@@ -537,8 +537,8 @@ class HomeFragment : Fragment(), HomeFragmentView {
             deleteKeywordData.add(UpdateKeywordRecyclerData("강렬한"))
         }
 
-        if (response.kw._14 != null) {
-            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_keyword_frame_layout, KeywordFancyFragment(response.kw._14[0].img))
+        if (response.result.kw._14 != null) {
+            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_keyword_frame_layout, KeywordFancyFragment(response.result.kw._14[0].img))
             transaction.addToBackStack(null)
             transaction.commit()
             binding?.fragmentHomeKeywordCurrentText?.text = "화려한"
@@ -548,8 +548,8 @@ class HomeFragment : Fragment(), HomeFragmentView {
             deleteKeywordData.add(UpdateKeywordRecyclerData("화려한"))
         }
 
-        if (response.kw._13 != null) {
-            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_keyword_frame_layout, KeywordSimpleFragment(response.kw._13[0].img))
+        if (response.result.kw._13 != null) {
+            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction().add(R.id.fragment_home_keyword_frame_layout, KeywordSimpleFragment(response.result.kw._13[0].img))
             transaction.addToBackStack(null)
             transaction.commit()
             binding?.fragmentHomeKeywordCurrentText?.text = "심플한"

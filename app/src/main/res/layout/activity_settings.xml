@@ -59,11 +59,22 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="@font/roboto_medium"
-            android:text="6단계"
-            android:textColor="@color/box_border"
+            android:text="골드아식"
+            android:textColor="@color/white"
             android:textSize="16sp" />
 
     </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/activity_settings_profile_stage_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_gold_icon"
+        app:layout_constraintBottom_toBottomOf="@id/activity_settings_stage_layout"
+        app:layout_constraintStart_toEndOf="@id/activity_settings_stage_layout"
+        app:layout_constraintTop_toTopOf="@id/activity_settings_stage_layout" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/activity_settings_profile_image_change_layout"
@@ -221,6 +232,5 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-    
-    
+
 </androidx.constraintlayout.widget.ConstraintLayout>

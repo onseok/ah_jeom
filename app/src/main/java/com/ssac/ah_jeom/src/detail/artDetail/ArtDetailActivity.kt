@@ -10,7 +10,6 @@ class ArtDetailActivity : BaseActivity<ActivityArtDetailBinding>(ActivityArtDeta
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        
 
     }
 

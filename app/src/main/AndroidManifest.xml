@@ -15,8 +15,29 @@
         android:theme="@style/Theme.Ah_jeom"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".src.main.peek.soaringStorage.SoaringStorageActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".src.main.peek.newStorage.NewStorageActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".src.main.peek.bestStorage.BestStorageActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".src.main.locker.myImage.MyImageActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".src.detail.artistDetail.artistArt.ArtistArtActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".src.detail.artDetail.ArtDetailActivity"
-            android:exported="false" />
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".src.detail.artistDetail.artistReview.ArtistReviewActivity"
             android:exported="true"

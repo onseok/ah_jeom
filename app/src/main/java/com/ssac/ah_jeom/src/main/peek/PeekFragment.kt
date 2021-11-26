@@ -15,10 +15,15 @@ import com.ssac.ah_jeom.src.detail.PeekDetailActivity
 import com.ssac.ah_jeom.src.detail.PeekSavedActivity
 import com.ssac.ah_jeom.src.main.MainActivity
 import com.ssac.ah_jeom.src.main.peek.adapter.PeekMainViewpagerAdapter
+import com.ssac.ah_jeom.src.main.peek.models.PeekMainViewpagerData
+import com.ssac.ah_jeom.src.main.subscribe.adapter.SubscribeIllustrationViewpagerAdapter
+import com.ssac.ah_jeom.src.main.subscribe.models.SubscribeIllustrationData
 
 class PeekFragment : Fragment() {
 
     private var binding: FragmentPeekBinding? = null
+
+    private val illustrationData: MutableList<PeekMainViewpagerData> = mutableListOf()
 
     // 뷰가 생성되었을 때 - 프레그먼트와 레이아웃을 연결시켜주는 부분
     override fun onCreateView(
@@ -28,7 +33,7 @@ class PeekFragment : Fragment() {
 
         binding = FragmentPeekBinding.inflate(inflater, container, false)
 
-        binding!!.fragmentPeekMainViewPager.adapter = PeekMainViewpagerAdapter(getImageList()) // 어댑터 생성
+        binding!!.fragmentPeekMainViewPager.adapter = PeekMainViewpagerAdapter(requireActivity()) // 어댑터 생성
         binding!!.fragmentPeekMainViewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL // 방향을 가로로
 
         binding!!.fragmentPeekSavedStorageButton.setOnClickListener {
@@ -36,7 +41,7 @@ class PeekFragment : Fragment() {
             (activity as MainActivity).overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
         }
 
-
+        setSubscribeIllustrationViewpager()
 
         val Pair1 = Pair<View,String>(
             binding!!.fragmentPeekImageView, "peek_image")
@@ -55,9 +60,27 @@ class PeekFragment : Fragment() {
         return binding!!.root
     }
 
-    // 뷰 페이저에 들어갈 아이템
-    private fun getImageList(): ArrayList<Int> {
-        return arrayListOf(R.drawable.fragment_peek_best_storage, R.drawable.fragment_peek_new_storage, R.drawable.fragment_peek_soaring_storage)
+//    // 뷰 페이저에 들어갈 아이템
+//    private fun getImageList(): ArrayList<Int> {
+//        return arrayListOf(R.drawable.fragment_peek_best_storage, R.drawable.fragment_peek_new_storage, R.drawable.fragment_peek_soaring_storage)
+//    }
+
+    private fun setSubscribeIllustrationViewpager() {
+        setIllustrationImageData()
+
+        val data: MutableList<PeekMainViewpagerData> = illustrationData
+        var adapter = PeekMainViewpagerAdapter(requireActivity())
+        adapter.item = data
+        binding!!.fragmentPeekMainViewPager.adapter = adapter
+        binding!!.fragmentPeekMainViewPager.orientation =
+            ViewPager2.ORIENTATION_HORIZONTAL // 방향을 가로로
+        adapter.notifyDataSetChanged()
+    }
+
+    private fun setIllustrationImageData() {
+        illustrationData.add(PeekMainViewpagerData(R.drawable.fragment_peek_best_storage))
+        illustrationData.add(PeekMainViewpagerData(R.drawable.fragment_peek_new_storage))
+        illustrationData.add(PeekMainViewpagerData(R.drawable.fragment_peek_soaring_storage))
     }
 
     override fun onDestroyView() {

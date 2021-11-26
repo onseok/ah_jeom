@@ -24,8 +24,7 @@ class SearchActivity : BaseActivity<ActivitySearchBinding>(ActivitySearchBinding
         
         // 관련 이미지 설정
         setRelatedImageView()
-
-
+        
     }
 
     override fun onBackPressed() {

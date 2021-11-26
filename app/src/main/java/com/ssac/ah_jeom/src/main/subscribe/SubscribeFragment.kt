@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.ssac.ah_jeom.R
@@ -12,11 +13,12 @@ import com.ssac.ah_jeom.databinding.FragmentSubscribeBinding
 import com.ssac.ah_jeom.src.main.MainActivity
 import com.ssac.ah_jeom.src.main.subscribe.adapter.SubscribeIllustrationViewpagerAdapter
 import com.ssac.ah_jeom.src.main.subscribe.adapter.SubscribeMainViewpagerAdapter
+import com.ssac.ah_jeom.src.main.subscribe.models.GetSubscribeResponse
 import com.ssac.ah_jeom.src.main.subscribe.models.SubscribeIllustrationData
 import com.ssac.ah_jeom.src.main.subscribe.models.SubscribeImageData
 import com.ssac.ah_jeom.src.main.subscribe.subscribeArtist.SubscribeArtistActivity
 
-class SubscribeFragment : Fragment() {
+class SubscribeFragment : Fragment(), SubscribeFragmentView {
 
     private var binding: FragmentSubscribeBinding? = null
 
@@ -33,7 +35,6 @@ class SubscribeFragment : Fragment() {
 
         setSubscribeIllustrationViewpager()
 
-        setSubscribeMainViewpager()
 
         binding!!.fragmentSubscribeSubscribeArtistButton.setOnClickListener {
             val intent = Intent(requireActivity(), SubscribeArtistActivity::class.java)
@@ -43,6 +44,8 @@ class SubscribeFragment : Fragment() {
                 R.anim.activity_fade_out
             )
         }
+
+        SubscribeService(this).tryGetSubscribe()
 
         return binding!!.root
     }
@@ -75,7 +78,7 @@ class SubscribeFragment : Fragment() {
 
     private fun setSubscribeMainViewpager() {
         // 구독 프래그먼트 메인 뷰페이저
-        val subscribeImageData: MutableList<SubscribeImageData> = loadData()
+        val subscribeImageData: MutableList<SubscribeImageData> = imageData
         var subscribeImageAdapter = SubscribeMainViewpagerAdapter()
         subscribeImageAdapter.listData = subscribeImageData
         binding?.fragmentSubscribeMainViewpager?.adapter = subscribeImageAdapter
@@ -87,22 +90,23 @@ class SubscribeFragment : Fragment() {
         dotsIndicator?.setViewPager2(viewPager!!)
     }
 
-    private fun loadData(): MutableList<SubscribeImageData> {
-
-        imageData.add(SubscribeImageData(R.drawable.subscribe_main_viewpager_image_temp))
-        imageData.add(SubscribeImageData(R.drawable.subscribe_main_viewpager_image_2_temp))
-        imageData.add(SubscribeImageData(R.drawable.subscribe_main_viewpager_image_3_temp))
-        imageData.add(SubscribeImageData(R.drawable.subscribe_main_viewpager_image_4_temp))
-        imageData.add(SubscribeImageData(R.drawable.subscribe_main_viewpager_image_5_temp))
-        imageData.add(SubscribeImageData(R.drawable.subscribe_main_viewpager_image_6_temp))
-
-        return imageData
-    }
-
     private fun setIllustrationImageData() {
         illustrationData.add(SubscribeIllustrationData(R.drawable.best_artist_illustration_image))
         illustrationData.add(SubscribeIllustrationData(R.drawable.recently_artist_illustration_image))
         illustrationData.add(SubscribeIllustrationData(R.drawable.soaring_artist_illustration_image))
+    }
+
+    override fun onGetSubscribeSuccess(response: GetSubscribeResponse) {
+        if (response.isSuccess) {
+            response.result.forEach {
+                imageData.add(SubscribeImageData(it.img))
+            }
+            setSubscribeMainViewpager()
+        }
+    }
+
+    override fun onGetSubscribeFailure(message: String) {
+        Toast.makeText(context, "오류 : $message", Toast.LENGTH_SHORT).show()
     }
 
 }

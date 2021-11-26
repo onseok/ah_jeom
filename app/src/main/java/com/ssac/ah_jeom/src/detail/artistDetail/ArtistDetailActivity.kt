@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.ssac.ah_jeom.R
 import com.ssac.ah_jeom.config.BaseActivity
 import com.ssac.ah_jeom.databinding.ActivityArtistDetailBinding
+import com.ssac.ah_jeom.src.detail.artistDetail.artistArt.ArtistArtActivity
 import com.ssac.ah_jeom.src.detail.artistDetail.artistReview.ArtistReviewActivity
 
 class ArtistDetailActivity : BaseActivity<ActivityArtistDetailBinding>(ActivityArtistDetailBinding::inflate) {
@@ -14,6 +15,11 @@ class ArtistDetailActivity : BaseActivity<ActivityArtistDetailBinding>(ActivityA
 
         binding.activityArtistDetailBackButton.setOnClickListener {
             onBackPressed()
+        }
+
+        binding.activityArtistDetailArtListButton.setOnClickListener {
+            startActivity(Intent(this, ArtistArtActivity::class.java))
+            overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
         }
 
         binding.activityArtistDetailReviewButton.setOnClickListener {

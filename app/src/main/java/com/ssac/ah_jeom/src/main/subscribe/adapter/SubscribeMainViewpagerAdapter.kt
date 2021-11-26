@@ -25,15 +25,13 @@ class SubscribeMainViewpagerAdapter : RecyclerView.Adapter<SubscribeMainViewpage
     override fun onBindViewHolder(holder: PagerViewHolder, position: Int) {
         val subscribeImage = listData[position].subscribeImage
 
-
         holder.setProfileImage(subscribeImage)
 
     }
 
     inner class PagerViewHolder(val binding: FragmentSubscribeMainViewpagerItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        // TODO 추후에 int가 아닌 string으로 변경해야함 (서버에서 받은 이미지 url)
-        fun setProfileImage(subscribeImage: Int) {
+        fun setProfileImage(subscribeImage: String) {
             Glide.with(itemView).load(subscribeImage).into(binding.fragmentSubscribeMainViewpagerImage)
         }
 

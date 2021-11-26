@@ -81,11 +81,22 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/roboto_medium"
-                    android:text="6단계"
-                    android:textColor="@color/box_border"
+                    android:text="골드아식"
+                    android:textColor="@color/white"
                     android:textSize="16sp" />
 
             </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/activity_profile_grade_image"
+                app:layout_constraintStart_toEndOf="@id/activity_profile_stage_layout"
+                app:layout_constraintTop_toTopOf="@id/activity_profile_stage_layout"
+                app:layout_constraintBottom_toBottomOf="@id/activity_profile_stage_layout"
+                android:layout_width="wrap_content"
+                android:layout_marginStart="15dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_gold_icon"
+                android:layout_height="wrap_content"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/activity_profile_storage_layout"
@@ -103,17 +114,17 @@
                     android:text="168"
                     android:textColor="@color/white"
                     android:textSize="20sp"
-                    app:layout_constraintBottom_toTopOf="@id/activity_profile_storage_text"
+                    app:layout_constraintBottom_toTopOf="@id/activity_profile_image_number_text"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/activity_profile_storage_text"
+                    android:id="@+id/activity_profile_image_number_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_regular"
-                    android:text="보관함"
+                    android:text="이미지"
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -219,13 +230,13 @@
                 app:layout_constraintTop_toBottomOf="@id/activity_profile_my_storage_layout">
 
                 <TextView
-                    android:id="@+id/activity_profile_my_subscribe_text"
+                    android:id="@+id/activity_profile_my_peek_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="28dp"
                     android:layout_marginBottom="28dp"
-                    android:text="내 구독 리스트"
+                    android:text="내 옅보기"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -233,16 +244,16 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/activity_profile_my_subscribe_button"
+                    android:id="@+id/activity_profile_my_peek_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
                     android:backgroundTint="@color/transparent"
                     android:src="@drawable/ic_right"
                     android:tint="@color/white"
-                    app:layout_constraintBottom_toBottomOf="@id/activity_profile_my_subscribe_text"
+                    app:layout_constraintBottom_toBottomOf="@id/activity_profile_my_peek_text"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/activity_profile_my_subscribe_text" />
+                    app:layout_constraintTop_toTopOf="@id/activity_profile_my_peek_text" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
