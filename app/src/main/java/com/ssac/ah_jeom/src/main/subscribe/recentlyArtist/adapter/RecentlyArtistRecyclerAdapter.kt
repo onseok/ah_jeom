@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.ssac.ah_jeom.databinding.ActivityRecentlyArtistRecyclerItemBinding
 import com.ssac.ah_jeom.src.main.subscribe.recentlyArtist.models.RecentlyArtistRecyclerData
 
@@ -55,8 +56,7 @@ class RecentlyArtistRecyclerAdapter(private val context: Context) :
         }
 
         fun setData(data: RecentlyArtistRecyclerData) {
-
-            binding.activityRecentlyArtistRecyclerProfileImage.setImageResource(data.image)
+            Glide.with(itemView.context).load(data.image).circleCrop().into(binding.activityRecentlyArtistRecyclerProfileImage)
             binding.activityRecentlyArtistRecyclerRateImage.setImageResource(data.rateImage)
             binding.activityRecentlyArtistRecyclerNameText.text = data.name
             binding.activityRecentlyArtistRecyclerSubscribeNumberText.text = data.subscribeNumber

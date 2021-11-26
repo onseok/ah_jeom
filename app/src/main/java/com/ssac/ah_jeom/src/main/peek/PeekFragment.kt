@@ -6,6 +6,7 @@ import android.os.*
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
@@ -15,11 +16,13 @@ import com.ssac.ah_jeom.src.detail.PeekDetailActivity
 import com.ssac.ah_jeom.src.detail.PeekSavedActivity
 import com.ssac.ah_jeom.src.main.MainActivity
 import com.ssac.ah_jeom.src.main.peek.adapter.PeekMainViewpagerAdapter
+import com.ssac.ah_jeom.src.main.peek.models.GetPeekResponse
 import com.ssac.ah_jeom.src.main.peek.models.PeekMainViewpagerData
+import com.ssac.ah_jeom.src.main.subscribe.SubscribeService
 import com.ssac.ah_jeom.src.main.subscribe.adapter.SubscribeIllustrationViewpagerAdapter
 import com.ssac.ah_jeom.src.main.subscribe.models.SubscribeIllustrationData
 
-class PeekFragment : Fragment() {
+class PeekFragment : Fragment(), PeekFragmentView {
 
     private var binding: FragmentPeekBinding? = null
 
@@ -57,13 +60,10 @@ class PeekFragment : Fragment() {
 
         Glide.with(this).load(R.drawable.fragment_peek_profile_image_temp).circleCrop().into(binding!!.fragmentPeekMainProfileImage)
 
+        PeekService(this).tryGetPeek()
+
         return binding!!.root
     }
-
-//    // 뷰 페이저에 들어갈 아이템
-//    private fun getImageList(): ArrayList<Int> {
-//        return arrayListOf(R.drawable.fragment_peek_best_storage, R.drawable.fragment_peek_new_storage, R.drawable.fragment_peek_soaring_storage)
-//    }
 
     private fun setSubscribeIllustrationViewpager() {
         setIllustrationImageData()
@@ -86,6 +86,20 @@ class PeekFragment : Fragment() {
     override fun onDestroyView() {
         binding = null
         super.onDestroyView()
+    }
+
+    override fun onGetPeekSuccess(response: GetPeekResponse) {
+        if (response.isSuccess) {
+            binding!!.fragmentPeekMainTitle.text = response.result.title // 보관함 제목
+            Glide.with(this).load(response.result.img).into(binding!!.fragmentPeekImageView) // 보관함 이미지
+            binding!!.fragmentPeekMainProfileName.text = response.result.nickname //유저 이름
+            Glide.with(this).load(response.result.profile).circleCrop().into(binding!!.fragmentPeekMainProfileImage) // 유저 프사
+            binding!!.fragmentPeekMainProfileDownloadNumber.text = "${response.result.save}회 다운" // 보관함 다운수(저장수)
+        }
+    }
+
+    override fun onGetPeekFailure(message: String) {
+        Toast.makeText(context, "오류 : $message", Toast.LENGTH_SHORT).show()
     }
 
 }

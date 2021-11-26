@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:fitsSystemWindows="true"
                 android:scaleType="centerCrop"
-                android:src="@drawable/fragment_peek_main_image_temp"
+                tools:src="@drawable/fragment_peek_main_image_temp"
                 tools:visibility="gone" />
 
             <androidx.appcompat.widget.Toolbar
@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="18dp"
                 android:fitsSystemWindows="true"
-                android:text="&quot;매일 하루가 파티같아!&quot;"
+                tools:text="&quot;매일 하루가 파티같아!&quot;"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -84,7 +84,6 @@
                 android:layout_width="38dp"
                 android:layout_height="38dp"
                 android:layout_marginTop="14dp"
-                android:fitsSystemWindows="true"
                 app:layout_constraintStart_toStartOf="@id/fragment_peek_main_title"
                 app:layout_constraintTop_toBottomOf="@id/fragment_peek_main_title" />
 
@@ -95,7 +94,7 @@
                 android:layout_marginStart="16dp"
                 android:fitsSystemWindows="true"
                 android:fontFamily="@font/roboto_bold"
-                android:text="Shin jiin"
+                tools:text="Shin jiin"
                 android:textColor="@color/box_border"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@id/fragment_peek_main_profile_image"
@@ -109,7 +108,7 @@
                 android:layout_marginStart="16dp"
                 android:fitsSystemWindows="true"
                 android:fontFamily="@font/roboto_bold"
-                android:text="6.1K회 다운"
+                tools:text="6.1K회 다운"
                 android:textColor="@color/box_border"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@id/fragment_peek_main_profile_name"

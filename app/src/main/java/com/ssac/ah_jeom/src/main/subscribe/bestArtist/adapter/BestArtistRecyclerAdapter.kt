@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.ssac.ah_jeom.databinding.ActivityBestArtistRecyclerItemBinding
+import com.ssac.ah_jeom.src.main.MainActivity
 import com.ssac.ah_jeom.src.main.subscribe.bestArtist.models.BestArtistRecyclerData
 
 class BestArtistRecyclerAdapter(private val context: Context) :
@@ -56,7 +58,7 @@ class BestArtistRecyclerAdapter(private val context: Context) :
 
         fun setData(data: BestArtistRecyclerData) {
 
-            binding.activityBestArtistRecyclerProfileImage.setImageResource(data.image)
+            Glide.with(itemView.context).load(data.image).circleCrop().into(binding.activityBestArtistRecyclerProfileImage)
             binding.activityBestArtistRecyclerRateImage.setImageResource(data.rateImage)
             binding.activityBestArtistRecyclerNameText.text = data.name
             binding.activityBestArtistRecyclerSubscribeNumberText.text = data.subscribeNumber
