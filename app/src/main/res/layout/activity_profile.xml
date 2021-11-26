@@ -16,7 +16,7 @@
         android:backgroundTint="@color/transparent"
         android:src="@drawable/ic_back"
         android:tint="@color/white"
-        android:translationZ="100dp"
+        android:translationZ="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
