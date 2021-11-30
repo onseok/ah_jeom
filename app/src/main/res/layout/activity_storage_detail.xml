@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_black">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/activity_storage_detail_back_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="17dp"
+                android:src="@drawable/ic_back"
+                android:tint="@color/white"
+                android:translationZ="1dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/activity_storage_detail_main_image"
+                android:layout_width="0dp"
+                android:layout_height="456dp"
+                android:backgroundTint="@color/transparent"
+                android:scaleType="centerCrop"
+                android:transitionName="peek_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/peek_detail_main_temp" />
+
+            <!-- -->
+
+
+            <TextView
+                android:id="@+id/activity_storage_detail_main_title_text"
+                android:layout_width="0dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="40dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="center"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_storage_detail_main_image"
+                tools:text="&quot;매일 하루가 파티같아!&quot;" />
+
+            <TextView
+                android:id="@+id/activity_storage_detail_download_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="308K회 다운"
+                android:textColor="#B5B5B5"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@id/activity_storage_detail_main_title_text"
+                app:layout_constraintTop_toBottomOf="@id/activity_storage_detail_main_title_text" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/activity_storage_detail_profile_image"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_marginTop="40dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/storage_detail_profile_image_temp"
+                app:layout_constraintStart_toStartOf="@id/activity_storage_detail_download_text"
+                app:layout_constraintTop_toBottomOf="@id/activity_storage_detail_download_text" />
+
+            <TextView
+                android:id="@+id/activity_storage_detail_profile_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@id/activity_storage_detail_profile_image"
+                app:layout_constraintTop_toTopOf="@id/activity_storage_detail_profile_image"
+                tools:text="릴라안" />
+
+            <TextView
+                android:id="@+id/activity_storage_detail_profile_like_number_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/activity_storage_detail_profile_image"
+                app:layout_constraintStart_toStartOf="@id/activity_storage_detail_profile_name"
+                tools:text="좋아요 86.6K개" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/activity_storage_detail_save_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="28dp"
+                android:backgroundTint="@color/transparent"
+                android:src="@drawable/ic_save_outlined"
+                android:tint="@color/white"
+                app:layout_constraintBottom_toBottomOf="@id/activity_storage_detail_profile_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/activity_storage_detail_profile_image" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/activity_storage_detail_like_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="28dp"
+                android:backgroundTint="@color/transparent"
+                android:src="@drawable/ic_favorite_border"
+                android:tint="@color/white"
+                app:layout_constraintBottom_toBottomOf="@id/activity_storage_detail_profile_image"
+                app:layout_constraintEnd_toStartOf="@id/activity_storage_detail_save_button"
+                app:layout_constraintTop_toTopOf="@id/activity_storage_detail_profile_image" />
+
+            <View
+                android:id="@+id/activity_storage_detail_border"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="15dp"
+                android:background="#707070"
+                app:layout_constraintEnd_toEndOf="@id/activity_storage_detail_save_button"
+                app:layout_constraintStart_toStartOf="@id/activity_storage_detail_profile_image"
+                app:layout_constraintTop_toBottomOf="@id/activity_storage_detail_profile_image" />
+
+            <TextView
+                android:id="@+id/activity_storage_detail_caption_title_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="보관함 설명"
+                android:textColor="#b5b5b5"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@id/activity_storage_detail_border"
+                app:layout_constraintTop_toBottomOf="@id/activity_storage_detail_border" />
+
+            <TextView
+                android:id="@+id/activity_storage_detail_caption_explanation_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="#b5b5b5"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@id/activity_storage_detail_border"
+                app:layout_constraintStart_toStartOf="@id/activity_storage_detail_caption_title_text"
+                app:layout_constraintTop_toBottomOf="@id/activity_storage_detail_caption_title_text"
+                tools:text="색이 쨍한 것들을 보면 사람들은 눈이 아프다고 하지만 하늘이나 자연의 요소가 섞여 있으면 어느샌가 익숙해지고 보기 편해지는 명랑한 색이예요! 난 이 익숙해지는 순간이 좋습니다." />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/activity_storage_detail_grid_recycler_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                app:layout_constraintEnd_toEndOf="@id/activity_storage_detail_caption_explanation_text"
+                app:layout_constraintStart_toStartOf="@id/activity_storage_detail_caption_explanation_text"
+                app:layout_constraintTop_toBottomOf="@id/activity_storage_detail_caption_explanation_text" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

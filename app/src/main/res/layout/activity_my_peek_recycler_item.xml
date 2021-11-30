@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:background="@drawable/gray_border_box_background_round">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/activity_my_peek_recycler_image"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:padding="1dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/peek_saved_recycler_image_temp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/activity_my_peek_recycler_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="해뜨는 날 뭐하지"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@id/activity_my_peek_recycler_name"
+        app:layout_constraintStart_toEndOf="@id/activity_my_peek_recycler_image"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/activity_my_peek_recycler_name"
+        android:layout_width="56dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:fontFamily="@font/roboto_bold"
+        android:maxLines="1"
+        android:text="최하나"
+        android:textColor="@color/box_border"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/activity_my_peek_recycler_title"
+        app:layout_constraintTop_toBottomOf="@id/activity_my_peek_recycler_title" />
+
+    <TextView
+        android:id="@+id/activity_my_peek_recycler_download"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="107회 다운"
+        android:textColor="@color/box_border"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/activity_my_peek_recycler_name"
+        app:layout_constraintStart_toEndOf="@id/activity_my_peek_recycler_name"
+        app:layout_constraintTop_toTopOf="@id/activity_my_peek_recycler_name" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/activity_my_peek_recycler_save_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="@color/transparent"
+        android:src="@drawable/ic_save_filled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
