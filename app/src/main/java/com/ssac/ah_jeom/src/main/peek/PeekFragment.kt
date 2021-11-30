@@ -86,11 +86,11 @@ class PeekFragment : Fragment(), PeekFragmentView {
 
     override fun onGetPeekSuccess(response: GetPeekResponse) {
         if (response.isSuccess) {
-            binding!!.fragmentPeekMainTitle.text = response.result.title // 보관함 제목
-            Glide.with(this).load(response.result.img).into(binding!!.fragmentPeekImageView) // 보관함 이미지
-            binding!!.fragmentPeekMainProfileName.text = response.result.nickname //유저 이름
-            Glide.with(this).load(response.result.profile).circleCrop().into(binding!!.fragmentPeekMainProfileImage) // 유저 프사
-            binding!!.fragmentPeekMainProfileDownloadNumber.text = "${response.result.save}회 다운" // 보관함 다운수(저장수)
+            binding!!.fragmentPeekMainTitle.text = response.result?.title // 보관함 제목
+            Glide.with(this).load(response.result?.img).into(binding!!.fragmentPeekImageView) // 보관함 이미지
+            binding!!.fragmentPeekMainProfileName.text = response.result?.nickname //유저 이름
+            Glide.with(this).load(response.result?.profile).circleCrop().into(binding!!.fragmentPeekMainProfileImage) // 유저 프사
+            binding!!.fragmentPeekMainProfileDownloadNumber.text = "${response.result?.save}회 다운" // 보관함 다운수(저장수)
         }
     }
 

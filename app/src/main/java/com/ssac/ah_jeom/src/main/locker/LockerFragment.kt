@@ -71,7 +71,7 @@ class LockerFragment : Fragment(), LockerFragmentView {
 
     override fun onGetLockerSuccess(response: GetLockerResponse) {
         if(response.isSuccess) {
-            when(response.result.storage.size) {
+            when(response.result.storage?.size) {
                 0 -> {
                     binding!!.fragmentLockerStorageTextFirst.visibility = View.VISIBLE
                     binding!!.fragmentLockerStorageTextSecond.visibility = View.VISIBLE
@@ -135,8 +135,8 @@ class LockerFragment : Fragment(), LockerFragmentView {
                     binding!!.fragmentLockerStorageTextFifth.visibility = View.INVISIBLE
                 }
             }
-            Glide.with(requireActivity()).load(response.result.myimg[0].img).into(binding!!.fragmentLockerMyImageImage)
-            binding!!.fragmentLockerMyImageNumberText.text = response.result.myimg[0].icount.toString()
+            Glide.with(requireActivity()).load(response.result.myimg?.get(0)?.img).into(binding!!.fragmentLockerMyImageImage)
+            binding!!.fragmentLockerMyImageNumberText.text = response.result.myimg?.get(0)?.icount.toString()
         }
     }
 

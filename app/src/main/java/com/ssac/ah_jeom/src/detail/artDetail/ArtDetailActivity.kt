@@ -13,9 +13,12 @@ import com.ssac.ah_jeom.config.BaseActivity
 import com.ssac.ah_jeom.databinding.ActivityArtDetailBinding
 import com.ssac.ah_jeom.src.detail.artDetail.adapter.ArtDetailReviewAdapter
 import com.ssac.ah_jeom.src.detail.artDetail.models.ArtDetailReview
+import com.ssac.ah_jeom.src.detail.artDetail.models.DownloadImageRequest
 import com.ssac.ah_jeom.src.detail.artDetail.models.GetArtDetailResponse
+import com.ssac.ah_jeom.src.detail.artDetail.models.PostDownloadImageResponse
 import com.ssac.ah_jeom.src.detail.artistDetail.adapter.ArtistDetailReviewAdapter
 import com.ssac.ah_jeom.src.detail.artistDetail.models.ArtistDetailReview
+import com.ssac.ah_jeom.src.detail.artistDetail.models.SubscribeRequest
 import java.text.DecimalFormat
 
 class ArtDetailActivity : BaseActivity<ActivityArtDetailBinding>(ActivityArtDetailBinding::inflate), ArtDetailActivityView {
@@ -29,11 +32,16 @@ class ArtDetailActivity : BaseActivity<ActivityArtDetailBinding>(ActivityArtDeta
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val artId = intent.getIntExtra("artId", 0)
+
         binding.activityArtDetailBackButton.setOnClickListener {
             onBackPressed()
         }
 
-        val artId = intent.getIntExtra("artId", 0)
+        binding.activityArtDetailDownloadButton.setOnClickListener {
+            val downloadImageRequest = DownloadImageRequest(artId = artId)
+            ArtDetailService(this).tryPostDownloadImage(downloadImageRequest)
+        }
 
         ArtDetailService(this).tryGetArtDetail(artId)
 
@@ -119,6 +127,19 @@ class ArtDetailActivity : BaseActivity<ActivityArtDetailBinding>(ActivityArtDeta
     }
 
     override fun onGetArtDetailFailure(message: String) {
+        showCustomToast("오류 : $message")
+    }
+
+    override fun onPostDownloadImageSuccess(response: PostDownloadImageResponse) {
+        if (response.code == 3013) {
+            showCustomToast("이미지함에 존재하는 작품입니다.")
+        }
+        else if (response.isSuccess) {
+            showCustomToast("다운로드가 완료되었습니다.")
+        }
+    }
+
+    override fun onPostDownloadImageFailure(message: String) {
         showCustomToast("오류 : $message")
     }
 

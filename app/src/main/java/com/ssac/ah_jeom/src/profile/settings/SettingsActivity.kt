@@ -14,6 +14,7 @@ import com.ssac.ah_jeom.config.BaseActivity
 import com.ssac.ah_jeom.databinding.ActivitySettingsBinding
 import com.ssac.ah_jeom.src.profile.models.GetProfileResponse
 import com.ssac.ah_jeom.src.profile.settings.changeImage.ChangeImageActivity
+import com.ssac.ah_jeom.src.profile.settings.changeIntroduce.ChangeIntroduceActivity
 import com.ssac.ah_jeom.src.profile.settings.changeName.ChangeNameActivity
 import com.ssac.ah_jeom.src.profile.settings.manual.ManualActivity
 import com.ssac.ah_jeom.src.splash.SplashActivity
@@ -34,6 +35,11 @@ class SettingsActivity : BaseActivity<ActivitySettingsBinding>(ActivitySettingsB
 
         binding.activitySettingsProfileNameChangeLayout.setOnClickListener {
             startActivity(Intent(this, ChangeNameActivity::class.java))
+            overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
+        }
+
+        binding.activitySettingsProfileIntroduceChangeLayout.setOnClickListener {
+            startActivity(Intent(this, ChangeIntroduceActivity::class.java))
             overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
         }
 

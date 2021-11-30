@@ -6,5 +6,5 @@ data class GetPeekResponse(
     @SerializedName("isSuccess") val isSuccess: Boolean,
     @SerializedName("code") val code: Int,
     @SerializedName("message") val message: String,
-    @SerializedName("result") val result: ResultGetPeek
+    @SerializedName("result") val result: ResultGetPeek?
 )

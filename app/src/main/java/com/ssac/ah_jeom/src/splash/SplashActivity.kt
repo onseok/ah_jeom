@@ -50,6 +50,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding
     
     private fun initObserver() {
         val jwt = ApplicationClass.sSharedPreferences.getString("X-ACCESS-TOKEN", null)
+        Log.d("X-ACCESS-TOKEN", jwt.toString())
 
         // (1) 케이스
         if (jwt != null && isValidate) {

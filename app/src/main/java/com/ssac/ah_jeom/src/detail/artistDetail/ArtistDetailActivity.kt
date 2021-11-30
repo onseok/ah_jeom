@@ -5,8 +5,9 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.os.Message
-import android.util.Log
 import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
@@ -17,13 +18,24 @@ import com.ssac.ah_jeom.src.detail.artistDetail.adapter.ArtistDetailArtRecyclerA
 import com.ssac.ah_jeom.src.detail.artistDetail.adapter.ArtistDetailReviewAdapter
 import com.ssac.ah_jeom.src.detail.artistDetail.artistArt.ArtistArtActivity
 import com.ssac.ah_jeom.src.detail.artistDetail.artistReview.ArtistReviewActivity
-import com.ssac.ah_jeom.src.detail.artistDetail.models.ArtistDetailArtData
-import com.ssac.ah_jeom.src.detail.artistDetail.models.ArtistDetailReview
-import com.ssac.ah_jeom.src.detail.artistDetail.models.GetArtistDetailResponse
+import com.ssac.ah_jeom.src.detail.artistDetail.models.*
 
 class ArtistDetailActivity : BaseActivity<ActivityArtistDetailBinding>(ActivityArtistDetailBinding::inflate), ArtistDetailActivityView {
 
     val data: MutableList<ArtistDetailArtData> = mutableListOf()
+
+    private val snackBarOpen: Animation by lazy {
+        AnimationUtils.loadAnimation(
+            this,
+            R.anim.snack_bar_open
+        )
+    }
+    private val snackBarClose: Animation by lazy {
+        AnimationUtils.loadAnimation(
+            this,
+            R.anim.snack_bar_close
+        )
+    }
 
     private var currentPosition = 1
     private var myHandler = MyHandler()
@@ -65,17 +77,15 @@ class ArtistDetailActivity : BaseActivity<ActivityArtistDetailBinding>(ActivityA
 
         binding.activityArtistDetailSubscribeButton.setOnClickListener {
             if (!isSubscribed) {
-                binding.activityArtistDetailSubscribeButton.visibility = View.GONE
-                binding.activityArtistDetailSubscribeButtonTrue.visibility = View.VISIBLE
-                isSubscribed = true
+                val subscribeRequest = SubscribeRequest(artistId = artistId)
+                ArtistDetailService(this).tryPostSubscribe(subscribeRequest)
             }
         }
 
         binding.activityArtistDetailSubscribeButtonTrue.setOnClickListener {
             if (isSubscribed) {
-                binding.activityArtistDetailSubscribeButton.visibility = View.VISIBLE
-                binding.activityArtistDetailSubscribeButtonTrue.visibility = View.GONE
-                isSubscribed = false
+                val subscribeRequest = SubscribeRequest(artistId = artistId)
+                ArtistDetailService(this).tryPatchSubscribe(subscribeRequest)
             }
         }
 
@@ -107,6 +117,34 @@ class ArtistDetailActivity : BaseActivity<ActivityArtistDetailBinding>(ActivityA
                 autoScrollStart(intervalTime) // 스크롤을 계속 이어서 한다.
             }
         }
+    }
+
+    private fun showSnackBar() {
+        binding.activityArtistDetailSubscribeButton.visibility = View.GONE
+        binding.activityArtistDetailSubscribeButtonTrue.visibility = View.VISIBLE
+        binding.activityArtistDetailSubscribeSnackBar.visibility = View.VISIBLE
+        // snack bar open -> close
+        binding.activityArtistDetailSubscribeSnackBar.startAnimation(snackBarOpen)
+        Handler(Looper.getMainLooper()).postDelayed({
+            binding.activityArtistDetailSubscribeSnackBar.visibility = View.GONE
+            binding.activityArtistDetailSubscribeSnackBar.startAnimation(snackBarClose)
+        }, 3500)
+
+        isSubscribed = true
+    }
+
+    private fun showSnackBarDelete() {
+        binding.activityArtistDetailSubscribeButton.visibility = View.VISIBLE
+        binding.activityArtistDetailSubscribeButtonTrue.visibility = View.GONE
+        binding.activityArtistDetailSubscribeSnackBarCancel.visibility = View.VISIBLE
+        // snack bar open -> close
+        binding.activityArtistDetailSubscribeSnackBarCancel.startAnimation(snackBarOpen)
+        Handler(Looper.getMainLooper()).postDelayed({
+            binding.activityArtistDetailSubscribeSnackBarCancel.visibility = View.GONE
+            binding.activityArtistDetailSubscribeSnackBarCancel.startAnimation(snackBarClose)
+        }, 3500)
+
+        isSubscribed = false
     }
 
     private fun setReviewViewPager(reviewData: MutableList<ArtistDetailReview>) {
@@ -142,6 +180,17 @@ class ArtistDetailActivity : BaseActivity<ActivityArtistDetailBinding>(ActivityA
             Glide.with(this).load(response.result.top[0].profile).circleCrop().into(binding.activityArtistDetailProfileImage)
             binding.activityArtistDetailProfileSloganText.text = response.result.top[0].summary
             binding.activityArtistDetailRateImage.setImageResource(detectIcon(response.result.top[0].grade))
+            if(response.result.top[0].sub == 1) {
+                binding.activityArtistDetailSubscribeButton.visibility = View.GONE
+                binding.activityArtistDetailSubscribeButtonTrue.visibility = View.VISIBLE
+                isSubscribed = true
+            }
+            else if (response.result.top[0].sub == 0) {
+                binding.activityArtistDetailSubscribeButton.visibility = View.VISIBLE
+                binding.activityArtistDetailSubscribeButtonTrue.visibility = View.GONE
+                isSubscribed = false
+            }
+
 
             //mid
             response.result.mid.forEach {
@@ -209,6 +258,55 @@ class ArtistDetailActivity : BaseActivity<ActivityArtistDetailBinding>(ActivityA
     }
 
     override fun onGetArtistDetailFailure(message: String) {
+        showCustomToast("오류 : $message")
+    }
+
+    override fun onPostSubscribeSuccess(response: PostSubscribeResponse) {
+        if(response.isSuccess || response.code == 1000) {
+            showSnackBar()
+        }
+        else {
+            when (response.code) {
+                3009 -> {
+                    showCustomToast(response.message)
+                }
+                2025 -> {
+                    showCustomToast(response.message)
+                }
+                3010 -> {
+                    showCustomToast(response.message)
+                }
+            }
+        }
+    }
+
+    override fun onPostSubscribeFailure(message: String) {
+        showCustomToast("오류 : $message")
+    }
+
+    override fun onPatchSubscribeSuccess(response: PatchSubscribeResponse) {
+        if(response.isSuccess || response.code == 1000) {
+            showSnackBarDelete()
+        }
+        else {
+            when (response.code) {
+                2029 -> {
+                    showCustomToast(response.message)
+                }
+                2025 -> {
+                    showCustomToast(response.message)
+                }
+                3010 -> {
+                    showCustomToast(response.message)
+                }
+                3011 -> {
+                    showCustomToast(response.message)
+                }
+            }
+        }
+    }
+
+    override fun onPatchSubscribeFailure(message: String) {
         showCustomToast("오류 : $message")
     }
 

@@ -15,9 +15,13 @@
         android:theme="@style/Theme.Ah_jeom"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".src.profile.settings.changeIntroduce.ChangeIntroduceActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".src.profile.myArt.MyArtActivity"
             android:exported="true"
-            android:theme="@style/AppTheme.NoActionBar"  />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".src.profile.myPeek.MyPeekActivity"
             android:exported="true"

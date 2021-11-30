@@ -1,6 +1,7 @@
 package com.ssac.ah_jeom.src.main.subscribe.subscribeArtist
 
 import android.os.Bundle
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ssac.ah_jeom.R
 import com.ssac.ah_jeom.config.BaseActivity
@@ -43,12 +44,19 @@ class SubscribeArtistActivity : BaseActivity<ActivitySubscribeArtistBinding>(
     }
 
     override fun onGetSubscribeArtistSuccess(response: GetSubscribeArtistResponse) {
-        if (response.isSuccess) {
-            response.result.sub.forEach {
+        data.clear()
+        if (response.code == 3012) {
+            binding.activitySubscribeArtistNoItemText.visibility = View.VISIBLE
+            binding.activitySubscribeRecyclerView.visibility = View.GONE
+        }
+        else if (response.isSuccess) {
+            binding.activitySubscribeRecyclerView.visibility = View.VISIBLE
+            binding.activitySubscribeArtistNoItemText.visibility = View.GONE
+            response.result?.sub?.forEach {
                 data.add(SubscribeArtistRecyclerData(it.profile, detectIcon(it.gName) , it.nickname, "${it.subCount}명의 구독자", it.gName))
             }
+            setSubscribeArtistRecyclerView(response)
         }
-        setSubscribeArtistRecyclerView(response)
     }
 
     override fun onGetSubscribeArtistFailure(message: String) {
@@ -84,6 +92,11 @@ class SubscribeArtistActivity : BaseActivity<ActivitySubscribeArtistBinding>(
         }
 
         return imageId
+    }
+
+    override fun onResume() {
+        super.onResume()
+        SubscribeArtistService(this).tryGetSubscribeArtist(cursor)
     }
 
 }

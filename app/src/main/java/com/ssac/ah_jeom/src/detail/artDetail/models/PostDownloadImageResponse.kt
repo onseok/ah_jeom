@@ -1,11 +1,10 @@
-package com.ssac.ah_jeom.src.main.subscribe.subscribeArtist.models
+package com.ssac.ah_jeom.src.detail.artDetail.models
 
 import com.google.gson.annotations.SerializedName
 
-
-data class GetSubscribeArtistResponse(
+data class PostDownloadImageResponse(
     @SerializedName("isSuccess") val isSuccess: Boolean,
     @SerializedName("code") val code: Int,
     @SerializedName("message") val message: String,
-    @SerializedName("result") val result: ResultGetSubscribeArtist?
+    @SerializedName("result") val result: ResultPostDownloadImage
 )

@@ -140,4 +140,9 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding>(ActivityProfileBind
         showCustomToast("오류 : $message")
     }
 
+    override fun onResume() {
+        super.onResume()
+        ProfileService(this).tryGetProfile()
+    }
+
 }

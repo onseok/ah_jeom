@@ -78,7 +78,7 @@ class SubscribeArtistRecyclerAdapter(private val context: Context, response: Get
                 itemView.setOnClickListener {
                     listener?.onItemClick(itemView, data, pos)
 
-                    for (i in 0 until response.result.sub.size) {
+                    for (i in 0 until response.result?.sub!!.size) {
                         if (pos == i) {
                             val intent = Intent(itemView.context, ArtistDetailActivity::class.java)
                             intent.putExtra("artistId", response.result.sub[pos].artistId)

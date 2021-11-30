@@ -1,6 +1,7 @@
 package com.ssac.ah_jeom.src.detail.storageDetail
 
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import com.ssac.ah_jeom.R
@@ -22,6 +23,8 @@ class StorageDetailActivity : BaseActivity<ActivityStorageDetailBinding>(Activit
         }
 
         val storageId = intent.getIntExtra("storageId", 0)
+
+        Log.d("storageId", storageId.toString())
 
         StorageDetailService(this).tryGetStorageDetail(storageId)
     }

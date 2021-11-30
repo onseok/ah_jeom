@@ -7,5 +7,6 @@ data class ArtistDetailTop(
     @SerializedName("nickname") val nickname: String,
     @SerializedName("profile") val profile: String,
     @SerializedName("summary") val summary: String,
-    @SerializedName("grade") val grade: Int
+    @SerializedName("grade") val grade: Int,
+    @SerializedName("sub") val sub: Int   // 구독했으면 1, 구독안했으면 0
 )
