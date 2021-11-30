@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.ssac.ah_jeom.databinding.ActivityMyImageRecyclerItemBinding
 import com.ssac.ah_jeom.src.main.locker.myImage.models.MyImageRecyclerData
 
@@ -53,7 +54,7 @@ class MyImageRecyclerAdapter(private val context: Context) :
         }
 
         fun setData(data: MyImageRecyclerData) {
-            binding.activityMyImageRecyclerImage.setImageResource(data.myImage)
+            Glide.with(itemView.context).load(data.myImage).into(binding.activityMyImageRecyclerImage)
         }
 
     }

@@ -14,7 +14,9 @@ import com.ssac.ah_jeom.src.main.MainActivity
 import com.ssac.ah_jeom.src.main.locker.models.GetLockerResponse
 import com.ssac.ah_jeom.src.main.locker.myImage.MyImageActivity
 import com.ssac.ah_jeom.src.main.subscribe.SubscribeService
+import com.ssac.ah_jeom.src.profile.ProfileActivity
 import com.ssac.ah_jeom.src.profile.myStorage.MyStorageActivity
+import com.ssac.ah_jeom.src.search.SearchActivity
 
 class LockerFragment : Fragment(), LockerFragmentView {
 
@@ -36,6 +38,24 @@ class LockerFragment : Fragment(), LockerFragmentView {
         binding!!.fragmentLockerMyStorageButton.setOnClickListener {
             startActivity(Intent(requireActivity(), MyStorageActivity::class.java))
             (activity as MainActivity).overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
+        }
+
+        binding!!.fragmentLockerSearchButton.setOnClickListener {
+            val intent = Intent(requireActivity(), SearchActivity::class.java)
+            startActivity(intent)
+            (activity as MainActivity).overridePendingTransition(
+                R.anim.activity_fade_in,
+                R.anim.activity_fade_out
+            )
+        }
+
+        binding!!.fragmentLockerProfileButton.setOnClickListener {
+            val intent = Intent(requireActivity(), ProfileActivity::class.java)
+            startActivity(intent)
+            (activity as MainActivity).overridePendingTransition(
+                R.anim.activity_fade_in,
+                R.anim.activity_fade_out
+            )
         }
 
         LockerService(this).tryGetLocker()

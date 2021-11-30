@@ -6,6 +6,7 @@ import com.bumptech.glide.Glide
 import com.ssac.ah_jeom.R
 import com.ssac.ah_jeom.config.BaseActivity
 import com.ssac.ah_jeom.databinding.ActivityProfileBinding
+import com.ssac.ah_jeom.src.main.locker.myImage.MyImageActivity
 import com.ssac.ah_jeom.src.main.subscribe.subscribeArtist.SubscribeArtistActivity
 import com.ssac.ah_jeom.src.profile.models.GetProfileResponse
 import com.ssac.ah_jeom.src.profile.myArt.MyArtActivity
@@ -65,7 +66,12 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding>(ActivityProfileBind
             startActivity(Intent(this, SubscribeArtistActivity::class.java))
             overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
         }
-
+        
+        // 이미지
+        binding.activityProfileStorageLayout.setOnClickListener {
+            startActivity(Intent(this, MyImageActivity::class.java))
+            overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
+        }
 
 
         // 프로필 화면 API 연동

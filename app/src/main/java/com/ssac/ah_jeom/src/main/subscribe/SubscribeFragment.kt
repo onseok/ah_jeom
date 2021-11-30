@@ -17,6 +17,8 @@ import com.ssac.ah_jeom.src.main.subscribe.models.GetSubscribeResponse
 import com.ssac.ah_jeom.src.main.subscribe.models.SubscribeIllustrationData
 import com.ssac.ah_jeom.src.main.subscribe.models.SubscribeImageData
 import com.ssac.ah_jeom.src.main.subscribe.subscribeArtist.SubscribeArtistActivity
+import com.ssac.ah_jeom.src.profile.ProfileActivity
+import com.ssac.ah_jeom.src.search.SearchActivity
 
 class SubscribeFragment : Fragment(), SubscribeFragmentView {
 
@@ -38,6 +40,24 @@ class SubscribeFragment : Fragment(), SubscribeFragmentView {
 
         binding!!.fragmentSubscribeSubscribeArtistButton.setOnClickListener {
             val intent = Intent(requireActivity(), SubscribeArtistActivity::class.java)
+            startActivity(intent)
+            (activity as MainActivity).overridePendingTransition(
+                R.anim.activity_fade_in,
+                R.anim.activity_fade_out
+            )
+        }
+
+        binding!!.fragmentSubscribeSearchButton.setOnClickListener {
+            val intent = Intent(requireActivity(), SearchActivity::class.java)
+            startActivity(intent)
+            (activity as MainActivity).overridePendingTransition(
+                R.anim.activity_fade_in,
+                R.anim.activity_fade_out
+            )
+        }
+
+        binding!!.fragmentSubscribeProfileButton.setOnClickListener {
+            val intent = Intent(requireActivity(), ProfileActivity::class.java)
             startActivity(intent)
             (activity as MainActivity).overridePendingTransition(
                 R.anim.activity_fade_in,

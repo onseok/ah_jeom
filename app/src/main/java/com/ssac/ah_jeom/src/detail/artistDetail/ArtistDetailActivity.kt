@@ -31,6 +31,8 @@ class ArtistDetailActivity : BaseActivity<ActivityArtistDetailBinding>(ActivityA
 
     private var hasReview = false
 
+    private var isSubscribed = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -58,6 +60,22 @@ class ArtistDetailActivity : BaseActivity<ActivityArtistDetailBinding>(ActivityA
             else {
                 showCustomToast("리뷰가 없습니다.")
                 return@setOnClickListener
+            }
+        }
+
+        binding.activityArtistDetailSubscribeButton.setOnClickListener {
+            if (!isSubscribed) {
+                binding.activityArtistDetailSubscribeButton.visibility = View.GONE
+                binding.activityArtistDetailSubscribeButtonTrue.visibility = View.VISIBLE
+                isSubscribed = true
+            }
+        }
+
+        binding.activityArtistDetailSubscribeButtonTrue.setOnClickListener {
+            if (isSubscribed) {
+                binding.activityArtistDetailSubscribeButton.visibility = View.VISIBLE
+                binding.activityArtistDetailSubscribeButtonTrue.visibility = View.GONE
+                isSubscribed = false
             }
         }
 

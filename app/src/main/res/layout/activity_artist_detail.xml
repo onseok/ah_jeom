@@ -33,10 +33,10 @@
                 android:layout_height="160dp"
                 android:layout_marginTop="80dp"
                 android:scaleType="centerCrop"
-                tools:src="@drawable/subscribe_artist_recycler_image_1_temp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/subscribe_artist_recycler_image_1_temp" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/activity_artist_detail_rate_image"
@@ -52,12 +52,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:fontFamily="@font/roboto_bold"
-                tools:text="잭슨 위너비"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="@id/activity_artist_detail_profile_image"
                 app:layout_constraintStart_toStartOf="@id/activity_artist_detail_profile_image"
-                app:layout_constraintTop_toBottomOf="@id/activity_artist_detail_profile_image" />
+                app:layout_constraintTop_toBottomOf="@id/activity_artist_detail_profile_image"
+                tools:text="잭슨 위너비" />
 
             <TextView
                 android:id="@+id/activity_artist_detail_profile_slogan_text"
@@ -67,20 +67,33 @@
                 android:ellipsize="end"
                 android:fontFamily="@font/roboto_bold"
                 android:maxLines="1"
-                tools:text="나는 꿈을 꾸는 작가입니다."
                 android:textColor="@color/white"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="@id/activity_artist_detail_profile_name"
                 app:layout_constraintStart_toStartOf="@id/activity_artist_detail_profile_name"
-                app:layout_constraintTop_toBottomOf="@id/activity_artist_detail_profile_name" />
+                app:layout_constraintTop_toBottomOf="@id/activity_artist_detail_profile_name"
+                tools:text="나는 꿈을 꾸는 작가입니다." />
 
             <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/activity_artist_detail_subscribe_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="28dp"
                 android:backgroundTint="@color/transparent"
                 android:src="@drawable/ic_subscribe_outlined"
                 android:tint="@color/white"
+                app:layout_constraintBottom_toBottomOf="@id/activity_artist_detail_profile_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/activity_artist_detail_profile_name" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/activity_artist_detail_subscribe_button_true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:visibility="gone"
+                android:backgroundTint="@color/transparent"
+                android:src="@drawable/ic_subscribe_true"
                 app:layout_constraintBottom_toBottomOf="@id/activity_artist_detail_profile_name"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/activity_artist_detail_profile_name" />
@@ -195,5 +208,47 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/activity_artist_detail_subscribe_snack_bar"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/snackbar_background"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="visible">
+
+        <TextView
+            android:id="@+id/activity_artist_detail_subscribe_snack_bar_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="구독 작가 리스트에 추가됐어요."
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/activity_artist_detail_subscribe_artist_list_text_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="구독 작가 리스트 보기"
+            android:textColor="@color/util_blue"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

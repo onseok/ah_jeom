@@ -10,6 +10,7 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/activity_my_image_recycler_image"
         android:layout_width="match_parent"
+        android:scaleType="centerCrop"
         android:layout_height="match_parent"
         android:src="@drawable/artist_art_recycler_item_1_temp" />
 

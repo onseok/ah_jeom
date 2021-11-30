@@ -6,13 +6,16 @@ import com.ssac.ah_jeom.R
 import com.ssac.ah_jeom.config.BaseActivity
 import com.ssac.ah_jeom.databinding.ActivityMyImageBinding
 import com.ssac.ah_jeom.src.main.locker.myImage.adapter.MyImageRecyclerAdapter
+import com.ssac.ah_jeom.src.main.locker.myImage.models.GetMyImageResponse
 import com.ssac.ah_jeom.src.main.locker.myImage.models.MyImageRecyclerData
 import com.ssac.ah_jeom.src.search.adapter.RelatedImageRecyclerAdapter
 import com.ssac.ah_jeom.src.search.models.RelatedImageRecyclerData
 
-class MyImageActivity : BaseActivity<ActivityMyImageBinding>(ActivityMyImageBinding::inflate) {
+class MyImageActivity : BaseActivity<ActivityMyImageBinding>(ActivityMyImageBinding::inflate), MyImageActivityView {
 
     val data: MutableList<MyImageRecyclerData> = mutableListOf()
+
+    private var cursor: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +24,7 @@ class MyImageActivity : BaseActivity<ActivityMyImageBinding>(ActivityMyImageBind
             onBackPressed()
         }
 
-        setMyImageView()
+        MyImageService(this).tryGetMyImage(cursor)
 
     }
 
@@ -38,20 +41,20 @@ class MyImageActivity : BaseActivity<ActivityMyImageBinding>(ActivityMyImageBind
         binding.activityMyImageRecyclerView.layoutManager = GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false)
 
         adapter.notifyDataSetChanged()
-
-        setMyImageData()
     }
 
-    // 추후 api연동 예정
-    private fun setMyImageData() {
-        data.add(MyImageRecyclerData(R.drawable.search_image_1_temp))
-        data.add(MyImageRecyclerData(R.drawable.search_image_2_temp))
-        data.add(MyImageRecyclerData(R.drawable.search_image_3_temp))
-        data.add(MyImageRecyclerData(R.drawable.search_image_4_temp))
-        data.add(MyImageRecyclerData(R.drawable.search_image_5_temp))
-        data.add(MyImageRecyclerData(R.drawable.search_image_6_temp))
-        data.add(MyImageRecyclerData(R.drawable.search_image_7_temp))
-        data.add(MyImageRecyclerData(R.drawable.search_image_8_temp))
+    override fun onGetMyImageSuccess(response: GetMyImageResponse) {
+        if (response.isSuccess) {
+            response.result.myimg.forEach {
+                data.add(MyImageRecyclerData(it.img))
+            }
+            setMyImageView()
+        }
+
+    }
+
+    override fun onGetMyImageFailure(message: String) {
+        TODO("Not yet implemented")
     }
 
 }
