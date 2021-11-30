@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.ssac.ah_jeom.databinding.ActivityArtistArtGridRecyclerItemBinding
 import com.ssac.ah_jeom.src.detail.artistDetail.artistArt.models.ArtistArtRecyclerData
 
@@ -53,7 +54,7 @@ class ArtistArtRecyclerAdapter(private val context: Context) :
         }
 
         fun setData(data: ArtistArtRecyclerData) {
-            binding.activityArtistArtGridRecyclerImage.setImageResource(data.artistArtImage)
+            Glide.with(itemView.context).load(data.artistArtImage).into(binding.activityArtistArtGridRecyclerImage)
         }
 
     }

@@ -6,45 +6,84 @@ import com.ssac.ah_jeom.R
 import com.ssac.ah_jeom.config.BaseActivity
 import com.ssac.ah_jeom.databinding.ActivitySubscribeArtistBinding
 import com.ssac.ah_jeom.src.main.subscribe.subscribeArtist.adapter.SubscribeArtistRecyclerAdapter
+import com.ssac.ah_jeom.src.main.subscribe.subscribeArtist.models.GetSubscribeArtistResponse
 import com.ssac.ah_jeom.src.main.subscribe.subscribeArtist.models.SubscribeArtistRecyclerData
 
 class SubscribeArtistActivity : BaseActivity<ActivitySubscribeArtistBinding>(
-    ActivitySubscribeArtistBinding::inflate) {
+    ActivitySubscribeArtistBinding::inflate), SubscribeArtistActivityView {
 
     private val data: MutableList<SubscribeArtistRecyclerData> = mutableListOf()
+
+    var cursor: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val data: MutableList<SubscribeArtistRecyclerData> = loadData()
-        var adapter = SubscribeArtistRecyclerAdapter(this)
+        binding.activitySubscribeBackButton.setOnClickListener {
+            onBackPressed()
+        }
+
+        SubscribeArtistService(this).tryGetSubscribeArtist(cursor)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
+    }
+
+    private fun setSubscribeArtistRecyclerView(response: GetSubscribeArtistResponse) {
+        val data: MutableList<SubscribeArtistRecyclerData> = data
+        var adapter = SubscribeArtistRecyclerAdapter(this, response)
         adapter.listData = data
         binding.activitySubscribeRecyclerView.adapter = adapter
         binding.activitySubscribeRecyclerView.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
         adapter.notifyDataSetChanged()
+    }
 
-        binding.activitySubscribeBackButton.setOnClickListener {
-            onBackPressed()
+    override fun onGetSubscribeArtistSuccess(response: GetSubscribeArtistResponse) {
+        if (response.isSuccess) {
+            response.result.sub.forEach {
+                data.add(SubscribeArtistRecyclerData(it.profile, detectIcon(it.gName) , it.nickname, "${it.subCount}명의 구독자", it.gName))
+            }
+        }
+        setSubscribeArtistRecyclerView(response)
+    }
+
+    override fun onGetSubscribeArtistFailure(message: String) {
+        showCustomToast("오류 : $message")
+    }
+
+    private fun detectIcon(gName: String): Int {
+
+        var imageId = 0
+
+        when (gName) {
+            "백금아식" -> {
+                imageId = R.drawable.ic_platinum_icon
+            }
+            "골드아식" -> {
+                imageId = R.drawable.ic_gold_icon
+            }
+            "실버아식" -> {
+                imageId = R.drawable.ic_silver_icon
+            }
+            "평타아식" -> {
+                imageId = R.drawable.ic_standard_icon
+            }
+            "구리아식" -> {
+                imageId = R.drawable.ic_copper_icon
+            }
+            "응아아식" -> {
+                imageId = R.drawable.ic_poo_icon
+            }
+            "돌맹아식" -> {
+                imageId = R.drawable.ic_stone_icon
+            }
         }
 
-    }
-
-    // 추후 API 연동 예정
-    private fun loadData(): MutableList<SubscribeArtistRecyclerData> {
-
-        data.add(SubscribeArtistRecyclerData(R.drawable.subscribe_artist_recycler_image_1_temp, R.drawable.ic_silver_icon, "잭슨 위너비", "3.4K명의 구독자", "실버아식"))
-        data.add(SubscribeArtistRecyclerData(R.drawable.subscribe_artist_recycler_image_2_temp, R.drawable.ic_platinum_icon, "Livia KIM", "208M명의 구독자", "백금아식"))
-        data.add(SubscribeArtistRecyclerData(R.drawable.subscribe_artist_recycler_image_3_temp, R.drawable.ic_platinum_icon, "BOOKOOK", "0.8K명의 구독자", "백금아식"))
-        data.add(SubscribeArtistRecyclerData(R.drawable.subscribe_artist_recycler_image_4_temp, R.drawable.ic_gold_icon , "bule8864", "89명의 구독자", "골드아식"))
-
-        return data
-    }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-        overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
+        return imageId
     }
 
 }

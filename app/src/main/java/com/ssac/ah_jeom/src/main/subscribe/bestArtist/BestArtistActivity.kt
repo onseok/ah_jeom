@@ -32,9 +32,9 @@ class BestArtistActivity : BaseActivity<ActivityBestArtistBinding>(ActivityBestA
         overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
     }
 
-    private fun setBestArtistRecyclerView() {
+    private fun setBestArtistRecyclerView(response: GetBestArtistResponse) {
         val data: MutableList<BestArtistRecyclerData> = data
-        var adapter = BestArtistRecyclerAdapter(this)
+        var adapter = BestArtistRecyclerAdapter(this, response)
         adapter.listData = data
         binding.activityBestArtistMainRecyclerView.adapter = adapter
         binding.activityBestArtistMainRecyclerView.layoutManager =
@@ -80,7 +80,7 @@ class BestArtistActivity : BaseActivity<ActivityBestArtistBinding>(ActivityBestA
                 data.add(BestArtistRecyclerData(it.profile, detectIcon(it.grade), it.nickname, "${it.subCount}명의 구독자", it.gName))
             }
         }
-        setBestArtistRecyclerView()
+        setBestArtistRecyclerView(response)
 
     }
 

@@ -15,6 +15,18 @@
         android:theme="@style/Theme.Ah_jeom"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".src.profile.myArt.MyArtActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar"  />
+        <activity
+            android:name=".src.profile.myPeek.MyPeekActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".src.detail.storageDetail.StorageDetailActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".src.main.peek.soaringStorage.SoaringStorageActivity"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -116,10 +128,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             tools:ignore="LockedOrientationActivity" />
-        <activity
-            android:name=".src.detail.PeekDetailActivity"
-            android:exported="true"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".src.splash.SplashActivity"
             android:exported="true"

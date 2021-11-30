@@ -1,17 +1,25 @@
 package com.ssac.ah_jeom.src.main.peek.newStorage.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.ssac.ah_jeom.R
 import com.ssac.ah_jeom.databinding.ActivityNewStorageRecyclerItemBinding
+import com.ssac.ah_jeom.src.detail.storageDetail.StorageDetailActivity
+import com.ssac.ah_jeom.src.main.peek.newStorage.NewStorageActivity
+import com.ssac.ah_jeom.src.main.peek.newStorage.models.GetNewStorageResponse
 import com.ssac.ah_jeom.src.main.peek.newStorage.models.NewStorageRecyclerData
 
-class NewStorageRecyclerAdapter(private val context: Context) :
+class NewStorageRecyclerAdapter(private val context: Context, response: GetNewStorageResponse) :
     RecyclerView.Adapter<NewStorageRecyclerAdapter.PagerViewHolder>() {
 
     var listData = mutableListOf<NewStorageRecyclerData>()
+
+    val response = response
 
     interface OnItemClickListener {
         fun onItemClick(v: View, data: NewStorageRecyclerData, pos: Int)
@@ -56,10 +64,10 @@ class NewStorageRecyclerAdapter(private val context: Context) :
 
         fun setData(data: NewStorageRecyclerData) {
 
-            binding.activityNewStorageProfileImage.setImageResource(data.profileImage)
+            Glide.with(itemView.context).load(data.profileImage).circleCrop().into(binding.activityNewStorageProfileImage)
             binding.activityNewStorageProfileNameText.text = data.profileName
             binding.activityNewStorageDownloadNumberText.text = data.downloadNumber
-            binding.activityNewStorageMainImage.setImageResource(data.image)
+            Glide.with(itemView.context).load(data.image).into(binding.activityNewStorageMainImage)
             binding.activityNewStorageArtTitleText.text = data.artTitle
             binding.activityNewStorageLikedNumberText.text = data.artLikeNumber
 
@@ -67,6 +75,19 @@ class NewStorageRecyclerAdapter(private val context: Context) :
             if (pos != RecyclerView.NO_POSITION) {
                 itemView.setOnClickListener {
                     listener?.onItemClick(itemView, data, pos)
+
+                    for (i in 0 until response.result.new.size) {
+                        if (pos == i) {
+                            val intent = Intent(itemView.context, StorageDetailActivity::class.java)
+                            intent.putExtra("storageId", response.result.new[pos].storageId)
+                            itemView.context.startActivity(intent)
+                            (itemView.context as NewStorageActivity).overridePendingTransition(
+                                R.anim.activity_fade_in,
+                                R.anim.activity_fade_out
+                            )
+                        }
+                    }
+
 
                 }
             }

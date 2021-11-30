@@ -1,6 +1,5 @@
 package com.ssac.ah_jeom.src.main.peek
 
-import android.app.ActivityOptions
 import android.content.Intent
 import android.os.*
 import android.view.LayoutInflater
@@ -12,15 +11,11 @@ import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.ssac.ah_jeom.R
 import com.ssac.ah_jeom.databinding.FragmentPeekBinding
-import com.ssac.ah_jeom.src.detail.PeekDetailActivity
-import com.ssac.ah_jeom.src.detail.PeekSavedActivity
 import com.ssac.ah_jeom.src.main.MainActivity
 import com.ssac.ah_jeom.src.main.peek.adapter.PeekMainViewpagerAdapter
 import com.ssac.ah_jeom.src.main.peek.models.GetPeekResponse
 import com.ssac.ah_jeom.src.main.peek.models.PeekMainViewpagerData
-import com.ssac.ah_jeom.src.main.subscribe.SubscribeService
-import com.ssac.ah_jeom.src.main.subscribe.adapter.SubscribeIllustrationViewpagerAdapter
-import com.ssac.ah_jeom.src.main.subscribe.models.SubscribeIllustrationData
+import com.ssac.ah_jeom.src.profile.myPeek.MyPeekActivity
 
 class PeekFragment : Fragment(), PeekFragmentView {
 
@@ -40,7 +35,7 @@ class PeekFragment : Fragment(), PeekFragmentView {
         binding!!.fragmentPeekMainViewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL // 방향을 가로로
 
         binding!!.fragmentPeekSavedStorageButton.setOnClickListener {
-            startActivity(Intent(requireActivity(), PeekSavedActivity::class.java))
+            startActivity(Intent(requireActivity(), MyPeekActivity::class.java))
             (activity as MainActivity).overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
         }
 
@@ -52,11 +47,12 @@ class PeekFragment : Fragment(), PeekFragmentView {
         val Pair2 = Pair<View,String>(
             binding!!.fragmentPeekImageView, "peek_image")
 
-        binding!!.fragmentPeekImageView.setOnClickListener {
-            val intent = Intent(requireActivity(), PeekDetailActivity::class.java)
-            var options : ActivityOptions = ActivityOptions.makeSceneTransitionAnimation(requireActivity())
-            startActivity(intent, options.toBundle())
-        }
+        // TODO 옅보기 상단 큰 이미지 선택했을때
+//        binding!!.fragmentPeekImageView.setOnClickListener {
+//            val intent = Intent(requireActivity(), PeekDetailActivity::class.java)
+//            var options : ActivityOptions = ActivityOptions.makeSceneTransitionAnimation(requireActivity())
+//            startActivity(intent, options.toBundle())
+//        }
 
         Glide.with(this).load(R.drawable.fragment_peek_profile_image_temp).circleCrop().into(binding!!.fragmentPeekMainProfileImage)
 

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.ssac.ah_jeom.R
 import com.ssac.ah_jeom.databinding.ActivityRecentlyArtistRecyclerItemBinding
 import com.ssac.ah_jeom.databinding.ActivitySubscribeArtistRecyclerItemBinding
@@ -13,12 +14,15 @@ import com.ssac.ah_jeom.src.detail.artistDetail.ArtistDetailActivity
 import com.ssac.ah_jeom.src.main.MainActivity
 import com.ssac.ah_jeom.src.main.subscribe.bestArtist.BestArtistActivity
 import com.ssac.ah_jeom.src.main.subscribe.subscribeArtist.SubscribeArtistActivity
+import com.ssac.ah_jeom.src.main.subscribe.subscribeArtist.models.GetSubscribeArtistResponse
 import com.ssac.ah_jeom.src.main.subscribe.subscribeArtist.models.SubscribeArtistRecyclerData
 
-class SubscribeArtistRecyclerAdapter(private val context: Context) :
+class SubscribeArtistRecyclerAdapter(private val context: Context, response: GetSubscribeArtistResponse) :
     RecyclerView.Adapter<SubscribeArtistRecyclerAdapter.PagerViewHolder>() {
 
     var listData = mutableListOf<SubscribeArtistRecyclerData>()
+
+    val response = response
 
     interface OnItemClickListener {
         fun onItemClick(v: View, data: SubscribeArtistRecyclerData, pos: Int)
@@ -63,7 +67,7 @@ class SubscribeArtistRecyclerAdapter(private val context: Context) :
 
         fun setData(data: SubscribeArtistRecyclerData) {
 
-            binding.activitySubscribeArtistRecyclerProfileImage.setImageResource(data.image)
+            Glide.with(itemView.context).load(data.image).circleCrop().into(binding.activitySubscribeArtistRecyclerProfileImage)
             binding.activitySubscribeArtistRecyclerRateImage.setImageResource(data.rateImage)
             binding.activitySubscribeArtistRecyclerNameText.text = data.name
             binding.activitySubscribeArtistRecyclerSubscribeNumberText.text = data.subscribeNumber
@@ -74,13 +78,16 @@ class SubscribeArtistRecyclerAdapter(private val context: Context) :
                 itemView.setOnClickListener {
                     listener?.onItemClick(itemView, data, pos)
 
-                    if (pos == 0) {
-                        val intent = Intent(itemView.context, ArtistDetailActivity::class.java)
-                        itemView.context.startActivity(intent)
-                        (itemView.context as SubscribeArtistActivity).overridePendingTransition(
-                            R.anim.activity_fade_in,
-                            R.anim.activity_fade_out
-                        )
+                    for (i in 0 until response.result.sub.size) {
+                        if (pos == i) {
+                            val intent = Intent(itemView.context, ArtistDetailActivity::class.java)
+                            intent.putExtra("artistId", response.result.sub[pos].artistId)
+                            itemView.context.startActivity(intent)
+                            (itemView.context as SubscribeArtistActivity).overridePendingTransition(
+                                R.anim.activity_fade_in,
+                                R.anim.activity_fade_out
+                            )
+                        }
                     }
                     
                 }

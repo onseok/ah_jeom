@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
         android:layout_marginTop="30dp"
+        android:translationZ="100dp"
         android:backgroundTint="@color/transparent"
         android:src="@drawable/ic_back"
         android:tint="@color/white"
@@ -32,33 +33,41 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/activity_my_storage_back_button" />
 
+    <TextView
+        android:id="@+id/activity_my_storage_make_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_bold"
+        android:text="만들기"
+        android:textColor="#838383"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/activity_my_storage_title_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.7"
+        app:layout_constraintStart_toEndOf="@id/activity_my_storage_title_text"
+        app:layout_constraintTop_toTopOf="@id/activity_my_storage_title_text" />
+
     <androidx.core.widget.NestedScrollView
         android:id="@+id/activity_my_storage_nested_scroll_view"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:visibility="invisible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/activity_my_storage_title_text"
-        tools:visibility="visible">
+        app:layout_constraintTop_toBottomOf="@id/activity_my_storage_title_text">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/activity_my_storage_recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/activity_my_storage_recycler_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="18dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="18dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_height="match_parent"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginEnd="18dp"
+            android:translationZ="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.core.widget.NestedScrollView>
 
@@ -70,7 +79,7 @@
         android:text="보관한 작품이 없어요."
         android:textColor="@color/box_border"
         android:textSize="18sp"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

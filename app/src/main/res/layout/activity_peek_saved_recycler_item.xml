@@ -10,7 +10,6 @@
         android:id="@+id/activity_peek_saved_recycler_image"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:backgroundTint="@color/transparent"
         android:padding="1dp"
         android:scaleType="centerCrop"
         android:src="@drawable/peek_saved_recycler_image_temp"

@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.ssac.ah_jeom.R
 
 class HomeFragmentViewpagerAdapter(bannerList: ArrayList<Int>) : RecyclerView.Adapter<HomeFragmentViewpagerAdapter.PagerViewHolder>() {
@@ -28,6 +29,5 @@ class HomeFragmentViewpagerAdapter(bannerList: ArrayList<Int>) : RecyclerView.Ad
         val banner: ImageView = itemView.findViewById(R.id.fragment_home_banner_item_image)
 
     }
-
 
 }

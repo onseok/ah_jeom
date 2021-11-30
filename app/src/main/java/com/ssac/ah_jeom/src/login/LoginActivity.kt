@@ -20,6 +20,8 @@ import com.ssac.ah_jeom.config.BaseActivity
 import com.ssac.ah_jeom.databinding.ActivityLoginBinding
 import com.ssac.ah_jeom.src.login.models.PostLoginRequest
 import com.ssac.ah_jeom.src.login.models.PostLoginResponse
+import com.ssac.ah_jeom.src.main.MainActivity
+import com.ssac.ah_jeom.src.splash.SplashActivity
 import com.ssac.ah_jeom.src.userInfo.interests.InterestsActivity
 
 class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::inflate), LoginActivityView {
@@ -181,7 +183,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
     }
 
     override fun onPostLoginSuccess(response: PostLoginResponse) {
-       if (response.result != null) {
+       if (response.result?.isMember == false) {
            val editor = ApplicationClass.sSharedPreferences.edit()
            editor.putString("X-ACCESS-TOKEN", response.result.jwt)
            editor.putInt("userId", response.result.userId)
@@ -189,10 +191,21 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
 
            val intent = Intent(this, InterestsActivity::class.java)
            intent.putExtra("kakaoAccessToken", kakaoAccessToken)
-//           intent.putExtra("userId", response.result.userId)
            startActivity(intent)
            overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
        }
+        else if (response.result?.isMember == true) {
+            val editor = ApplicationClass.sSharedPreferences.edit()
+            editor.putString("X-ACCESS-TOKEN", response.result.jwt)
+            editor.putInt("userId", response.result.userId)
+            editor.commit()
+
+            val intent = Intent(this, SplashActivity::class.java)
+//            intent.putExtra("kakaoAccessToken", kakaoAccessToken)
+            startActivity(intent)
+            overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
+        }
+
     }
 
     override fun onPostLoginFailure(message: String) {

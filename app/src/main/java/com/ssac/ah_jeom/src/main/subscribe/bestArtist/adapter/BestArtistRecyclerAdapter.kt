@@ -1,19 +1,25 @@
 package com.ssac.ah_jeom.src.main.subscribe.bestArtist.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.ssac.ah_jeom.R
 import com.ssac.ah_jeom.databinding.ActivityBestArtistRecyclerItemBinding
-import com.ssac.ah_jeom.src.main.MainActivity
+import com.ssac.ah_jeom.src.detail.artistDetail.ArtistDetailActivity
+import com.ssac.ah_jeom.src.main.subscribe.bestArtist.BestArtistActivity
 import com.ssac.ah_jeom.src.main.subscribe.bestArtist.models.BestArtistRecyclerData
+import com.ssac.ah_jeom.src.main.subscribe.bestArtist.models.GetBestArtistResponse
 
-class BestArtistRecyclerAdapter(private val context: Context) :
+class BestArtistRecyclerAdapter(private val context: Context, response: GetBestArtistResponse) :
     RecyclerView.Adapter<BestArtistRecyclerAdapter.PagerViewHolder>() {
 
     var listData = mutableListOf<BestArtistRecyclerData>()
+
+    val response = response
 
     interface OnItemClickListener {
         fun onItemClick(v: View, data: BestArtistRecyclerData, pos: Int)
@@ -68,6 +74,18 @@ class BestArtistRecyclerAdapter(private val context: Context) :
             if (pos != RecyclerView.NO_POSITION) {
                 itemView.setOnClickListener {
                     listener?.onItemClick(itemView, data, pos)
+
+                    for (i in 0 until response.result.best.size) {
+                        if (pos == i) {
+                            val intent = Intent(itemView.context, ArtistDetailActivity::class.java)
+                            intent.putExtra("artistId", response.result.best[pos].userId)
+                            itemView.context.startActivity(intent)
+                            (itemView.context as BestArtistActivity).overridePendingTransition(
+                                R.anim.activity_fade_in,
+                                R.anim.activity_fade_out
+                            )
+                        }
+                    }
 
                 }
             }

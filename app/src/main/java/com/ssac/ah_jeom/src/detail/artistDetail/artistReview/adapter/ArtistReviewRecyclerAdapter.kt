@@ -5,10 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.ssac.ah_jeom.databinding.ActivityArtistReviewRecyclerItemBinding
 import com.ssac.ah_jeom.src.detail.artistDetail.artistReview.models.ArtistReviewRecyclerData
+import com.ssac.ah_jeom.src.detail.artistDetail.artistReview.models.GetArtistReviewResponse
 
-class ArtistReviewRecyclerAdapter(private val context: Context) :
+class ArtistReviewRecyclerAdapter(private val context: Context, response: GetArtistReviewResponse) :
     RecyclerView.Adapter<ArtistReviewRecyclerAdapter.PagerViewHolder>() {
 
     var listData = mutableListOf<ArtistReviewRecyclerData>()
@@ -56,7 +58,7 @@ class ArtistReviewRecyclerAdapter(private val context: Context) :
 
         fun setData(data: ArtistReviewRecyclerData) {
 
-            binding.activityArtistReviewRecyclerProfileImage.setImageResource(data.image)
+            Glide.with(itemView.context).load(data.image).circleCrop().into(binding.activityArtistReviewRecyclerProfileImage)
             binding.activityArtistReviewRecyclerNameText.text = data.name
             binding.activityArtistReviewSampleReviewText.text = data.review
 
