@@ -24,6 +24,8 @@ class ArtistDetailActivity : BaseActivity<ActivityArtistDetailBinding>(ActivityA
 
     val data: MutableList<ArtistDetailArtData> = mutableListOf()
 
+    private var globalArtistId = 0
+
     private val snackBarOpen: Animation by lazy {
         AnimationUtils.loadAnimation(
             this,
@@ -50,6 +52,8 @@ class ArtistDetailActivity : BaseActivity<ActivityArtistDetailBinding>(ActivityA
 
         val artistId = intent.getIntExtra("artistId", 0)
 
+        globalArtistId = artistId
+
         binding.activityArtistDetailBackButton.setOnClickListener {
             onBackPressed()
         }
@@ -63,16 +67,10 @@ class ArtistDetailActivity : BaseActivity<ActivityArtistDetailBinding>(ActivityA
         }
 
         binding.activityArtistDetailReviewButton.setOnClickListener {
-            if (hasReview) {
-                val intent = Intent(this, ArtistReviewActivity::class.java)
-                intent.putExtra("artistId", artistId)
-                startActivity(intent)
-                overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
-            }
-            else {
-                showCustomToast("리뷰가 없습니다.")
-                return@setOnClickListener
-            }
+            val intent = Intent(this, ArtistReviewActivity::class.java)
+            intent.putExtra("artistId", artistId)
+            startActivity(intent)
+            overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
         }
 
         binding.activityArtistDetailSubscribeButton.setOnClickListener {
@@ -310,4 +308,8 @@ class ArtistDetailActivity : BaseActivity<ActivityArtistDetailBinding>(ActivityA
         showCustomToast("오류 : $message")
     }
 
+    override fun onResume() {
+        super.onResume()
+        ArtistDetailService(this).tryGetArtistDetail(globalArtistId)
+    }
 }

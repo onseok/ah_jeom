@@ -1,6 +1,8 @@
 package com.ssac.ah_jeom.src.detail.artistDetail.artistReview
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ssac.ah_jeom.R
 import com.ssac.ah_jeom.config.BaseActivity
@@ -8,21 +10,33 @@ import com.ssac.ah_jeom.databinding.ActivityArtistReviewBinding
 import com.ssac.ah_jeom.src.detail.artistDetail.artistReview.adapter.ArtistReviewRecyclerAdapter
 import com.ssac.ah_jeom.src.detail.artistDetail.artistReview.models.ArtistReviewRecyclerData
 import com.ssac.ah_jeom.src.detail.artistDetail.artistReview.models.GetArtistReviewResponse
+import com.ssac.ah_jeom.src.detail.reviewDetail.ReviewDetailActivity
 
 class ArtistReviewActivity : BaseActivity<ActivityArtistReviewBinding>(ActivityArtistReviewBinding::inflate), ArtistReviewActivityView {
 
     private val data: MutableList<ArtistReviewRecyclerData> = mutableListOf()
+
+    private var globalArtistId = 0
 
     private var cursor: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val artistId = intent.getIntExtra("artistId", 0)
+
+        globalArtistId = artistId
+
         binding.activityArtistReviewBackButton.setOnClickListener {
             onBackPressed()
         }
 
-        val artistId = intent.getIntExtra("artistId", 0)
+        binding.activityArtistReviewFloatingButton.setOnClickListener {
+            val intent = Intent(this, ReviewDetailActivity::class.java)
+            intent.putExtra("artistId", artistId)
+            startActivity(intent)
+            overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
+        }
 
         ArtistReviewService(this).tryGetArtistReview(artistId, cursor)
 
@@ -44,7 +58,15 @@ class ArtistReviewActivity : BaseActivity<ActivityArtistReviewBinding>(ActivityA
     }
 
     override fun onGetArtistReviewSuccess(response: GetArtistReviewResponse) {
-        if (response.isSuccess) {
+        if (!response.isSuccess) {
+            binding.activityArtistReviewNoItemText.visibility = View.VISIBLE
+            binding.activityArtistReviewRecyclerView.visibility = View.GONE
+        }
+        else {
+            binding.activityArtistReviewNoItemText.visibility = View.INVISIBLE
+            binding.activityArtistReviewRecyclerView.visibility = View.VISIBLE
+
+            data.clear()
             response.result.review.forEach {
                 data.add(ArtistReviewRecyclerData(it.profile, it.nickname, it.caption))
             }
@@ -55,6 +77,11 @@ class ArtistReviewActivity : BaseActivity<ActivityArtistReviewBinding>(ActivityA
 
     override fun onGetArtistReviewFailure(message: String) {
         showCustomToast("오류 : $message")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        ArtistReviewService(this).tryGetArtistReview(globalArtistId, cursor)
     }
 
 }

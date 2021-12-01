@@ -15,6 +15,10 @@
         android:theme="@style/Theme.Ah_jeom"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".src.detail.reviewDetail.ReviewDetailActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".src.profile.settings.changeIntroduce.ChangeIntroduceActivity"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />

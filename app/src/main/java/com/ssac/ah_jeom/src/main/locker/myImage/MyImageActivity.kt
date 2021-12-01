@@ -1,6 +1,7 @@
 package com.ssac.ah_jeom.src.main.locker.myImage
 
 import android.os.Bundle
+import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import com.ssac.ah_jeom.R
 import com.ssac.ah_jeom.config.BaseActivity
@@ -44,13 +45,19 @@ class MyImageActivity : BaseActivity<ActivityMyImageBinding>(ActivityMyImageBind
     }
 
     override fun onGetMyImageSuccess(response: GetMyImageResponse) {
-        if (response.isSuccess) {
+        if (response.code == 3014) {
+            binding.activityMyImageRecyclerView.visibility = View.GONE
+            binding.activityMyImageNoItemText.visibility = View.VISIBLE
+        }
+        else if (response.isSuccess) {
+            binding.activityMyImageRecyclerView.visibility = View.VISIBLE
+            binding.activityMyImageNoItemText.visibility = View.INVISIBLE
+
             response.result.myimg.forEach {
                 data.add(MyImageRecyclerData(it.img))
             }
             setMyImageView()
         }
-
     }
 
     override fun onGetMyImageFailure(message: String) {

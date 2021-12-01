@@ -44,7 +44,15 @@ class MyPeekActivity : BaseActivity<ActivityMyPeekBinding>(ActivityMyPeekBinding
     }
 
     override fun onGetMyPeekSuccess(response: GetMyPeekResponse) {
-        if (response.isSuccess) {
+        if (response.code == 3017) {
+            binding.activityMyPeekNoItemText.visibility = View.VISIBLE
+            binding.activityMyPeekRecyclerView.visibility = View.GONE
+        }
+
+        else if (response.isSuccess) {
+            binding.activityMyPeekNoItemText.visibility = View.INVISIBLE
+            binding.activityMyPeekRecyclerView.visibility = View.VISIBLE
+
             if (response.result.save.size != 0) {
                 binding.activityMyPeekNoItemText.visibility = View.INVISIBLE
                 binding.activityMyPeekRecyclerView.visibility = View.VISIBLE

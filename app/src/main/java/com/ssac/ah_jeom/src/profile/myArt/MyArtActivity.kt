@@ -44,7 +44,15 @@ class MyArtActivity : BaseActivity<ActivityMyArtBinding>(ActivityMyArtBinding::i
     }
 
     override fun onGetMyArtSuccess(response: GetMyArtResponse) {
-        if (response.isSuccess) {
+        if (response.code == 3016) {
+            binding.activityMyArtNoItemText.visibility = View.VISIBLE
+            binding.activityMyArtRecyclerView.visibility = View.GONE
+        }
+
+        else if (response.isSuccess) {
+            binding.activityMyArtNoItemText.visibility = View.INVISIBLE
+            binding.activityMyArtRecyclerView.visibility = View.VISIBLE
+
             if (response.result.artwork.size != 0) {
                 binding.activityMyArtNoItemText.visibility = View.INVISIBLE
                 binding.activityMyArtRecyclerView.visibility = View.VISIBLE

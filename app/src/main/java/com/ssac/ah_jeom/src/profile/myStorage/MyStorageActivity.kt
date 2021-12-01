@@ -43,7 +43,14 @@ class MyStorageActivity : BaseActivity<ActivityMyStorageBinding>(ActivityMyStora
     }
 
     override fun onGetMyStorageSuccess(response: GetMyStorageResponse) {
-        if (response.isSuccess) {
+        if (response.code == 3015) {
+            binding.activityMyStorageNoItemText.visibility = View.VISIBLE
+            binding.activityMyStorageRecyclerView.visibility = View.GONE
+        }
+        else if (response.isSuccess) {
+            binding.activityMyStorageNoItemText.visibility = View.INVISIBLE
+            binding.activityMyStorageRecyclerView.visibility = View.VISIBLE
+
             if (response.result.storage.size != 0) {
                 binding.activityMyStorageNoItemText.visibility = View.INVISIBLE
                 binding.activityMyStorageRecyclerView.visibility = View.VISIBLE
