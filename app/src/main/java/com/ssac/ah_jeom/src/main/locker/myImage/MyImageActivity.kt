@@ -34,9 +34,9 @@ class MyImageActivity : BaseActivity<ActivityMyImageBinding>(ActivityMyImageBind
         overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
     }
 
-    private fun setMyImageView() {
+    private fun setMyImageView(response: GetMyImageResponse) {
         val data: MutableList<MyImageRecyclerData> = data
-        var adapter = MyImageRecyclerAdapter(this)
+        var adapter = MyImageRecyclerAdapter(this, response)
         adapter.listData = data
         binding.activityMyImageRecyclerView.adapter = adapter
         binding.activityMyImageRecyclerView.layoutManager = GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false)
@@ -53,15 +53,16 @@ class MyImageActivity : BaseActivity<ActivityMyImageBinding>(ActivityMyImageBind
             binding.activityMyImageRecyclerView.visibility = View.VISIBLE
             binding.activityMyImageNoItemText.visibility = View.INVISIBLE
 
+            data.clear()
             response.result.myimg.forEach {
                 data.add(MyImageRecyclerData(it.img))
             }
-            setMyImageView()
+            setMyImageView(response)
         }
     }
 
     override fun onGetMyImageFailure(message: String) {
-        TODO("Not yet implemented")
+        showCustomToast("오류 : $message")
     }
 
 }

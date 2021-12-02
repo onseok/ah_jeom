@@ -71,6 +71,12 @@ class PeekFragment : Fragment(), PeekFragmentView {
         binding!!.fragmentPeekMainViewPager.orientation =
             ViewPager2.ORIENTATION_HORIZONTAL // 방향을 가로로
         adapter.notifyDataSetChanged()
+
+        // 뷰페이저 인디케이터
+        val dotsIndicator = binding?.fragmentPeekIllustrationIndicator
+        val viewPager = binding?.fragmentPeekMainViewPager
+        viewPager?.adapter = adapter
+        dotsIndicator?.setViewPager2(viewPager!!)
     }
 
     private fun setIllustrationImageData() {

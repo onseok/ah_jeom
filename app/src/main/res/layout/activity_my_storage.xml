@@ -39,6 +39,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_bold"
         android:text="만들기"
+        android:translationZ="100dp"
         android:textColor="#838383"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@id/activity_my_storage_title_text"

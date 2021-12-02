@@ -157,7 +157,7 @@ class StorageDetailActivity : BaseActivity<ActivityStorageDetailBinding>(Activit
             binding.activityStorageDetailProfileName.text = response.result.top[0].nickname
             binding.activityStorageDetailDownloadText.text = "${response.result.top[0].save}회 다운"
             binding.activityStorageDetailProfileLikeNumberText.text = "좋아요 ${response.result.top[0].heart}개"
-            // TODO 보관함 상세 원형 프로필 이미지 연동
+            Glide.with(this).load(response.result.top[0].profile).circleCrop().into(binding.activityStorageDetailProfileImage)
 
             if(response.result.top[0].likes == 1) {
                 binding.activityStorageDetailLikeButton.visibility = View.GONE

@@ -94,6 +94,12 @@ class SubscribeFragment : Fragment(), SubscribeFragmentView {
         binding!!.fragmentSubscribeIllustrationViewPager.orientation =
             ViewPager2.ORIENTATION_HORIZONTAL // 방향을 가로로
         adapter.notifyDataSetChanged()
+
+        // 뷰페이저 인디케이터
+        val dotsIndicator = binding?.fragmentSubscribeIllustrationIndicator
+        val viewPager = binding?.fragmentSubscribeIllustrationViewPager
+        viewPager?.adapter = adapter
+        dotsIndicator?.setViewPager2(viewPager!!)
     }
 
     private fun setSubscribeMainViewpager() {

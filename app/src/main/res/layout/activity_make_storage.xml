@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_black">
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/activity_upload_detail_back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/transparent"
+        android:src="@drawable/ic_back"
+        android:tint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/activity_make_storage_main_title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_bold"
+        android:text="보관함 만들기"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@id/activity_make_storage_complete_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/activity_make_storage_complete_text" />
+
+    <TextView
+        android:id="@+id/activity_make_storage_complete_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="완료"
+        android:textColor="@color/util_blue"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@id/activity_upload_detail_back_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/activity_upload_detail_back_button" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_upload_detail_back_button">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/activity_make_storage_card_view"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_marginTop="50dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/activity_upload_detail_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:alpha="0.5"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/make_storage_image" />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="center"
+                android:text="대표 이미지"
+                android:textColor="@color/main_black"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/activity_make_storage_card_view"
+                app:layout_constraintEnd_toEndOf="@id/activity_make_storage_card_view"
+                app:layout_constraintStart_toStartOf="@id/activity_make_storage_card_view"
+                app:layout_constraintTop_toTopOf="@id/activity_make_storage_card_view" />
+
+            <TextView
+                android:id="@+id/activity_make_storage_sub_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="center"
+                android:text="대표 이미지는\n랜덤으로 설정됩니다."
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_make_storage_card_view" />
+
+            <TextView
+                android:id="@+id/activity_make_storage_title_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="60dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="보관함 제목"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_make_storage_sub_text" />
+
+            <EditText
+                android:id="@+id/activity_make_storage_title_edit_text"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/white_button_background"
+                android:enabled="true"
+                android:fitsSystemWindows="true"
+                android:focusable="true"
+                android:fontFamily="@font/roboto_medium"
+                android:gravity="top"
+                android:hint="보관함 제목을 입력해주세요."
+                android:inputType="text"
+                android:padding="15dp"
+                android:paddingTop="15dp"
+                android:textColor="@color/box_border"
+                android:textColorHint="#838383"
+                android:textCursorDrawable="@drawable/color_cursor"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_make_storage_title_text"
+                app:theme="@style/EditTextStyle" />
+
+            <TextView
+                android:id="@+id/activity_make_storage_explanation_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="보관함 설명"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_make_storage_title_edit_text" />
+
+            <EditText
+                android:id="@+id/activity_make_storage_explanation_edit_text"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/white_button_background"
+                android:enabled="true"
+                android:fitsSystemWindows="true"
+                android:focusable="true"
+                android:fontFamily="@font/roboto_medium"
+                android:gravity="top"
+                android:hint="보관함 설명을 입력해주세요."
+                android:inputType="textMultiLine"
+                android:padding="15dp"
+                android:paddingTop="15dp"
+                android:textColor="@color/box_border"
+                android:textColorHint="#838383"
+                android:textCursorDrawable="@drawable/color_cursor"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_make_storage_explanation_text"
+                app:theme="@style/EditTextStyle" />
+
+            <TextView
+                android:id="@+id/activity_make_storage_image_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="보관함 이미지"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_make_storage_explanation_edit_text" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/activity_make_storage_image_layout"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/white_button_background"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_make_storage_image_text">
+
+                <TextView
+                    android:id="@+id/activity_make_storage_image_hint"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="10dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/roboto_medium"
+                    android:maxLines="1"
+                    android:text="보관함에 들어갈 이미지를 선택하세요."
+                    android:textColor="#838383"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/activity_make_storage_image_button"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/activity_make_storage_image_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:backgroundTint="@color/transparent"
+                    android:src="@drawable/ic_right"
+                    android:tint="#838383"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/main_black"
+                app:layout_constraintTop_toBottomOf="@id/activity_make_storage_image_layout" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

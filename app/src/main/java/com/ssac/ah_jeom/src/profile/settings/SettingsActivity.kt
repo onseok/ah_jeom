@@ -49,6 +49,11 @@ class SettingsActivity : BaseActivity<ActivitySettingsBinding>(ActivitySettingsB
             overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
         }
 
+        binding.activitySettingsNoticeLayout.setOnClickListener {
+            showCustomToast("현재 서비스 준비중입니다.")
+            return@setOnClickListener
+        }
+
         binding.activitySettingsLogoutLayout.setOnClickListener {
             logoutDialog()
         }
@@ -129,7 +134,7 @@ class SettingsActivity : BaseActivity<ActivitySettingsBinding>(ActivitySettingsB
            Glide.with(this).load(response.result[0].profile).circleCrop().into(binding.activitySettingsProfileImage)
            binding.activitySettingsProfileName.text = response.result[0].nickname
            binding.activitySettingsStageText.text = response.result[0].gName
-           Glide.with(this).load(detectIcon(response.result[0].grade)).circleCrop().into(binding.activitySettingsProfileStageImage)
+           detectIcon(response.result[0].grade)
        }
     }
 

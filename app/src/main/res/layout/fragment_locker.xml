@@ -107,7 +107,7 @@
                 android:id="@+id/activity_art_detail_download_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="60dp"
                 android:background="@drawable/white_button_circle"
                 android:src="@drawable/ic_plus"
                 android:tint="@color/main_black"
@@ -115,6 +115,18 @@
                 app:layout_constraintBottom_toBottomOf="@id/fragment_locker_sub_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/fragment_locker_sub_text" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="보관함 만들기"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@id/activity_art_detail_download_button"
+                app:layout_constraintStart_toStartOf="@id/activity_art_detail_download_button"
+                app:layout_constraintTop_toBottomOf="@id/activity_art_detail_download_button" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/fragment_locker_character_image"

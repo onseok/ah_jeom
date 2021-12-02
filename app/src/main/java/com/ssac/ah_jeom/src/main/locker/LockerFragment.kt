@@ -11,9 +11,9 @@ import com.bumptech.glide.Glide
 import com.ssac.ah_jeom.R
 import com.ssac.ah_jeom.databinding.FragmentLockerBinding
 import com.ssac.ah_jeom.src.main.MainActivity
+import com.ssac.ah_jeom.src.main.locker.makeStorage.MakeStorageActivity
 import com.ssac.ah_jeom.src.main.locker.models.GetLockerResponse
 import com.ssac.ah_jeom.src.main.locker.myImage.MyImageActivity
-import com.ssac.ah_jeom.src.main.subscribe.SubscribeService
 import com.ssac.ah_jeom.src.profile.ProfileActivity
 import com.ssac.ah_jeom.src.profile.myStorage.MyStorageActivity
 import com.ssac.ah_jeom.src.search.SearchActivity
@@ -51,6 +51,15 @@ class LockerFragment : Fragment(), LockerFragmentView {
 
         binding!!.fragmentLockerProfileButton.setOnClickListener {
             val intent = Intent(requireActivity(), ProfileActivity::class.java)
+            startActivity(intent)
+            (activity as MainActivity).overridePendingTransition(
+                R.anim.activity_fade_in,
+                R.anim.activity_fade_out
+            )
+        }
+
+        binding!!.activityArtDetailDownloadButton.setOnClickListener {
+            val intent = Intent(requireActivity(), MakeStorageActivity::class.java)
             startActivity(intent)
             (activity as MainActivity).overridePendingTransition(
                 R.anim.activity_fade_in,
