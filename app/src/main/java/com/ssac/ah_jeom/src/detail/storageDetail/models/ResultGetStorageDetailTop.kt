@@ -10,5 +10,7 @@ data class ResultGetStorageDetailTop(
     @SerializedName("heart") val heart: Int,
     @SerializedName("save") val save: Int,
     @SerializedName("nickname") val nickname: String,
+    @SerializedName("store") val store: Int, //옅보기저장했는지여부(1이면저장, 0이면저장안함)
+    @SerializedName("likes") val likes: Int, //좋아요눌렀는지여부(1이면좋아요, 0이면좋아요안함)
     @SerializedName("cs") val cs: String
 )

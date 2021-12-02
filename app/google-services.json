@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "834079192054",
+    "project_id": "ah-jeom",
+    "storage_bucket": "ah-jeom.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:834079192054:android:e8d062ff8b4b87a3070dd7",
+        "android_client_info": {
+          "package_name": "com.ssac.ah_jeom"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "834079192054-268jmaossrluv1otlrbrpota64s249f9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ssac.ah_jeom",
+            "certificate_hash": "a06dd382ec7857fb526f33f456e31e358e3b9b4a"
+          }
+        },
+        {
+          "client_id": "834079192054-evavchqkoe7pt6dqjl7365j92lj740dr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCtxHFUTGH02ChkSdahehtfnk9_1lYjBM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "834079192054-evavchqkoe7pt6dqjl7365j92lj740dr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

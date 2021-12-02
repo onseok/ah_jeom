@@ -191,6 +191,7 @@ class ArtistDetailActivity : BaseActivity<ActivityArtistDetailBinding>(ActivityA
 
 
             //mid
+            data.clear()
             response.result.mid.forEach {
                 data.add(ArtistDetailArtData(it.img))
             }
@@ -204,6 +205,7 @@ class ArtistDetailActivity : BaseActivity<ActivityArtistDetailBinding>(ActivityA
             }
             else {
                 hasReview = true
+                reviewData.clear()
                 binding.activityArtistDetailReviewTextNone.visibility = View.GONE
                 response.result.bot?.forEach {
                     reviewData.add(ArtistDetailReview(it.caption))

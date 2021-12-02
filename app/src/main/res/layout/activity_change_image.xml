@@ -141,7 +141,7 @@
             android:textColor="@color/main_black"
             android:fontFamily="@font/roboto_bold"
             android:textSize="18sp"
-            android:text="저장하기"
+            android:text="완료"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

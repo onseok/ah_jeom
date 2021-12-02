@@ -9,6 +9,7 @@ import com.ssac.ah_jeom.databinding.ActivityMyStorageBinding
 import com.ssac.ah_jeom.src.profile.myStorage.adapter.MyStorageRecyclerAdapter
 import com.ssac.ah_jeom.src.profile.myStorage.models.GetMyStorageResponse
 import com.ssac.ah_jeom.src.profile.myStorage.models.MyStorageRecyclerData
+import com.ssac.ah_jeom.src.profile.myStorage.models.PatchMyStorageResponse
 
 class MyStorageActivity : BaseActivity<ActivityMyStorageBinding>(ActivityMyStorageBinding::inflate), MyStorageActivityView {
 
@@ -51,6 +52,7 @@ class MyStorageActivity : BaseActivity<ActivityMyStorageBinding>(ActivityMyStora
             binding.activityMyStorageNoItemText.visibility = View.INVISIBLE
             binding.activityMyStorageRecyclerView.visibility = View.VISIBLE
 
+            data.clear()
             if (response.result.storage.size != 0) {
                 binding.activityMyStorageNoItemText.visibility = View.INVISIBLE
                 binding.activityMyStorageRecyclerView.visibility = View.VISIBLE
@@ -69,4 +71,10 @@ class MyStorageActivity : BaseActivity<ActivityMyStorageBinding>(ActivityMyStora
     override fun onGetMyStorageFailure(message: String) {
         showCustomToast("오류 : $message")
     }
+
+    override fun onResume() {
+        super.onResume()
+        MyStorageService(this).tryGetMyStorage(cursor)
+    }
+
 }

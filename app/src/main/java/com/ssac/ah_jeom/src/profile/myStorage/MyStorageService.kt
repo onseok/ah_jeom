@@ -2,6 +2,7 @@ package com.ssac.ah_jeom.src.profile.myStorage
 
 import com.ssac.ah_jeom.config.ApplicationClass
 import com.ssac.ah_jeom.src.profile.myStorage.models.GetMyStorageResponse
+import com.ssac.ah_jeom.src.profile.myStorage.models.PatchMyStorageResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,5 +26,7 @@ class MyStorageService(val view: MyStorageActivityView) {
             }
         })
     }
+
+
 
 }

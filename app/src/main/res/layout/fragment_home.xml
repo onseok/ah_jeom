@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_marginTop="38dp"
     android:layout_height="match_parent"
+    android:layout_marginTop="38dp"
     android:background="@color/main_black">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -147,7 +147,7 @@
                 android:layout_height="40dp"
                 android:background="@drawable/background_white_top_radius"
                 android:backgroundTint="@color/main_black"
-                android:translationY="-5dp"
+                android:translationY="-15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/fragment_home_banner_nested_scrollable_host" />
@@ -351,6 +351,35 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/fragment_home_keyword_text" />
 
+            <!-- 캐릭터 이미지 -->
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/fragment_home_main_character_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="130dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_home_character_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fragment_home_keyword_frame_layout" />
+
+            <TextView
+                android:id="@+id/fragment_home_main_character_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/roboto_medium"
+                android:gravity="center"
+                android:letterSpacing="0.01"
+                android:lineSpacingExtra="10sp"
+                android:text="다양한 활동으로 나만의\n캐릭터 전시장을 꾸며 보세요!"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fragment_home_main_character_image" />
+
             <!-- 최고의 아티스트 -->
 
             <TextView
@@ -358,13 +387,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="28dp"
                 android:layout_marginStart="28dp"
-                android:layout_marginTop="80dp"
+                android:layout_marginTop="130dp"
                 android:fontFamily="@font/roboto_bold"
                 android:text="최고의 아티스트"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/fragment_home_keyword_frame_layout" />
+                app:layout_constraintTop_toBottomOf="@id/fragment_home_main_character_text" />
 
             <com.ssac.ah_jeom.util.NestedScrollableHost
                 android:id="@+id/fragment_home_best_artist_nested_scrollable_host"

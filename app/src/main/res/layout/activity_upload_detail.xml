@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_black">
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/activity_upload_detail_back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/transparent"
+        android:src="@drawable/ic_back"
+        android:tint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/activity_upload_detail_complete_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="완료"
+        android:textColor="@color/util_blue"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@id/activity_upload_detail_back_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/activity_upload_detail_back_button" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_upload_detail_back_button">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/activity_upload_detail_card_view"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_marginTop="50dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/activity_upload_detail_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_image" />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/activity_upload_detail_title_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="60dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="작품 제목"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_upload_detail_card_view" />
+
+            <EditText
+                android:id="@+id/activity_upload_detail_title_edit_text"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/white_button_background"
+                android:enabled="true"
+                android:fitsSystemWindows="true"
+                android:focusable="true"
+                android:fontFamily="@font/roboto_medium"
+                android:gravity="top"
+                android:hint="작품 제목을 입력해주세요."
+                android:inputType="text"
+                android:padding="15dp"
+                android:paddingTop="15dp"
+                android:textColor="@color/box_border"
+                android:textColorHint="#838383"
+                android:textCursorDrawable="@drawable/color_cursor"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_upload_detail_title_text"
+                app:theme="@style/EditTextStyle" />
+
+            <TextView
+                android:id="@+id/activity_upload_detail_explanation_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="작품 설명"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_upload_detail_title_edit_text" />
+
+            <EditText
+                android:id="@+id/activity_upload_detail_explanation_edit_text"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/white_button_background"
+                android:enabled="true"
+                android:fitsSystemWindows="true"
+                android:focusable="true"
+                android:fontFamily="@font/roboto_medium"
+                android:gravity="top"
+                android:hint="작품 설명을 입력해주세요."
+                android:inputType="textMultiLine"
+                android:padding="15dp"
+                android:paddingTop="15dp"
+                android:textColor="@color/box_border"
+                android:textColorHint="#838383"
+                android:textCursorDrawable="@drawable/color_cursor"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_upload_detail_explanation_text"
+                app:theme="@style/EditTextStyle" />
+
+            <TextView
+                android:id="@+id/activity_upload_detail_more_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="작품 세부사항"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_upload_detail_explanation_edit_text" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/activity_upload_detail_interests_layout"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/white_button_background"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_upload_detail_more_text">
+
+                <TextView
+                    android:id="@+id/activity_upload_detail_interests_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="작품 분야를 선택하세요."
+                    android:textColor="@color/main_black"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:backgroundTint="@color/transparent"
+                    android:src="@drawable/ic_down"
+                    android:tint="@color/main_black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/activity_upload_detail_keyword_layout"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/white_button_background"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_upload_detail_interests_layout">
+
+                <TextView
+                    android:id="@+id/activity_upload_detail_keyword_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="작품 키워드를 선택하세요."
+                    android:textColor="@color/main_black"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:backgroundTint="@color/transparent"
+                    android:src="@drawable/ic_down"
+                    android:tint="@color/main_black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/activity_upload_detail_price_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="판매 가격"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_upload_detail_keyword_layout" />
+
+            <EditText
+                android:id="@+id/activity_upload_detail_price_edit_text"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/white_button_background"
+                android:enabled="true"
+                android:fitsSystemWindows="true"
+                android:focusable="true"
+                android:fontFamily="@font/roboto_medium"
+                android:gravity="top"
+                android:hint="판매 가격을 입력해주세요. (단위 : 원)"
+                android:inputType="number"
+                android:padding="15dp"
+                android:paddingTop="15dp"
+                android:textColor="@color/box_border"
+                android:textColorHint="#838383"
+                android:textCursorDrawable="@drawable/color_cursor"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_upload_detail_price_text"
+                app:theme="@style/EditTextStyle" />
+
+            <TextView
+                android:id="@+id/activity_upload_detail_link_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="판매 링크"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_upload_detail_price_edit_text" />
+
+            <EditText
+                android:id="@+id/activity_upload_detail_link_edit_text"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/white_button_background"
+                android:enabled="true"
+                android:fitsSystemWindows="true"
+                android:focusable="true"
+                android:fontFamily="@font/roboto_medium"
+                android:gravity="top"
+                android:hint="작품 판매 사이트 / SNS 링크를 붙여 넣어주세요."
+                android:inputType="number"
+                android:padding="15dp"
+                android:paddingTop="15dp"
+                android:textColor="@color/box_border"
+                android:textColorHint="#838383"
+                android:textCursorDrawable="@drawable/color_cursor"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_upload_detail_link_text"
+                app:theme="@style/EditTextStyle" />
+            
+            <View
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@id/activity_upload_detail_link_edit_text"
+                android:background="@color/main_black"
+                android:layout_height="50dp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

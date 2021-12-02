@@ -28,6 +28,7 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding>(ActivityProfileBind
 
         // 내 보관함
         binding.activityProfileMyStorageLayout.setOnClickListener {
+
             startActivity(Intent(this, MyStorageActivity::class.java))
             overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
         }

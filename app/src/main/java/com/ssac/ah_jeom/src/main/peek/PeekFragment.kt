@@ -74,9 +74,9 @@ class PeekFragment : Fragment(), PeekFragmentView {
     }
 
     private fun setIllustrationImageData() {
-        illustrationData.add(PeekMainViewpagerData(R.drawable.fragment_peek_best_storage))
-        illustrationData.add(PeekMainViewpagerData(R.drawable.fragment_peek_new_storage))
-        illustrationData.add(PeekMainViewpagerData(R.drawable.fragment_peek_soaring_storage))
+        illustrationData.add(PeekMainViewpagerData(R.drawable.fragment_peek_best_storage, "인기 메이커", "베스트 보관함 가기"))
+        illustrationData.add(PeekMainViewpagerData(R.drawable.fragment_peek_new_storage, "새싹이 퐁퐁퐁", "NEW 보관함 가기"))
+        illustrationData.add(PeekMainViewpagerData(R.drawable.fragment_peek_soaring_storage, "슈퍼맨 빠워", "급상승 보관함 가기"))
     }
 
     override fun onDestroyView() {

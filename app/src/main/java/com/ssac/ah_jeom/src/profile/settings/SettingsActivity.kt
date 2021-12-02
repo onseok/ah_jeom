@@ -17,9 +17,10 @@ import com.ssac.ah_jeom.src.profile.settings.changeImage.ChangeImageActivity
 import com.ssac.ah_jeom.src.profile.settings.changeIntroduce.ChangeIntroduceActivity
 import com.ssac.ah_jeom.src.profile.settings.changeName.ChangeNameActivity
 import com.ssac.ah_jeom.src.profile.settings.manual.ManualActivity
+import com.ssac.ah_jeom.src.profile.settings.models.GetSettingsResponse
 import com.ssac.ah_jeom.src.splash.SplashActivity
 
-class SettingsActivity : BaseActivity<ActivitySettingsBinding>(ActivitySettingsBinding::inflate) {
+class SettingsActivity : BaseActivity<ActivitySettingsBinding>(ActivitySettingsBinding::inflate), SettingsActivityView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,11 +53,7 @@ class SettingsActivity : BaseActivity<ActivitySettingsBinding>(ActivitySettingsB
             logoutDialog()
         }
 
-//        binding.activitySettingsProfileName.text = intent.getStringExtra("nickname")
-//        binding.activitySettingsStageText.text = intent.getStringExtra("gName")
-//        Glide.with(this).load(intent.getStringExtra("profileImage")).circleCrop().into(binding.activitySettingsProfileImage)
-//        detectIcon(intent.getIntExtra("gradeImage", 0))
-//        Glide.with(this).load(intent.getIntExtra("gradeImage", 0)).into(binding.activitySettingsProfileStageImage)
+        SettingsService(this).tryGetSettings()
     }
 
     override fun onBackPressed() {
@@ -125,5 +122,23 @@ class SettingsActivity : BaseActivity<ActivitySettingsBinding>(ActivitySettingsB
         }
 
         dialog.show()
+    }
+
+    override fun onGetSettingsSuccess(response: GetSettingsResponse) {
+       if(response.isSuccess) {
+           Glide.with(this).load(response.result[0].profile).circleCrop().into(binding.activitySettingsProfileImage)
+           binding.activitySettingsProfileName.text = response.result[0].nickname
+           binding.activitySettingsStageText.text = response.result[0].gName
+           Glide.with(this).load(detectIcon(response.result[0].grade)).circleCrop().into(binding.activitySettingsProfileStageImage)
+       }
+    }
+
+    override fun onGetSettingsFailure(message: String) {
+        showCustomToast("오류 : $message")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        SettingsService(this).tryGetSettings()
     }
 }

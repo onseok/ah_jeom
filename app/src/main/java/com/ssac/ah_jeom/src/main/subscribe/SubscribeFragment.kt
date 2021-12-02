@@ -111,9 +111,9 @@ class SubscribeFragment : Fragment(), SubscribeFragmentView {
     }
 
     private fun setIllustrationImageData() {
-        illustrationData.add(SubscribeIllustrationData(R.drawable.best_artist_illustration_image))
-        illustrationData.add(SubscribeIllustrationData(R.drawable.recently_artist_illustration_image))
-        illustrationData.add(SubscribeIllustrationData(R.drawable.soaring_artist_illustration_image))
+        illustrationData.add(SubscribeIllustrationData(R.drawable.best_artist_illustration_image, "인싸 작가요", "베스트 작가 보기"))
+        illustrationData.add(SubscribeIllustrationData(R.drawable.recently_artist_illustration_image, "응애 작가요", "최근 작가 보기"))
+        illustrationData.add(SubscribeIllustrationData(R.drawable.soaring_artist_illustration_image, "시금치 빠워", "급상승 작가 보기"))
     }
 
     override fun onGetSubscribeSuccess(response: GetSubscribeResponse) {

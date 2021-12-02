@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="308K회 다운"
+                tools:text="308K회 다운"
                 android:textColor="#B5B5B5"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@id/activity_storage_detail_main_title_text"
@@ -97,33 +97,59 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:textSize="14sp"
+                android:fontFamily="@font/roboto_bold"
                 app:layout_constraintBottom_toBottomOf="@id/activity_storage_detail_profile_image"
                 app:layout_constraintStart_toStartOf="@id/activity_storage_detail_profile_name"
                 tools:text="좋아요 86.6K개" />
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/activity_storage_detail_save_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_marginEnd="28dp"
                 android:backgroundTint="@color/transparent"
-                android:src="@drawable/ic_save_outlined"
+                android:src="@drawable/ic_save_false"
+                app:layout_constraintBottom_toBottomOf="@id/activity_storage_detail_profile_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/activity_storage_detail_profile_image" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/activity_storage_detail_save_button_true"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="28dp"
+                android:backgroundTint="@color/transparent"
+                android:src="@drawable/ic_save_true"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/activity_storage_detail_profile_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/activity_storage_detail_profile_image"
+                tools:visibility="visible" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/activity_storage_detail_like_button"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="90dp"
+                android:backgroundTint="@color/transparent"
+                android:src="@drawable/ic_heart_false"
                 android:tint="@color/white"
                 app:layout_constraintBottom_toBottomOf="@id/activity_storage_detail_profile_image"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/activity_storage_detail_profile_image" />
 
             <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/activity_storage_detail_like_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="28dp"
+                android:id="@+id/activity_storage_detail_like_button_true"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="90dp"
                 android:backgroundTint="@color/transparent"
-                android:src="@drawable/ic_favorite_border"
-                android:tint="@color/white"
+                android:src="@drawable/ic_heart_true"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@id/activity_storage_detail_profile_image"
-                app:layout_constraintEnd_toStartOf="@id/activity_storage_detail_save_button"
-                app:layout_constraintTop_toTopOf="@id/activity_storage_detail_profile_image" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/activity_storage_detail_profile_image"
+                tools:visibility="visible" />
 
             <View
                 android:id="@+id/activity_storage_detail_border"
@@ -155,7 +181,8 @@
                 android:fontFamily="@font/roboto_bold"
                 android:textColor="#b5b5b5"
                 android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="@id/activity_storage_detail_border"
+                android:layout_marginEnd="28dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/activity_storage_detail_caption_title_text"
                 app:layout_constraintTop_toBottomOf="@id/activity_storage_detail_caption_title_text"
                 tools:text="색이 쨍한 것들을 보면 사람들은 눈이 아프다고 하지만 하늘이나 자연의 요소가 섞여 있으면 어느샌가 익숙해지고 보기 편해지는 명랑한 색이예요! 난 이 익숙해지는 순간이 좋습니다." />
@@ -173,5 +200,125 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/activity_storage_detail_like_snack_bar"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/snackbar_background"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="invisible">
+
+        <TextView
+            android:id="@+id/activity_storage_detail_like_snack_bar_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="좋아요 목록에 추가됐어요."
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/activity_storage_detail_like_snack_bar_delete"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/snackbar_background"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="invisible">
+
+        <TextView
+            android:id="@+id/activity_storage_detail_like_snack_bar_tex_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="좋아요 목록에서 제거됐어요."
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/activity_storage_detail_save_snack_bar"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/snackbar_background"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="invisible">
+
+        <TextView
+            android:id="@+id/activity_storage_detail_save_snack_bar_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="보관함에 저장됐어요."
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/activity_storage_detail_save_snack_bar_delete"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/snackbar_background"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="invisible">
+
+        <TextView
+            android:id="@+id/activity_storage_detail_save_snack_bar_tex_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="보관함 저장 목록에서 제거됐어요."
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

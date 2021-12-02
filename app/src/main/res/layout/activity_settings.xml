@@ -26,7 +26,7 @@
         android:layout_marginStart="18dp"
         android:layout_marginTop="19dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/activity_profile_image_temp"
+        tools:src="@drawable/activity_profile_image_temp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/activity_settings_exit_button" />
 
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:fontFamily="@font/roboto_bold"
-        android:text="김슬기"
+        tools:text="김슬기"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@id/activity_settings_profile_image"
@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="@font/roboto_medium"
-            android:text="골드아식"
+            tools:text="골드아식"
             android:textColor="@color/white"
             android:textSize="16sp" />
 
@@ -71,7 +71,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/ic_gold_icon"
+        tools:src="@drawable/ic_gold_icon"
         app:layout_constraintBottom_toBottomOf="@id/activity_settings_stage_layout"
         app:layout_constraintStart_toEndOf="@id/activity_settings_stage_layout"
         app:layout_constraintTop_toTopOf="@id/activity_settings_stage_layout" />

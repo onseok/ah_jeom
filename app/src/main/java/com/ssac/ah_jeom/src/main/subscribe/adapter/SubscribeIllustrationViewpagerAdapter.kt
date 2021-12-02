@@ -64,6 +64,8 @@ class SubscribeIllustrationViewpagerAdapter(private val context: Context) :
         fun setData(data: SubscribeIllustrationData) {
 
             binding.subscribeCharacterImageView.setImageResource(data.subscribeIllustrationData)
+            binding.subscribeCharacterFirstText.text = data.firstText
+            binding.subscribeCharacterSecondText.text = data.secondText
 
             val pos = adapterPosition
             if (pos != RecyclerView.NO_POSITION) {

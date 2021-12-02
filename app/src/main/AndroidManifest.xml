@@ -4,6 +4,10 @@
     package="com.ssac.ah_jeom">
     <!-- 인터넷 사용 권한 설정 -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 핸드폰 갤러리 접근 허용 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" android:protectionLevel="signature"/>
 
     <application
         android:name=".config.ApplicationClass"
@@ -14,6 +18,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ah_jeom"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".src.detail.uploadDetail.UploadDetailActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".src.detail.reviewDetail.ReviewDetailActivity"
             android:exported="true"

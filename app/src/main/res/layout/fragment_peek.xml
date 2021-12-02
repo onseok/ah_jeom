@@ -73,11 +73,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="18dp"
                 android:fitsSystemWindows="true"
-                tools:text="&quot;매일 하루가 파티같아!&quot;"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="&quot;매일 하루가 파티같아!&quot;" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/fragment_peek_main_profile_image"
@@ -94,12 +94,12 @@
                 android:layout_marginStart="16dp"
                 android:fitsSystemWindows="true"
                 android:fontFamily="@font/roboto_bold"
-                tools:text="Shin jiin"
                 android:textColor="@color/box_border"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@id/fragment_peek_main_profile_image"
                 app:layout_constraintStart_toEndOf="@id/fragment_peek_main_profile_image"
-                app:layout_constraintTop_toTopOf="@id/fragment_peek_main_profile_image" />
+                app:layout_constraintTop_toTopOf="@id/fragment_peek_main_profile_image"
+                tools:text="Shin jiin" />
 
             <TextView
                 android:id="@+id/fragment_peek_main_profile_download_number"
@@ -108,12 +108,12 @@
                 android:layout_marginStart="16dp"
                 android:fitsSystemWindows="true"
                 android:fontFamily="@font/roboto_bold"
-                tools:text="6.1K회 다운"
                 android:textColor="@color/box_border"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@id/fragment_peek_main_profile_name"
                 app:layout_constraintStart_toEndOf="@id/fragment_peek_main_profile_name"
-                app:layout_constraintTop_toTopOf="@id/fragment_peek_main_profile_name" />
+                app:layout_constraintTop_toTopOf="@id/fragment_peek_main_profile_name"
+                tools:text="6.1K회 다운" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/fragment_peek_main_badge_image"
@@ -124,7 +124,7 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_icon_badge"
                 app:layout_constraintBottom_toBottomOf="@id/fragment_peek_main_profile_image"
-                app:layout_constraintEnd_toEndOf="@id/fragment_peek_how_about_others_button"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/fragment_peek_main_title" />
 
             <!-- -->
@@ -141,24 +141,14 @@
                 app:layout_constraintStart_toStartOf="@id/fragment_peek_main_profile_image"
                 app:layout_constraintTop_toBottomOf="@id/fragment_peek_main_profile_image" />
 
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/fragment_peek_how_about_others_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="18dp"
-                android:backgroundTint="@color/transparent"
-                android:src="@drawable/ic_right"
-                android:tint="@color/white"
-                app:layout_constraintBottom_toBottomOf="@id/fragment_peek_how_about_others_text"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/fragment_peek_how_about_others_text" />
 
             <com.ssac.ah_jeom.util.NestedScrollableHost
                 android:id="@+id/fragment_peek_main_nested_scrollable_host"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="39dp"
-                app:layout_constraintEnd_toEndOf="@id/fragment_peek_how_about_others_button"
+                android:layout_marginEnd="18dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/fragment_peek_how_about_others_text"
                 app:layout_constraintTop_toBottomOf="@id/fragment_peek_how_about_others_text">
 
@@ -180,7 +170,7 @@
                 android:text="내가 저장한 옅보기"
                 android:textColor="@color/white"
                 android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@id/fragment_peek_how_about_others_text"
+                app:layout_constraintStart_toStartOf="@id/fragment_peek_main_nested_scrollable_host"
                 app:layout_constraintTop_toBottomOf="@id/fragment_peek_main_nested_scrollable_host" />
 
             <androidx.appcompat.widget.AppCompatImageButton
