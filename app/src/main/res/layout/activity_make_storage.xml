@@ -98,6 +98,7 @@
                 android:fontFamily="@font/roboto_bold"
                 android:gravity="center"
                 android:text="대표 이미지는\n랜덤으로 설정됩니다."
+                android:lineSpacingExtra="5sp"
                 android:textColor="@color/white"
                 android:textSize="13sp"
                 app:layout_constraintEnd_toEndOf="parent"

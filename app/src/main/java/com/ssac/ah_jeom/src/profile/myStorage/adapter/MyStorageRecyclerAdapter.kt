@@ -18,10 +18,8 @@ import com.ssac.ah_jeom.R
 import com.ssac.ah_jeom.config.ApplicationClass
 import com.ssac.ah_jeom.databinding.*
 import com.ssac.ah_jeom.src.detail.storageDetail.StorageDetailActivity
-import com.ssac.ah_jeom.src.profile.myStorage.DeleteStorageActivityView
-import com.ssac.ah_jeom.src.profile.myStorage.DeleteStorageService
-import com.ssac.ah_jeom.src.profile.myStorage.MyStorageActivity
-import com.ssac.ah_jeom.src.profile.myStorage.MyStorageService
+import com.ssac.ah_jeom.src.main.MainActivity
+import com.ssac.ah_jeom.src.profile.myStorage.*
 import com.ssac.ah_jeom.src.profile.myStorage.models.GetMyStorageResponse
 import com.ssac.ah_jeom.src.profile.myStorage.models.MyStorageRecyclerData
 import com.ssac.ah_jeom.src.profile.myStorage.models.PatchMyStorageResponse
@@ -133,7 +131,6 @@ class MyStorageRecyclerAdapter(private val context: Context, response: GetMyStor
 
     override fun onPatchMyStorageSuccess(response: PatchMyStorageResponse) {
         Toast.makeText(context, response.message, Toast.LENGTH_SHORT).show()
-
     }
 
     override fun onPatchMyStorageFailure(message: String) {

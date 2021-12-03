@@ -70,6 +70,15 @@ class BestStorageRecyclerAdapter(private val context: Context, response: GetBest
             binding.activityBestStorageArtTitleText.text = data.artTitle
             binding.activityBestStorageLikedNumberText.text = data.artLikeNumber
 
+            if(data.isLiked) {
+                binding.activityBestStorageLikeButtonTrue.visibility = View.VISIBLE
+                binding.activityBestStorageLikeButton.visibility = View.GONE
+            }
+            else if (!data.isLiked) {
+                binding.activityBestStorageLikeButtonTrue.visibility = View.GONE
+                binding.activityBestStorageLikeButton.visibility = View.VISIBLE
+            }
+
             val pos = adapterPosition
             if (pos != RecyclerView.NO_POSITION) {
                 itemView.setOnClickListener {

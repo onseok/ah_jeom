@@ -71,6 +71,15 @@ class NewStorageRecyclerAdapter(private val context: Context, response: GetNewSt
             binding.activityNewStorageArtTitleText.text = data.artTitle
             binding.activityNewStorageLikedNumberText.text = data.artLikeNumber
 
+            if(data.isLiked) {
+                binding.activityNewStorageLikeButtonTrue.visibility = View.VISIBLE
+                binding.activityNewStorageLikeButton.visibility = View.GONE
+            }
+            else if (!data.isLiked) {
+                binding.activityNewStorageLikeButtonTrue.visibility = View.GONE
+                binding.activityNewStorageLikeButton.visibility = View.VISIBLE
+            }
+
             val pos = adapterPosition
             if (pos != RecyclerView.NO_POSITION) {
                 itemView.setOnClickListener {

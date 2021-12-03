@@ -7,5 +7,5 @@ data class BestStorageRecyclerData (
     var image: String,
     var artTitle: String,
     var artLikeNumber: String,
-//    var isLiked: Boolean
+    var isLiked: Boolean
 )

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="154dp"
+    android:layout_height="154dp"
+    android:layout_margin="20dp"
+    app:cardCornerRadius="6dp"
+    app:cardElevation="0dp">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/activity_select_image_recycler_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/artist_art_recycler_item_1_temp" />
+
+    <View
+        android:id="@+id/activity_select_image_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/image_selected_background"
+        android:visibility="invisible"
+        android:alpha="0.7"
+        tools:visibility="visible" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/activity_select_check_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="end"
+        android:layout_marginTop="10dp"
+        android:visibility="invisible"
+        tools:visibility="visible"
+        android:layout_marginEnd="10dp"
+        android:src="@drawable/ic_select"
+        android:tint="@color/util_blue" />
+
+</androidx.cardview.widget.CardView>

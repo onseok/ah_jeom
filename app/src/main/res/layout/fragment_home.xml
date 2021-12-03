@@ -236,13 +236,13 @@
                     app:layout_constraintTop_toBottomOf="@id/fragment_home_interests_update_layout_divider"
                     tools:background="@color/white" />
 
-
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <FrameLayout
                 android:id="@+id/fragment_home_interests_frame_layout"
                 android:layout_width="0dp"
-                android:layout_height="270dp"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="1:1"
                 android:layout_marginStart="28dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="28dp"
@@ -342,7 +342,8 @@
             <FrameLayout
                 android:id="@+id/fragment_home_keyword_frame_layout"
                 android:layout_width="0dp"
-                android:layout_height="270dp"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="1:1"
                 android:layout_marginStart="28dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="28dp"
@@ -398,7 +399,8 @@
             <com.ssac.ah_jeom.util.NestedScrollableHost
                 android:id="@+id/fragment_home_best_artist_nested_scrollable_host"
                 android:layout_width="0dp"
-                android:layout_height="346dp"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="1:1"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="28dp"
                 android:background="@drawable/black_border"
@@ -444,7 +446,8 @@
             <com.ssac.ah_jeom.util.NestedScrollableHost
                 android:id="@+id/fragment_home_new_artist_nested_scrollable_host"
                 android:layout_width="0dp"
-                android:layout_height="346dp"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="1:1"
                 android:layout_marginStart="28dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="28dp"

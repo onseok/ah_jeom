@@ -46,8 +46,11 @@ class BestStorageActivity : BaseActivity<ActivityBestStorageBinding>(ActivityBes
 
     override fun onGetBestStorageSuccess(response: GetBestStorageResponse) {
         if (response.isSuccess) {
+            data.clear()
             response.result.best.forEach {
-                data.add(BestStorageRecyclerData(it.profile, it.nickname, "${it.save}회 다운", it.img, it.title, "좋아요 ${it.heart}개"))
+                data.add(BestStorageRecyclerData(it.profile, it.nickname, "${it.save}회 다운", it.img, it.title, "좋아요 ${it.heart}개",
+                    it.likes == 1
+                ))
             }
         }
         setBestStorageRecyclerView(response)
@@ -55,5 +58,10 @@ class BestStorageActivity : BaseActivity<ActivityBestStorageBinding>(ActivityBes
 
     override fun onGetBestStorageFailure(message: String) {
         showCustomToast("오류 : $message")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        BestStorageService(this).tryGetBestStorage(cursor)
     }
 }

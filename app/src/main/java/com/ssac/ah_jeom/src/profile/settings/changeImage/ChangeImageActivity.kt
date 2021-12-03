@@ -124,7 +124,7 @@ class ChangeImageActivity :
             .child(fileName)    //기본 참조 위치/images/userId/${fileName}
         //이미지 파일 업로드
         imagesRef.putFile(uri!!).addOnSuccessListener {
-            showCustomToast("업로드 성공!")
+//            showCustomToast("업로드 성공!")
             // 이미지 파일 가져오기
             imagesRef.downloadUrl.addOnCompleteListener { task ->
                 if (task.isSuccessful) {

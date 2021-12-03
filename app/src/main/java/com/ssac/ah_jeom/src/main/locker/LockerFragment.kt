@@ -152,4 +152,5 @@ class LockerFragment : Fragment(), LockerFragmentView {
     override fun onGetLockerFailure(message: String) {
         Toast.makeText(context, "오류 : $message", Toast.LENGTH_SHORT).show()
     }
+    
 }

@@ -10,5 +10,6 @@ data class ResultGetNewStorageNew(
     @SerializedName("save") val save: Int,
     @SerializedName("profile") val profile: String,
     @SerializedName("nickname") val nickname: String,
-    @SerializedName("cs") val cs: String
+    @SerializedName("cs") val cs: String,
+    @SerializedName("likes") val likes: Int // 좋아요 했으면 1, 안했으면 0
 )

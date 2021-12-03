@@ -20,6 +20,10 @@
         android:theme="@style/Theme.Ah_jeom"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".src.main.locker.makeStorage.selectImage.SelectImageActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".src.main.locker.makeStorage.MakeStorageActivity"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />

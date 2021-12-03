@@ -84,8 +84,6 @@ class InterestsRecyclerAdapter(private val context: Context) :
                         judgeNextButton()
                     }
 
-                    Log.d("isClicked", INTERESTS_NEXT_BUTTON.toString())
-
                 }
             }
         }
