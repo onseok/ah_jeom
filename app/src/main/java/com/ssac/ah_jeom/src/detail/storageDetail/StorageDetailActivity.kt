@@ -75,6 +75,7 @@ class StorageDetailActivity : BaseActivity<ActivityStorageDetailBinding>(Activit
         }
 
         StorageDetailService(this).tryGetStorageDetail(storageId)
+        showLoadingDialog(this)
     }
 
     override fun onBackPressed() {
@@ -149,6 +150,7 @@ class StorageDetailActivity : BaseActivity<ActivityStorageDetailBinding>(Activit
     }
 
     override fun onGetStorageDetailSuccess(response: GetStorageDetailResponse) {
+        dismissLoadingDialog()
         if (response.isSuccess) {
             // top
             Glide.with(this).load(response.result.top[0].img).into(binding.activityStorageDetailMainImage)

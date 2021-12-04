@@ -1,6 +1,8 @@
 package com.ssac.ah_jeom.src.detail.uploadDetail
 
+import android.R.attr
 import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.ImageDecoder
 import android.net.Uri
@@ -20,14 +22,29 @@ import com.ssac.ah_jeom.config.BaseActivity
 import com.ssac.ah_jeom.databinding.ActivityUploadDetailBinding
 import java.text.SimpleDateFormat
 import java.util.*
+import android.R.attr.checked
 
-class UploadDetailActivity : BaseActivity<ActivityUploadDetailBinding>(ActivityUploadDetailBinding::inflate) {
+import android.content.DialogInterface.OnMultiChoiceClickListener
+import kotlin.collections.ArrayList
+
+
+class UploadDetailActivity :
+    BaseActivity<ActivityUploadDetailBinding>(ActivityUploadDetailBinding::inflate) {
 
     var interestsId: Int = 0
     var keywordId: Int = 0
     val userKey = ApplicationClass.sSharedPreferences.getInt("userId", 0)
     var finalUri: Uri? = null
     var downloadUri: Uri? = null
+
+    private var interestsItemsTemp = ArrayList<Int>()
+    private var interestsItems = ArrayList<Int>()
+    private var interestsChecked = ArrayList<Boolean>()
+
+
+    private var keywordItemsTemp = ArrayList<Int>()
+    private var keywordItems = ArrayList<Int>()
+    private var keywordsChecked = ArrayList<Boolean>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +53,14 @@ class UploadDetailActivity : BaseActivity<ActivityUploadDetailBinding>(ActivityU
             onBackPressed()
             showCustomToast(downloadUri.toString())
         }
+
+        interestsItemsTemp.clear()
+        interestsItems.clear()
+        interestsChecked.clear()
+
+        keywordItemsTemp.clear()
+        keywordItems.clear()
+        keywordsChecked.clear()
 
         // 작품 분야 설정
         binding.activityUploadDetailInterestsLayout.setOnClickListener {
@@ -53,14 +78,62 @@ class UploadDetailActivity : BaseActivity<ActivityUploadDetailBinding>(ActivityU
                 "3D", //11
                 "조형", //12
             )
-            AlertDialog.Builder(this)
-                .setItems(items) { _, which ->
-                    binding.activityUploadDetailInterestsText.text = "${items[which]}"
-                    interestsId = which + 1
+            var checked = booleanArrayOf(
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
+            )
+
+            var listener = DialogInterface.OnClickListener { _, which ->
+                interestsChecked.clear()
+                interestsItems.clear()
+                for (item in checked) {
+                    interestsChecked.add(item)
                 }
+                for (item in interestsItemsTemp) {
+                    interestsItems.add(item)
+                }
+                interestsItemsTemp.clear()
+            }
+
+            AlertDialog.Builder(this, R.style.MyAlertDialogStyle)
+                .setMultiChoiceItems(
+                    items,
+                    checked,
+                    object : DialogInterface.OnMultiChoiceClickListener {
+                        override fun onClick(
+                            dialog: DialogInterface?,
+                            which: Int,
+                            isChecked: Boolean
+                        ) {
+                            if (isChecked) {
+                                interestsItemsTemp.add(which + 1)
+                                checked[which] = true
+                            } else if (interestsItemsTemp.contains(which + 1)) {
+                                interestsItemsTemp.remove(which + 1)
+                                checked[which] = false
+                            }
+                        }
+                    })
+                .setPositiveButton("확인", listener)
+                .setNegativeButton("취소", null)
                 .show()
         }
-        
+
+        binding.activityUploadDetailMainTitleText.setOnClickListener {
+            showCustomToast(interestsChecked.toString())
+            showCustomToast(interestsItems.toString())
+        }
+
         // 작품 키워드 설정
         binding.activityUploadDetailKeywordLayout.setOnClickListener {
             val items = arrayOf(
@@ -80,14 +153,57 @@ class UploadDetailActivity : BaseActivity<ActivityUploadDetailBinding>(ActivityU
                 "짐승같은", //26
                 "신비로운" //27
             )
-            AlertDialog.Builder(this)
-                .setItems(items) { _, which ->
-                    binding.activityUploadDetailKeywordText.text = "${items[which]}"
-                    keywordId = which + 13
+            var checked = booleanArrayOf(
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
+            )
+            var listener = DialogInterface.OnClickListener { _, which ->
+                keywordsChecked.clear()
+                keywordItems.clear()
+                for (item in checked) {
+                    keywordsChecked.add(item)
                 }
+                for (item in keywordItemsTemp) {
+                    keywordItems.add(item)
+                }
+                keywordItemsTemp.clear()
+            }
+
+            AlertDialog.Builder(this, R.style.MyAlertDialogStyle)
+                .setMultiChoiceItems(
+                    items,
+                    checked,
+                    object : DialogInterface.OnMultiChoiceClickListener {
+                        override fun onClick(
+                            dialog: DialogInterface?,
+                            which: Int,
+                            isChecked: Boolean
+                        ) {
+                            if (isChecked) {
+                                keywordItems.add(which + 13)
+                            } else if (keywordItems.contains(which + 13)) {
+                                keywordItems.remove(which)
+                            }
+                        }
+                    })
+                .setPositiveButton("확인", listener)
+                .setNegativeButton("취소", null)
                 .show()
         }
-        
+
         // 갤러리에서 이미지 가져오기
         binding.activityUploadDetailImage.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View) {
@@ -108,32 +224,33 @@ class UploadDetailActivity : BaseActivity<ActivityUploadDetailBinding>(ActivityU
 
             var imageView: AppCompatImageView? = binding.activityUploadDetailImage
 
-            if(it.resultCode == RESULT_OK && it.data !=null) {
+            if (it.resultCode == RESULT_OK && it.data != null) {
                 var currentImageUri = it.data?.data
                 if (currentImageUri != null) {
                     finalUri = currentImageUri
                 }
                 try {
                     currentImageUri?.let {
-                        if(Build.VERSION.SDK_INT < 28) {
+                        if (Build.VERSION.SDK_INT < 28) {
                             val bitmap = MediaStore.Images.Media.getBitmap(
                                 this.contentResolver,
                                 currentImageUri
                             )
                             imageView?.setImageBitmap(bitmap)
                         } else {
-                            val source = ImageDecoder.createSource(this.contentResolver, currentImageUri)
+                            val source =
+                                ImageDecoder.createSource(this.contentResolver, currentImageUri)
                             val bitmap = ImageDecoder.decodeBitmap(source)
                             imageView?.setImageBitmap(bitmap)
                         }
                     }
-                }catch(e:Exception) {
+                } catch (e: Exception) {
                     e.printStackTrace()
                 }
-            } else if(it.resultCode == RESULT_CANCELED){
+            } else if (it.resultCode == RESULT_CANCELED) {
                 showCustomToast("사진 선택 취소")
-            }else{
-                Log.d("ActivityResult","something wrong")
+            } else {
+                Log.d("ActivityResult", "something wrong")
             }
         }
 

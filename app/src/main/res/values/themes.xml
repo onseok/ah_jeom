@@ -61,4 +61,10 @@
         <item name="android:textSelectHandle">@color/main_blue</item>
     </style>
 
+    <style name="MyAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/main_blue</item>
+        <item name="android:textColorPrimary">@color/main_black</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
 </resources>
