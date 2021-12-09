@@ -38,3 +38,5 @@
 
 # MAD scorecard
 ![summary](https://user-images.githubusercontent.com/76798309/145354472-b3acdeb7-d2f7-4114-97aa-dab266e0a3ab.png)
+![kotlin](https://user-images.githubusercontent.com/76798309/145389197-edf6b086-d288-4072-8981-8caf90223319.png)
+![jetpack](https://user-images.githubusercontent.com/76798309/145389203-03ecca3f-a2e1-4c5c-b896-63345b820eb3.png)
