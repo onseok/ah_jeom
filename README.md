@@ -12,5 +12,29 @@
 - 구글 플레이스토어 출시 예정 (21.12.18)
 
 
+# Tech stack & Open-source libraries
+## MVP Pattern
+## Jetpack
+- Databinding
+- Compose (will be upadated soon)
+
+## Network
+- Retrofit, OkHttp
+
+## Image Loading 
+- Glide
+
+## Image Upload
+- Firebase Storage
+
+## UI
+- Material Components
+
+## Report
+- Firebase Analytics
+- Firebase Crashlytics
+
+
+
 # MAD scorecard
 ![summary](https://user-images.githubusercontent.com/76798309/145354472-b3acdeb7-d2f7-4114-97aa-dab266e0a3ab.png)
