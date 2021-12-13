@@ -1,13 +1,20 @@
 package com.ssac.ah_jeom.src.detail.artistDetail
 
+import android.app.AlertDialog
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.os.Message
 import android.view.View
+import android.view.Window
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.widget.Button
+import android.widget.EditText
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
@@ -18,6 +25,8 @@ import com.ssac.ah_jeom.src.detail.artistDetail.adapter.ArtistDetailArtRecyclerA
 import com.ssac.ah_jeom.src.detail.artistDetail.adapter.ArtistDetailReviewAdapter
 import com.ssac.ah_jeom.src.detail.artistDetail.artistArt.ArtistArtActivity
 import com.ssac.ah_jeom.src.detail.artistDetail.artistReview.ArtistReviewActivity
+import com.ssac.ah_jeom.src.detail.artistDetail.artistReview.ReportReviewService
+import com.ssac.ah_jeom.src.detail.artistDetail.artistReview.models.ReportReviewRequest
 import com.ssac.ah_jeom.src.detail.artistDetail.models.*
 
 class ArtistDetailActivity : BaseActivity<ActivityArtistDetailBinding>(ActivityArtistDetailBinding::inflate), ArtistDetailActivityView {
@@ -25,6 +34,8 @@ class ArtistDetailActivity : BaseActivity<ActivityArtistDetailBinding>(ActivityA
     val data: MutableList<ArtistDetailArtData> = mutableListOf()
 
     private var globalArtistId = 0
+
+    private var reportNumber = 0
 
     private val snackBarOpen: Animation by lazy {
         AnimationUtils.loadAnimation(
@@ -85,6 +96,10 @@ class ArtistDetailActivity : BaseActivity<ActivityArtistDetailBinding>(ActivityA
                 val subscribeRequest = SubscribeRequest(artistId = artistId)
                 ArtistDetailService(this).tryPatchSubscribe(subscribeRequest)
             }
+        }
+
+        binding.activityArtistDetailReportText.setOnClickListener {
+            reportDialog(artistId)
         }
 
 
@@ -257,6 +272,65 @@ class ArtistDetailActivity : BaseActivity<ActivityArtistDetailBinding>(ActivityA
         return imageId
     }
 
+    private fun reportDialog(artistId: Int) {
+
+        val items = arrayOf(
+            "부적절한 닉네임",
+            "공격/비속어 등의 부적절한 비난 지속",
+            "게시물/리뷰 게시성 도배",
+            "개인 정보 침해",
+            "기타(사유 작성)"
+        )
+        var selectedItem: String? = null
+
+        val builder = AlertDialog.Builder(this, R.style.MyAlertDialogStyle)
+            .setTitle("계정 신고")
+            .setSingleChoiceItems(items, -1) { dialog, which ->
+                selectedItem = items[which]
+                reportNumber = which + 1
+            }
+            .setPositiveButton("신고하기") { dialog, which ->
+                if (reportNumber == 5) {
+                    reportWriteDialog(artistId)
+                }
+                else {
+                    val postReportArtistRequest = ReportArtistRequest(number = reportNumber, caption = null)
+                    ArtistDetailService(this).tryPostReportArtist(artistId, postReportArtistRequest)
+                }
+            }
+            .show()
+    }
+
+    private fun reportWriteDialog(artistId: Int) {
+        val dialog = Dialog(this)
+
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)   //타이틀바 제거
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT)) // 백그라운드 컬러 투명 (이걸 해줘야 background가 설정해준 모양으로 변함)
+        dialog.setContentView(R.layout.report_dialog_artist)
+        dialog.setCancelable(true)    // 다이얼로그외에 다른 화면을 눌렀을 때 나가는 것 허용
+
+        var reportArtistYesButton: Button? =
+            dialog.findViewById(R.id.report_artist_yes_button) // 버튼을 dialog에 연결
+        var reportArtistNoButton: Button? = dialog.findViewById(R.id.report_artist_no_button)
+
+
+        reportArtistYesButton?.setOnClickListener {
+            dialog.dismiss()
+
+            val caption : EditText = dialog.findViewById(R.id.report_dialog_artist_edit_text)
+
+            val postReportArtistRequest = ReportArtistRequest(number = reportNumber, caption = caption.text?.toString())
+
+            ArtistDetailService(this).tryPostReportArtist(artistId, postReportArtistRequest)
+        }
+
+        reportArtistNoButton?.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
+    }
+
     override fun onGetArtistDetailFailure(message: String) {
         showCustomToast("오류 : $message")
     }
@@ -307,6 +381,20 @@ class ArtistDetailActivity : BaseActivity<ActivityArtistDetailBinding>(ActivityA
     }
 
     override fun onPatchSubscribeFailure(message: String) {
+        showCustomToast("오류 : $message")
+    }
+
+    override fun onPostReportArtistSuccess(response: PostReportArtistResponse) {
+        if (response.isSuccess && response.code == 1000) {
+            showCustomToast("신고가 접수되었습니다.")
+        }
+        else {
+            showCustomToast("${response.message}")
+            return
+        }
+    }
+
+    override fun onPostReportArtistFailure(message: String) {
         showCustomToast("오류 : $message")
     }
 

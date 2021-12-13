@@ -1,7 +1,12 @@
 package com.ssac.ah_jeom.src.detail.artistDetail.artistReview
 
 import com.ssac.ah_jeom.config.ApplicationClass
+import com.ssac.ah_jeom.src.detail.artistDetail.ArtistDetailRetrofitInterface
 import com.ssac.ah_jeom.src.detail.artistDetail.artistReview.models.GetArtistReviewResponse
+import com.ssac.ah_jeom.src.detail.artistDetail.artistReview.models.PostReportReviewResponse
+import com.ssac.ah_jeom.src.detail.artistDetail.artistReview.models.ReportReviewRequest
+import com.ssac.ah_jeom.src.detail.artistDetail.models.PostSubscribeResponse
+import com.ssac.ah_jeom.src.detail.artistDetail.models.SubscribeRequest
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

@@ -10,6 +10,7 @@ import com.ssac.ah_jeom.databinding.ActivityArtistReviewBinding
 import com.ssac.ah_jeom.src.detail.artistDetail.artistReview.adapter.ArtistReviewRecyclerAdapter
 import com.ssac.ah_jeom.src.detail.artistDetail.artistReview.models.ArtistReviewRecyclerData
 import com.ssac.ah_jeom.src.detail.artistDetail.artistReview.models.GetArtistReviewResponse
+import com.ssac.ah_jeom.src.detail.artistDetail.artistReview.models.PostReportReviewResponse
 import com.ssac.ah_jeom.src.detail.reviewDetail.ReviewDetailActivity
 
 class ArtistReviewActivity : BaseActivity<ActivityArtistReviewBinding>(ActivityArtistReviewBinding::inflate), ArtistReviewActivityView {

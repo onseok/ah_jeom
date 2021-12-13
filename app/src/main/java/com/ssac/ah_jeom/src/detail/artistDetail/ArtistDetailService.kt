@@ -1,10 +1,7 @@
 package com.ssac.ah_jeom.src.detail.artistDetail
 
 import com.ssac.ah_jeom.config.ApplicationClass
-import com.ssac.ah_jeom.src.detail.artistDetail.models.GetArtistDetailResponse
-import com.ssac.ah_jeom.src.detail.artistDetail.models.PatchSubscribeResponse
-import com.ssac.ah_jeom.src.detail.artistDetail.models.PostSubscribeResponse
-import com.ssac.ah_jeom.src.detail.artistDetail.models.SubscribeRequest
+import com.ssac.ah_jeom.src.detail.artistDetail.models.*
 import com.ssac.ah_jeom.src.main.subscribe.models.GetSubscribeResponse
 import retrofit2.Call
 import retrofit2.Callback
@@ -52,6 +49,19 @@ class ArtistDetailService(val view: ArtistDetailActivityView) {
 
             override fun onFailure(call: Call<PatchSubscribeResponse>, t: Throwable) {
                 view.onPatchSubscribeFailure(t.message ?: "통신 오류")
+            }
+        })
+    }
+
+    fun tryPostReportArtist(artistId: Int, postReportArtistRequest: ReportArtistRequest){
+        val tryPostRetrofitInterface = ApplicationClass.sRetrofit.create(ArtistDetailRetrofitInterface::class.java)
+        tryPostRetrofitInterface.postReportArtist(userId, artistId, postReportArtistRequest).enqueue(object : Callback<PostReportArtistResponse> {
+            override fun onResponse(call: Call<PostReportArtistResponse>, response: Response<PostReportArtistResponse>) {
+                view.onPostReportArtistSuccess(response.body() as PostReportArtistResponse)
+            }
+
+            override fun onFailure(call: Call<PostReportArtistResponse>, t: Throwable) {
+                view.onPostReportArtistFailure(t.message ?: "통신 오류")
             }
         })
     }

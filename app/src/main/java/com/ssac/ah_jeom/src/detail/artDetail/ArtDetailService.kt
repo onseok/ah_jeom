@@ -1,9 +1,8 @@
 package com.ssac.ah_jeom.src.detail.artDetail
 
 import com.ssac.ah_jeom.config.ApplicationClass
-import com.ssac.ah_jeom.src.detail.artDetail.models.DownloadImageRequest
-import com.ssac.ah_jeom.src.detail.artDetail.models.GetArtDetailResponse
-import com.ssac.ah_jeom.src.detail.artDetail.models.PostDownloadImageResponse
+import com.ssac.ah_jeom.src.detail.artDetail.models.*
+import com.ssac.ah_jeom.src.detail.artistDetail.models.ReportArtistRequest
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -40,6 +39,22 @@ class ArtDetailService(val view: ArtDetailActivityView) {
 
             override fun onFailure(call: Call<PostDownloadImageResponse>, t: Throwable) {
                 view.onPostDownloadImageFailure(t.message ?: "통신 오류")
+            }
+        })
+    }
+
+    fun tryPostReportArt(artId: Int, postReportArtRequest: PostReportArtRequest){
+
+        val postReportArtRetrofitInterface = ApplicationClass.sRetrofit.create(
+            ArtDetailRetrofitInterface::class.java)
+        postReportArtRetrofitInterface.postReportArt(userId, artId, postReportArtRequest).enqueue(object :
+            Callback<PostReportArtResponse> {
+            override fun onResponse(call: Call<PostReportArtResponse>, response: Response<PostReportArtResponse>) {
+                view.onPostReportArtSuccess(response.body() as PostReportArtResponse)
+            }
+
+            override fun onFailure(call: Call<PostReportArtResponse>, t: Throwable) {
+                view.onPostReportArtFailure(t.message ?: "통신 오류")
             }
         })
     }

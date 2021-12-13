@@ -2,6 +2,7 @@ package com.ssac.ah_jeom.src.detail.artistDetail
 
 import com.ssac.ah_jeom.src.detail.artistDetail.models.GetArtistDetailResponse
 import com.ssac.ah_jeom.src.detail.artistDetail.models.PatchSubscribeResponse
+import com.ssac.ah_jeom.src.detail.artistDetail.models.PostReportArtistResponse
 import com.ssac.ah_jeom.src.detail.artistDetail.models.PostSubscribeResponse
 
 
@@ -18,5 +19,9 @@ interface ArtistDetailActivityView {
     fun onPatchSubscribeSuccess(response: PatchSubscribeResponse)
 
     fun onPatchSubscribeFailure(message: String)
+
+    fun onPostReportArtistSuccess(response: PostReportArtistResponse)
+
+    fun onPostReportArtistFailure(message: String)
 
 }

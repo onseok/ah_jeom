@@ -40,11 +40,13 @@ class UploadDetailActivity :
     private var interestsItemsTemp = ArrayList<Int>()
     private var interestsItems = ArrayList<Int>()
     private var interestsChecked = ArrayList<Boolean>()
+    private var interestsText = ArrayList<String>()
 
 
     private var keywordItemsTemp = ArrayList<Int>()
     private var keywordItems = ArrayList<Int>()
     private var keywordsChecked = ArrayList<Boolean>()
+    private var keywordsText = ArrayList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -96,6 +98,7 @@ class UploadDetailActivity :
             var listener = DialogInterface.OnClickListener { _, which ->
                 interestsChecked.clear()
                 interestsItems.clear()
+                interestsText.clear()
                 for (item in checked) {
                     interestsChecked.add(item)
                 }
@@ -103,6 +106,17 @@ class UploadDetailActivity :
                     interestsItems.add(item)
                 }
                 interestsItemsTemp.clear()
+
+                for (i in 0 until items.size) {
+                    if (interestsChecked[i]) {
+                        interestsText.add(items[i])
+                    }
+                }
+
+                var interestsTextArray = interestsText.toString()
+                interestsTextArray = interestsTextArray.substring(1, interestsTextArray.length - 1)
+
+                binding.activityUploadDetailInterestsText.text = interestsTextArray
             }
 
             AlertDialog.Builder(this, R.style.MyAlertDialogStyle)
@@ -132,6 +146,8 @@ class UploadDetailActivity :
         binding.activityUploadDetailMainTitleText.setOnClickListener {
             showCustomToast(interestsChecked.toString())
             showCustomToast(interestsItems.toString())
+            showCustomToast(keywordsChecked.toString())
+            showCustomToast(keywordItems.toString())
         }
 
         // 작품 키워드 설정
@@ -180,6 +196,17 @@ class UploadDetailActivity :
                     keywordItems.add(item)
                 }
                 keywordItemsTemp.clear()
+
+                for (i in 0 until items.size) {
+                    if (keywordsChecked[i]) {
+                        keywordsText.add(items[i])
+                    }
+                }
+
+                var keywordsTextArray = keywordsText.toString()
+                keywordsTextArray = keywordsTextArray.substring(1, keywordsTextArray.length - 1)
+
+                binding.activityUploadDetailKeywordText.text = keywordsTextArray
             }
 
             AlertDialog.Builder(this, R.style.MyAlertDialogStyle)
@@ -193,9 +220,9 @@ class UploadDetailActivity :
                             isChecked: Boolean
                         ) {
                             if (isChecked) {
-                                keywordItems.add(which + 13)
-                            } else if (keywordItems.contains(which + 13)) {
-                                keywordItems.remove(which)
+                                keywordItemsTemp.add(which + 13)
+                            } else if (keywordItemsTemp.contains(which + 13)) {
+                                keywordItemsTemp.remove(which)
                             }
                         }
                     })
@@ -285,5 +312,4 @@ class UploadDetailActivity :
             showCustomToast("업로드 실패")
         }
     }
-
 }

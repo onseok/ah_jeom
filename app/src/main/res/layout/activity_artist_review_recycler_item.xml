@@ -64,7 +64,7 @@
         android:id="@+id/activity_artist_review_report_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="25dp"
         android:fontFamily="@font/roboto_bold"
         android:text="신고"
         android:textColor="@color/box_border"

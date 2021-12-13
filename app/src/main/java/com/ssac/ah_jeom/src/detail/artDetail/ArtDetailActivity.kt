@@ -1,23 +1,29 @@
 package com.ssac.ah_jeom.src.detail.artDetail
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.os.Message
 import android.view.View
+import android.view.Window
+import android.widget.Button
+import android.widget.EditText
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.ssac.ah_jeom.R
 import com.ssac.ah_jeom.config.BaseActivity
 import com.ssac.ah_jeom.databinding.ActivityArtDetailBinding
 import com.ssac.ah_jeom.src.detail.artDetail.adapter.ArtDetailReviewAdapter
-import com.ssac.ah_jeom.src.detail.artDetail.models.ArtDetailReview
-import com.ssac.ah_jeom.src.detail.artDetail.models.DownloadImageRequest
-import com.ssac.ah_jeom.src.detail.artDetail.models.GetArtDetailResponse
-import com.ssac.ah_jeom.src.detail.artDetail.models.PostDownloadImageResponse
+import com.ssac.ah_jeom.src.detail.artDetail.models.*
+import com.ssac.ah_jeom.src.detail.artistDetail.ArtistDetailService
 import com.ssac.ah_jeom.src.detail.artistDetail.adapter.ArtistDetailReviewAdapter
 import com.ssac.ah_jeom.src.detail.artistDetail.models.ArtistDetailReview
+import com.ssac.ah_jeom.src.detail.artistDetail.models.ReportArtistRequest
 import com.ssac.ah_jeom.src.detail.artistDetail.models.SubscribeRequest
 import java.text.DecimalFormat
 
@@ -28,6 +34,8 @@ class ArtDetailActivity : BaseActivity<ActivityArtDetailBinding>(ActivityArtDeta
     private val intervalTime = 3500.toLong() // 몇초 간격으로 페이지를 넘길것인지 (5000 = 5.0초)
 
     private var hasReview = false
+
+    private var reportNumber = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +49,10 @@ class ArtDetailActivity : BaseActivity<ActivityArtDetailBinding>(ActivityArtDeta
         binding.activityArtDetailDownloadButton.setOnClickListener {
             val downloadImageRequest = DownloadImageRequest(artId = artId)
             ArtDetailService(this).tryPostDownloadImage(downloadImageRequest)
+        }
+
+        binding.activityArtDetailReportText.setOnClickListener {
+            reportDialog(artId)
         }
 
         ArtDetailService(this).tryGetArtDetail(artId)
@@ -92,6 +104,65 @@ class ArtDetailActivity : BaseActivity<ActivityArtDetailBinding>(ActivityArtDeta
         binding.activityArtDetailReviewViewpager.setCurrentItem(++currentPosition, true)
     }
 
+    private fun reportDialog(artId: Int) {
+
+        val items = arrayOf(
+            "영리목적/홍보성",
+            "음란/선정성",
+            "욕설/인신 공격",
+            "개인정보 노출",
+            "게시물 게시성 도배",
+            "불법 정보관련 게시",
+            "기타(사유 작성)",
+        )
+
+        val builder = AlertDialog.Builder(this, R.style.MyAlertDialogStyle)
+            .setTitle("계정 신고")
+            .setSingleChoiceItems(items, -1) { dialog, which ->
+                reportNumber = which + 1
+            }
+            .setPositiveButton("신고하기") { dialog, which ->
+                if (reportNumber == 7) {
+                    reportWriteDialog(artId)
+                }
+                else {
+                    val postReportArtRequest = PostReportArtRequest(number = reportNumber, caption = null)
+                    ArtDetailService(this).tryPostReportArt(artId, postReportArtRequest)
+                }
+            }
+            .show()
+    }
+
+    private fun reportWriteDialog(artId: Int) {
+        val dialog = Dialog(this)
+
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)   //타이틀바 제거
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT)) // 백그라운드 컬러 투명 (이걸 해줘야 background가 설정해준 모양으로 변함)
+        dialog.setContentView(R.layout.report_dialog_art)
+        dialog.setCancelable(true)    // 다이얼로그외에 다른 화면을 눌렀을 때 나가는 것 허용
+
+        var reportArtYesButton: Button? =
+            dialog.findViewById(R.id.report_art_yes_button) // 버튼을 dialog에 연결
+        var reportArtNoButton: Button? = dialog.findViewById(R.id.report_art_no_button)
+
+
+        reportArtYesButton?.setOnClickListener {
+            dialog.dismiss()
+
+            val caption : EditText = dialog.findViewById(R.id.report_dialog_art_edit_text)
+
+            val postReportArtRequest = PostReportArtRequest(number = reportNumber, caption = caption.text?.toString())
+
+            ArtDetailService(this).tryPostReportArt(artId, postReportArtRequest)
+        }
+
+        reportArtNoButton?.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
+    }
+
     override fun onBackPressed() {
         super.onBackPressed()
         overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
@@ -140,6 +211,20 @@ class ArtDetailActivity : BaseActivity<ActivityArtDetailBinding>(ActivityArtDeta
     }
 
     override fun onPostDownloadImageFailure(message: String) {
+        showCustomToast("오류 : $message")
+    }
+
+    override fun onPostReportArtSuccess(response: PostReportArtResponse) {
+        if (response.isSuccess && response.code == 1000) {
+            showCustomToast("신고가 접수되었습니다.")
+        }
+        else {
+            showCustomToast("${response.message}")
+            return
+        }
+    }
+
+    override fun onPostReportArtFailure(message: String) {
         showCustomToast("오류 : $message")
     }
 

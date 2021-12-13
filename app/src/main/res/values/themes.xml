@@ -65,6 +65,12 @@
         <item name="colorAccent">@color/main_blue</item>
         <item name="android:textColorPrimary">@color/main_black</item>
         <item name="android:textSize">14sp</item>
+        <item name="shapeAppearanceOverlay">@style/DialogCorners</item>
+    </style>
+
+    <style name="DialogCorners">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
     </style>
 
 </resources>
