@@ -1,6 +1,8 @@
 package com.ssac.ah_jeom.src.profile.settings.changeImage
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.ImageDecoder
 import android.net.Uri
 import android.os.Build
@@ -20,19 +22,47 @@ import com.ssac.ah_jeom.databinding.ActivityChangeImageBinding
 import com.ssac.ah_jeom.src.profile.settings.changeImage.models.GetImageResponse
 import com.ssac.ah_jeom.src.profile.settings.changeImage.models.PatchImageRequest
 import com.ssac.ah_jeom.src.profile.settings.changeImage.models.PatchImageResponse
+import com.ssac.ah_jeom.util.PermissionActivity
 import java.text.SimpleDateFormat
 import java.util.*
 
 class ChangeImageActivity :
-    BaseActivity<ActivityChangeImageBinding>(ActivityChangeImageBinding::inflate),
+    ChangeImagePermission(),
     ChangeImageActivityView {
 
     val userKey = ApplicationClass.sSharedPreferences.getInt("userId", 0)
     var finalUri: Uri? = null
     var downloadUri: Uri? = null
 
+    private val permissions: Array<String> by lazy {
+        // 권한 배열 (현재는 내부 저장소 읽기 권한만 있음, 추후에 추가될 수도 있음)
+        arrayOf(
+            Manifest.permission.READ_EXTERNAL_STORAGE
+        )
+    }
+
+    override fun permissionGranted(requestCode: Int) {
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            val intent = Intent(Intent.ACTION_GET_CONTENT)
+            intent.setType("image/*")
+            launcher.launch(intent)
+        }
+    }
+
+    override fun permissionDenied(requestCode: Int) {
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            showCustomToast("앱의 저장공간 접근 권한을 허용해 주세요.")
+            onBackPressed()
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // 모든 권한이 설정되었는지 확인하는 변수
+        val isAllPermissionGranted = permissions.all {
+            checkSelfPermission(it) == PackageManager.PERMISSION_GRANTED
+        }
 
         binding.activityChangeImageBackButton.setOnClickListener {
             onBackPressed()
@@ -40,9 +70,18 @@ class ChangeImageActivity :
 
         // 갤러리에서 이미지 가져오기
         binding.activityChangeImageMyGalleryLayout.setOnClickListener {
-            val intent = Intent(Intent.ACTION_GET_CONTENT)
-            intent.setType("image/*")
-            launcher.launch(intent)
+            // 권한 설정이 안되었을 때 권한 요청 팝업
+            if (!isAllPermissionGranted) {
+                requirePermissions(
+                    permissions, PERMISSION_REQUEST_CODE
+                )
+            }
+            // 권한 설정이 다 완료 되었을 때
+            else {
+                requirePermissions(
+                    permissions, PERMISSION_REQUEST_CODE
+                )
+            }
         }
 
         binding.activityChangeImageBottomSaveLayout.setOnClickListener {
@@ -78,6 +117,12 @@ class ChangeImageActivity :
             dismissLoadingDialog()
             showCustomToast("프로필 사진이 변경됐어요.")
             onBackPressed()
+        }
+        else {
+            dismissLoadingDialog()
+            showCustomToast("서버에 문제가 발생하였습니다.")
+            onBackPressed()
+
         }
     }
 
@@ -138,7 +183,11 @@ class ChangeImageActivity :
             }
         }.addOnFailureListener {
             println(it)
-            showCustomToast("업로드 실패")
+            showCustomToast("서버에 문제가 발생하여 업로드에 실패하였습니다.")
         }
+    }
+
+    companion object {
+        const val PERMISSION_REQUEST_CODE = 99
     }
 }
