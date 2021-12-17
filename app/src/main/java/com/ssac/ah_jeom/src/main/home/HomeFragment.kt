@@ -21,6 +21,7 @@ import com.ssac.ah_jeom.src.main.home.adapter.*
 import com.ssac.ah_jeom.src.main.home.fragments.*
 import com.ssac.ah_jeom.src.main.home.models.*
 import com.ssac.ah_jeom.src.profile.ProfileActivity
+import com.ssac.ah_jeom.src.profile.illustration.illustrationDetail.IllustrationDetailActivity
 import com.ssac.ah_jeom.src.search.SearchActivity
 import kotlin.collections.ArrayList
 
@@ -125,6 +126,11 @@ class HomeFragment : Fragment(), HomeFragmentView {
 
         binding?.fragmentHomeProfileButton?.setOnClickListener {
             startActivity(Intent(requireActivity(), ProfileActivity::class.java))
+            (activity as MainActivity).overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
+        }
+
+        binding?.fragmentHomeMainCharacterImage?.setOnClickListener {
+            startActivity(Intent(requireActivity(), IllustrationDetailActivity::class.java))
             (activity as MainActivity).overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
         }
 

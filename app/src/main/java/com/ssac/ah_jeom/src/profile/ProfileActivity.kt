@@ -8,6 +8,7 @@ import com.ssac.ah_jeom.config.BaseActivity
 import com.ssac.ah_jeom.databinding.ActivityProfileBinding
 import com.ssac.ah_jeom.src.main.locker.myImage.MyImageActivity
 import com.ssac.ah_jeom.src.main.subscribe.subscribeArtist.SubscribeArtistActivity
+import com.ssac.ah_jeom.src.profile.illustration.IllustrationActivity
 import com.ssac.ah_jeom.src.profile.models.GetProfileResponse
 import com.ssac.ah_jeom.src.profile.myArt.MyArtActivity
 import com.ssac.ah_jeom.src.profile.myPeek.MyPeekActivity
@@ -71,6 +72,12 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding>(ActivityProfileBind
         // 이미지
         binding.activityProfileStorageLayout.setOnClickListener {
             startActivity(Intent(this, MyImageActivity::class.java))
+            overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
+        }
+
+        // 일러스트레이션
+        binding.activityProfileStorageStageImage.setOnClickListener {
+            startActivity(Intent(this, IllustrationActivity::class.java))
             overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
         }
 

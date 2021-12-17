@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_black"
+    tools:context=".src.profile.illustration.IllustrationActivity">
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/activity_illustration_back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="@color/transparent"
+        android:src="@drawable/ic_back"
+        android:tint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/activity_illustration_platinum_badge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:src="@drawable/ic_platinum_badge"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/activity_illustration_platinum_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="백금아식 / 작품 60개 이상"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@id/activity_illustration_platinum_badge"
+        app:layout_constraintStart_toStartOf="@id/activity_illustration_platinum_badge"
+        app:layout_constraintTop_toBottomOf="@id/activity_illustration_platinum_badge" />
+
+    <TextView
+        android:id="@+id/activity_illustration_platinum_sub_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/roboto_medium"
+        android:gravity="center"
+        android:lineSpacingExtra="7sp"
+        android:text="ah Jeom 최고 작가 등급입니다!\n축하드려요, 아식이 일러스트를 모두 모았어요!"
+        android:textColor="#b5b5b5"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@id/activity_illustration_platinum_badge"
+        app:layout_constraintStart_toStartOf="@id/activity_illustration_platinum_badge"
+        app:layout_constraintTop_toBottomOf="@id/activity_illustration_platinum_text" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/activity_illustration_gold_badge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:src="@drawable/ic_gold_badge"
+        app:layout_constraintEnd_toStartOf="@id/activity_illustration_silver_badge"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_illustration_platinum_sub_text" />
+
+    <TextView
+        android:id="@+id/activity_illustration_gold_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="골드아식"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@id/activity_illustration_gold_badge"
+        app:layout_constraintStart_toStartOf="@id/activity_illustration_gold_badge"
+        app:layout_constraintTop_toBottomOf="@id/activity_illustration_gold_badge" />
+
+    <TextView
+        android:id="@+id/activity_illustration_gold_sub_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/roboto_medium"
+        android:text="작품 40개"
+        android:textColor="#b5b5b5"
+        app:layout_constraintEnd_toEndOf="@id/activity_illustration_gold_text"
+        app:layout_constraintStart_toStartOf="@id/activity_illustration_gold_text"
+        app:layout_constraintTop_toBottomOf="@id/activity_illustration_gold_text" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/activity_illustration_silver_badge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:src="@drawable/ic_silver_badge"
+        app:layout_constraintEnd_toStartOf="@id/activity_illustration_standard_badge"
+        app:layout_constraintStart_toEndOf="@id/activity_illustration_gold_badge"
+        app:layout_constraintTop_toBottomOf="@id/activity_illustration_platinum_sub_text" />
+
+    <TextView
+        android:id="@+id/activity_illustration_silver_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="실버아식"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@id/activity_illustration_silver_badge"
+        app:layout_constraintStart_toStartOf="@id/activity_illustration_silver_badge"
+        app:layout_constraintTop_toBottomOf="@id/activity_illustration_silver_badge" />
+
+    <TextView
+        android:id="@+id/activity_illustration_silver_sub_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/roboto_medium"
+        android:text="작품 30개"
+        android:textColor="#b5b5b5"
+        app:layout_constraintEnd_toEndOf="@id/activity_illustration_silver_text"
+        app:layout_constraintStart_toStartOf="@id/activity_illustration_silver_text"
+        app:layout_constraintTop_toBottomOf="@id/activity_illustration_silver_text" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/activity_illustration_standard_badge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:src="@drawable/ic_standard_badge"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/activity_illustration_silver_badge"
+        app:layout_constraintTop_toBottomOf="@id/activity_illustration_platinum_sub_text" />
+
+    <TextView
+        android:id="@+id/activity_illustration_standard_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="평타아식"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@id/activity_illustration_standard_badge"
+        app:layout_constraintStart_toStartOf="@id/activity_illustration_standard_badge"
+        app:layout_constraintTop_toBottomOf="@id/activity_illustration_standard_badge" />
+
+    <TextView
+        android:id="@+id/activity_illustration_standard_sub_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/roboto_medium"
+        android:text="작품 20개"
+        android:textColor="#b5b5b5"
+        app:layout_constraintEnd_toEndOf="@id/activity_illustration_standard_text"
+        app:layout_constraintStart_toStartOf="@id/activity_illustration_standard_text"
+        app:layout_constraintTop_toBottomOf="@id/activity_illustration_standard_text" />
+
+    <!-- -->
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/activity_illustration_copper_badge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/ic_copper_badge"
+        app:layout_constraintEnd_toStartOf="@id/activity_illustration_silver_badge"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_illustration_gold_sub_text" />
+
+    <TextView
+        android:id="@+id/activity_illustration_copper_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="구리아식"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@id/activity_illustration_copper_badge"
+        app:layout_constraintStart_toStartOf="@id/activity_illustration_copper_badge"
+        app:layout_constraintTop_toBottomOf="@id/activity_illustration_copper_badge" />
+
+    <TextView
+        android:id="@+id/activity_illustration_copper_sub_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/roboto_medium"
+        android:text="작품 10개"
+        android:textColor="#b5b5b5"
+        app:layout_constraintEnd_toEndOf="@id/activity_illustration_copper_text"
+        app:layout_constraintStart_toStartOf="@id/activity_illustration_copper_text"
+        app:layout_constraintTop_toBottomOf="@id/activity_illustration_copper_text" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/activity_illustration_poo_badge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/ic_poo_badge"
+        app:layout_constraintEnd_toStartOf="@id/activity_illustration_standard_badge"
+        app:layout_constraintStart_toEndOf="@id/activity_illustration_gold_badge"
+        app:layout_constraintTop_toBottomOf="@id/activity_illustration_silver_sub_text" />
+
+    <TextView
+        android:id="@+id/activity_illustration_poo_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="응아아식"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@id/activity_illustration_poo_badge"
+        app:layout_constraintStart_toStartOf="@id/activity_illustration_poo_badge"
+        app:layout_constraintTop_toBottomOf="@id/activity_illustration_poo_badge" />
+
+    <TextView
+        android:id="@+id/activity_illustration_poo_sub_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/roboto_medium"
+        android:text="작품 1개"
+        android:textColor="#b5b5b5"
+        app:layout_constraintEnd_toEndOf="@id/activity_illustration_poo_text"
+        app:layout_constraintStart_toStartOf="@id/activity_illustration_poo_text"
+        app:layout_constraintTop_toBottomOf="@id/activity_illustration_poo_text" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/activity_illustration_stone_badge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/ic_stone_badge"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/activity_illustration_silver_badge"
+        app:layout_constraintTop_toBottomOf="@id/activity_illustration_standard_sub_text" />
+
+    <TextView
+        android:id="@+id/activity_illustration_stone_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="돌멩아식"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@id/activity_illustration_stone_badge"
+        app:layout_constraintStart_toStartOf="@id/activity_illustration_stone_badge"
+        app:layout_constraintTop_toBottomOf="@id/activity_illustration_stone_badge" />
+
+    <TextView
+        android:id="@+id/activity_illustration_stone_sub_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/roboto_medium"
+        android:text="작품 0개"
+        android:textColor="#b5b5b5"
+        app:layout_constraintEnd_toEndOf="@id/activity_illustration_stone_text"
+        app:layout_constraintStart_toStartOf="@id/activity_illustration_stone_text"
+        app:layout_constraintTop_toBottomOf="@id/activity_illustration_stone_text" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/activity_illustration_bottom_click_layout"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:backgroundTint="@color/main_blue"
+        android:background="@drawable/background_white_top_radius"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/activity_change_image_bottom_save_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:fontFamily="@font/roboto_bold"
+            android:textSize="18sp"
+            android:text="클릭해주세요!"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

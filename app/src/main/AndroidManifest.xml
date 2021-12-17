@@ -20,6 +20,16 @@
         android:theme="@style/Theme.Ah_jeom"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".src.profile.illustration.illustrationDetail.IllustrationDetailActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".src.profile.illustration.IllustrationActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".src.profile.settings.personalPrivacy.PersonalPrivacyActivity"
             android:exported="true"
             android:screenOrientation="portrait"
