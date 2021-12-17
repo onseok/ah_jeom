@@ -117,11 +117,11 @@ class ArtDetailActivity : BaseActivity<ActivityArtDetailBinding>(ActivityArtDeta
         )
 
         val builder = AlertDialog.Builder(this, R.style.MyAlertDialogStyle)
-            .setTitle("작품 신고")
+            .setTitle("신고하기")
             .setSingleChoiceItems(items, -1) { dialog, which ->
                 reportNumber = which + 1
             }
-            .setPositiveButton("신고하기") { dialog, which ->
+            .setPositiveButton("확인") { dialog, which ->
                 if (reportNumber == 7) {
                     reportWriteDialog(artId)
                 }

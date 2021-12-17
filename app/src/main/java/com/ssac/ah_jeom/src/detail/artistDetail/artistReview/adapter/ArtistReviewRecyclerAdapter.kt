@@ -121,12 +121,12 @@ class ArtistReviewRecyclerAdapter(private val context: Context, response: GetArt
             var selectedItem: String? = null
 
             val builder = AlertDialog.Builder(itemView.context, com.ssac.ah_jeom.R.style.MyAlertDialogStyle)
-                .setTitle("리뷰 신고")
+                .setTitle("신고하기")
                 .setSingleChoiceItems(items, -1) { dialog, which ->
                     selectedItem = items[which]
                     reportNumber = which + 1
                 }
-                .setPositiveButton("신고하기") { dialog, which ->
+                .setPositiveButton("확인") { dialog, which ->
 //                    Toast.makeText(itemView.context, "${selectedItem.toString()} is Selected", Toast.LENGTH_SHORT).show()
 //                    Toast.makeText(itemView.context, "$reportNumber", Toast.LENGTH_SHORT).show()
                     if (reportNumber == 5) {

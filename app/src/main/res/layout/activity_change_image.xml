@@ -62,7 +62,7 @@
         android:layout_height="128dp"
         android:layout_marginTop="88dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/activity_profile_image_temp"
+        tools:src="@drawable/activity_profile_image_temp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/activity_change_image_main_text_second" />

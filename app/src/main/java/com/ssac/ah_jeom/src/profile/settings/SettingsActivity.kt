@@ -18,6 +18,7 @@ import com.ssac.ah_jeom.src.profile.settings.changeIntroduce.ChangeIntroduceActi
 import com.ssac.ah_jeom.src.profile.settings.changeName.ChangeNameActivity
 import com.ssac.ah_jeom.src.profile.settings.manual.ManualActivity
 import com.ssac.ah_jeom.src.profile.settings.models.GetSettingsResponse
+import com.ssac.ah_jeom.src.profile.settings.personalPrivacy.PersonalPrivacyActivity
 import com.ssac.ah_jeom.src.splash.SplashActivity
 
 class SettingsActivity : BaseActivity<ActivitySettingsBinding>(ActivitySettingsBinding::inflate), SettingsActivityView {
@@ -46,6 +47,11 @@ class SettingsActivity : BaseActivity<ActivitySettingsBinding>(ActivitySettingsB
 
         binding.activitySettingsHowToUseLayout.setOnClickListener {
             startActivity(Intent(this, ManualActivity::class.java))
+            overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
+        }
+
+        binding.activitySettingsPersonalPrivacyLayout.setOnClickListener {
+            startActivity(Intent(this, PersonalPrivacyActivity::class.java))
             overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
         }
 

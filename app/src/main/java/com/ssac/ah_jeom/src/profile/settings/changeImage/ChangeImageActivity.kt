@@ -85,8 +85,10 @@ class ChangeImageActivity :
         }
 
         binding.activityChangeImageBottomSaveLayout.setOnClickListener {
+            //            showCustomToast("현재 서버 이슈로 프로필 사진 변경이 불가합니다.\n빠른 시일 내에 해결하겠습니다.")
             showLoadingDialog(this)
             uploadImageToFirebaseStorage(finalUri!!)
+            onBackPressed()
         }
 
         ChangeImageService(this).tryGetImage()

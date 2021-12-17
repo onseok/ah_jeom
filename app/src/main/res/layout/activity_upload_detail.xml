@@ -332,7 +332,7 @@
                 android:fontFamily="@font/roboto_medium"
                 android:gravity="top"
                 android:hint="작품 판매 사이트 / SNS 링크를 붙여 넣어주세요."
-                android:inputType="number"
+                android:inputType="text"
                 android:padding="15dp"
                 android:paddingTop="15dp"
                 android:textColor="@color/box_border"

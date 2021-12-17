@@ -1,5 +1,6 @@
 package com.ssac.ah_jeom.src.detail.uploadDetail
 
+import android.Manifest
 import android.R.attr
 import android.app.AlertDialog
 import android.content.DialogInterface
@@ -25,11 +26,17 @@ import java.util.*
 import android.R.attr.checked
 
 import android.content.DialogInterface.OnMultiChoiceClickListener
+import android.content.pm.PackageManager
+import com.ssac.ah_jeom.src.detail.uploadDetail.models.PostArtRequest
+import com.ssac.ah_jeom.src.detail.uploadDetail.models.PostArtResponse
+import com.ssac.ah_jeom.src.profile.settings.changeImage.ChangeImageActivity
+import com.ssac.ah_jeom.src.profile.settings.changeImage.ChangeImageService
+import com.ssac.ah_jeom.src.profile.settings.changeImage.models.PatchImageRequest
 import kotlin.collections.ArrayList
 
 
 class UploadDetailActivity :
-    BaseActivity<ActivityUploadDetailBinding>(ActivityUploadDetailBinding::inflate) {
+    UploadDetailPermission(), UploadDetailActivityView {
 
     var interestsId: Int = 0
     var keywordId: Int = 0
@@ -37,16 +44,39 @@ class UploadDetailActivity :
     var finalUri: Uri? = null
     var downloadUri: Uri? = null
 
-    private var interestsItemsTemp = ArrayList<Int>()
-    private var interestsItems = ArrayList<Int>()
-    private var interestsChecked = ArrayList<Boolean>()
-    private var interestsText = ArrayList<String>()
+    private var interestsItemsTemp = mutableListOf<Int>()
+    private var interestsItems = mutableListOf<Int>()
+    private var interestsChecked = mutableListOf<Boolean>()
+    private var interestsText = mutableListOf<String>()
 
 
-    private var keywordItemsTemp = ArrayList<Int>()
-    private var keywordItems = ArrayList<Int>()
-    private var keywordsChecked = ArrayList<Boolean>()
-    private var keywordsText = ArrayList<String>()
+    private var keywordItemsTemp = mutableListOf<Int>()
+    private var keywordItems = mutableListOf<Int>()
+    private var keywordsChecked = mutableListOf<Boolean>()
+    private var keywordsText = mutableListOf<String>()
+
+
+    private val permissions: Array<String> by lazy {
+        // 권한 배열 (현재는 내부 저장소 읽기 권한만 있음, 추후에 추가될 수도 있음)
+        arrayOf(
+            Manifest.permission.READ_EXTERNAL_STORAGE
+        )
+    }
+
+    override fun permissionGranted(requestCode: Int) {
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            val intent = Intent(Intent.ACTION_GET_CONTENT)
+            intent.setType("image/*")
+            launcher.launch(intent)
+        }
+    }
+
+    override fun permissionDenied(requestCode: Int) {
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            showCustomToast("앱의 저장공간 접근 권한을 허용해 주세요.")
+            onBackPressed()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -231,17 +261,34 @@ class UploadDetailActivity :
                 .show()
         }
 
+        // 모든 권한이 설정되었는지 확인하는 변수
+        val isAllPermissionGranted = permissions.all {
+            checkSelfPermission(it) == PackageManager.PERMISSION_GRANTED
+        }
+
         // 갤러리에서 이미지 가져오기
         binding.activityUploadDetailImage.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View) {
-                val intent = Intent(Intent.ACTION_GET_CONTENT)
-                intent.setType("image/*")
-                launcher.launch(intent)
+                // 권한 설정이 안되었을 때 권한 요청 팝업
+                if (!isAllPermissionGranted) {
+                    requirePermissions(
+                        permissions, PERMISSION_REQUEST_CODE
+                    )
+                }
+                // 권한 설정이 다 완료 되었을 때
+                else {
+                    requirePermissions(
+                        permissions, PERMISSION_REQUEST_CODE
+                    )
+                }
             }
         })
 
         binding.activityUploadDetailCompleteText.setOnClickListener {
+//            showCustomToast("현재 서버 이슈로 프로필 사진 변경이 불가합니다.\n빠른 시일 내에 해결하겠습니다.")
+            showLoadingDialog(this)
             uploadImageToFirebaseStorage(finalUri!!)
+            onBackPressed()
         }
 
     }
@@ -302,7 +349,17 @@ class UploadDetailActivity :
             imagesRef.downloadUrl.addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     downloadUri = task.result
-                    // TODO 나머지 레트로핏 서비스
+
+                    val title = binding.activityUploadDetailTitleEditText.text.toString()
+                    val caption = binding.activityUploadDetailExplanationEditText.text.toString()
+                    val img = downloadUri.toString()
+                    val price = binding.activityUploadDetailPriceEditText.text.toString()
+                    val link = binding.activityUploadDetailLinkEditText.text.toString()
+                    val fieldId = interestsItems
+                    val kwId = keywordItems
+
+                    val postArtRequest = PostArtRequest(title = title, caption = caption, img = img, price = price.toInt(), link = link, fieldId = fieldId, kwId = kwId)
+                    UploadDetailService(this).tryPostArt(postArtRequest)
                 } else {
                     showCustomToast("이미지 파일 다운로드 에러")
                 }
@@ -311,5 +368,27 @@ class UploadDetailActivity :
             println(it)
             showCustomToast("업로드 실패")
         }
+    }
+
+    companion object {
+        const val PERMISSION_REQUEST_CODE = 98
+    }
+
+    override fun onPostArtSuccess(response: PostArtResponse) {
+        if (response.isSuccess) {
+            dismissLoadingDialog()
+            showCustomToast("프로필 사진이 변경됐어요.")
+            onBackPressed()
+        }
+        else {
+            dismissLoadingDialog()
+            showCustomToast("서버에 문제가 발생하였습니다.")
+            onBackPressed()
+
+        }
+    }
+
+    override fun onPostArtFailure(message: String) {
+        showCustomToast("오류 : $message")
     }
 }

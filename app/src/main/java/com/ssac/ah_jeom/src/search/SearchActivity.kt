@@ -24,6 +24,11 @@ class SearchActivity : BaseActivity<ActivitySearchBinding>(ActivitySearchBinding
         
         // 관련 이미지 설정
         setRelatedImageView()
+
+        binding.activitySearchEditText.setOnClickListener {
+            showCustomToast("검색 기능 준비중입니다.")
+            return@setOnClickListener
+        }
         
     }
 

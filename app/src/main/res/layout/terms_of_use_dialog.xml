@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="350dp"
+    android:layout_height="550dp"
+    android:layout_gravity="center"
+    android:background="@drawable/dialog_background">
+
+    <TextView
+        android:id="@+id/terms_of_use_dialog_title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/roboto_bold"
+        android:lineSpacingExtra="7sp"
+        android:text="이용약관에\n동의해주세요!"
+        android:textColor="@color/main_black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/terms_checkbox_first"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="45dp"
+        android:background="@drawable/checkbox"
+        android:button="@android:color/transparent"
+        android:checked="false"
+        app:layout_constraintStart_toStartOf="@id/terms_of_use_dialog_title_text"
+        app:layout_constraintTop_toBottomOf="@id/terms_of_use_dialog_title_text" />
+
+    <TextView
+        android:id="@+id/terms_title_first"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="전체동의(선택정보 포함)"
+        android:textColor="#9d9d9d"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/terms_checkbox_first"
+        app:layout_constraintStart_toEndOf="@id/terms_checkbox_first"
+        app:layout_constraintTop_toTopOf="@id/terms_checkbox_first" />
+
+    <TextView
+        android:id="@+id/terms_detail_first"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="@font/roboto_medium"
+        android:text="저희 아제옴은 게시된 이미지를 이용자들에게 비상업적 목적을 위한 다운로드를 허용하고 있습니다."
+        android:textColor="#9d9d9d"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/terms_title_first"
+        app:layout_constraintTop_toBottomOf="@id/terms_title_first" />
+
+    <View
+        android:id="@+id/terms_divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="30dp"
+        android:background="#b5b5b5"
+        app:layout_constraintEnd_toEndOf="@id/terms_detail_first"
+        app:layout_constraintStart_toStartOf="@id/terms_checkbox_first"
+        app:layout_constraintTop_toBottomOf="@id/terms_detail_first" />
+
+    <!-- -->
+
+    <CheckBox
+        android:id="@+id/terms_checkbox_second"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/checkbox"
+        android:button="@android:color/transparent"
+        android:checked="false"
+        app:layout_constraintStart_toStartOf="@id/terms_divider"
+        app:layout_constraintTop_toBottomOf="@id/terms_divider" />
+
+    <TextView
+        android:id="@+id/terms_title_second"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="[필수] 개인정보 3자 제공 동의"
+        android:textColor="#9d9d9d"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/terms_checkbox_second"
+        app:layout_constraintStart_toEndOf="@id/terms_checkbox_second"
+        app:layout_constraintTop_toTopOf="@id/terms_checkbox_second" />
+
+    <TextView
+        android:id="@+id/terms_see_second"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_medium"
+        android:text="보기"
+        android:textColor="#9d9d9d"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/terms_title_second"
+        app:layout_constraintEnd_toEndOf="@id/terms_divider"
+        app:layout_constraintTop_toTopOf="@id/terms_title_second" />
+
+    <View
+        android:id="@+id/terms_see_second_divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="#b5b5b5"
+        android:translationY="-1dp"
+        app:layout_constraintEnd_toEndOf="@id/terms_see_second"
+        app:layout_constraintStart_toStartOf="@id/terms_see_second"
+        app:layout_constraintTop_toBottomOf="@id/terms_see_second" />
+
+    <!-- -->
+
+    <CheckBox
+        android:id="@+id/terms_checkbox_third"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/checkbox"
+        android:button="@android:color/transparent"
+        android:checked="false"
+        app:layout_constraintStart_toStartOf="@id/terms_checkbox_second"
+        app:layout_constraintTop_toBottomOf="@id/terms_checkbox_second" />
+
+    <TextView
+        android:id="@+id/terms_title_third"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="[필수] 이미지 다운 게시물 비상업적\n이용 제공 허용"
+        android:textColor="#9d9d9d"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@id/terms_checkbox_third"
+        app:layout_constraintTop_toTopOf="@id/terms_checkbox_third" />
+
+    <!-- -->
+
+    <CheckBox
+        android:id="@+id/terms_checkbox_fourth"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="53dp"
+        android:background="@drawable/checkbox"
+        android:button="@android:color/transparent"
+        android:checked="false"
+        app:layout_constraintStart_toStartOf="@id/terms_checkbox_third"
+        app:layout_constraintTop_toBottomOf="@id/terms_checkbox_third" />
+
+    <TextView
+        android:id="@+id/terms_title_fourth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="[필수] 만 14세 이상"
+        android:textColor="#9d9d9d"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/terms_checkbox_fourth"
+        app:layout_constraintStart_toEndOf="@id/terms_checkbox_fourth"
+        app:layout_constraintTop_toTopOf="@id/terms_checkbox_fourth" />
+
+
+    <Button
+        android:id="@+id/terms_of_use_yes_button"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="동의하고 계속"
+        android:textColor="#9d9d9d"
+        app:layout_constraintVertical_bias="0.9"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/terms_title_fourth" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
