@@ -20,6 +20,41 @@
         android:theme="@style/Theme.Ah_jeom"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".src.profile.illustration.illustrationDetail.illustrationImages.StoneIllustrationActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".src.profile.illustration.illustrationDetail.illustrationImages.PooIllustrationActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".src.profile.illustration.illustrationDetail.illustrationImages.CopperIllustrationActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".src.profile.illustration.illustrationDetail.illustrationImages.StandardIllustrationActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".src.profile.illustration.illustrationDetail.illustrationImages.SilverIllustrationActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".src.profile.illustration.illustrationDetail.illustrationImages.GoldIllustrationActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".src.profile.illustration.illustrationDetail.illustrationImages.PlatinumIllustrationActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".src.profile.illustration.illustrationDetail.IllustrationDetailActivity"
             android:exported="true"
             android:screenOrientation="portrait"

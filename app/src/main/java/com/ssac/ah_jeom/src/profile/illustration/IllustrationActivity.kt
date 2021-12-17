@@ -21,6 +21,8 @@ class IllustrationActivity : BaseActivity<ActivityIllustrationBinding>(ActivityI
             overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out)
         }
 
+
+
     }
 
     override fun onBackPressed() {
