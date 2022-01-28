@@ -9,9 +9,6 @@
 ![07](https://user-images.githubusercontent.com/76798309/145388364-fa332d21-aa12-4b66-87e6-e2880a9f393a.jpg)
 ![08](https://user-images.githubusercontent.com/76798309/145388366-a9e67371-f2a2-48d6-89ab-4f7f8b1685ad.jpg)
 
-- 구글 플레이스토어 출시 예정 (21.12.18) [심사중]
-
-
 # Tech stack & Open-source libraries
 ## MVP Pattern
 ## Jetpack
