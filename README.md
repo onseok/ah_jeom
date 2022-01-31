@@ -22,7 +22,7 @@
 - Glide
 
 ## Image Upload
-- Firebase Storage
+- [Firebase Storage](https://firebase.google.com/docs/storage/android/start)
 
 ## UI
 - Material Components
