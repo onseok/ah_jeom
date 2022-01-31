@@ -18,7 +18,7 @@
 ## Network
 - [Retrofit](https://github.com/square/retrofit)
 - [OkHttp](https://github.com/square/okhttp)
-- [gson](https://github.com/google/gson)
+- [Gson](https://github.com/google/gson)
 
 ## Image Loading 
 - [Glide](https://github.com/bumptech/glide)
