@@ -19,7 +19,7 @@
 - Retrofit, OkHttp
 
 ## Image Loading 
-- Glide
+- [Glide](https://github.com/bumptech/glide)
 
 ## Image Upload
 - [Firebase Storage](https://firebase.google.com/docs/storage/android/start)
