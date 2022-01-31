@@ -32,8 +32,8 @@
 - Firebase Crashlytics
 
 ## API
-- https://docs.google.com/spreadsheets/d/1GDGn3duE1Z_1B9WqSRtqAUM1RoZVSL0w/edit#gid=1503329402
-- Kakao Login API & Auto Login/Logout (JWT)
+- [REST API Documents]https://docs.google.com/spreadsheets/d/1GDGn3duE1Z_1B9WqSRtqAUM1RoZVSL0w/edit#gid=1503329402
+- [Kakao Login API & Auto Login/Logout (JWT)](https://developers.kakao.com/docs/latest/ko/kakaologin/rest-api)
 
 
 
