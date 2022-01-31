@@ -16,7 +16,9 @@
 - Compose (will be upadated soon)
 
 ## Network
-- Retrofit, OkHttp
+- [Retrofit](https://github.com/square/retrofit)
+- [OkHttp](https://github.com/square/okhttp)
+- [gson](https://github.com/google/gson)
 
 ## Image Loading 
 - [Glide](https://github.com/bumptech/glide)
