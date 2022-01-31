@@ -12,8 +12,8 @@
 # Tech stack & Open-source libraries
 ## MVP Pattern
 ## Jetpack
-- Databinding
-- Compose (will be upadated soon)
+- [Databinding](https://developer.android.com/topic/libraries/data-binding)
+- [Compose (will be upadated soon)](https://developer.android.com/jetpack/compose?gclid=Cj0KCQiAi9mPBhCJARIsAHchl1xsjy1ArE5l11wpGEGO_ja-Ce5Emm3lpiK3CxdR0nhPNAR0VtcGYjoaAh6AEALw_wcB&gclsrc=aw.ds)
 
 ## Network
 - [Retrofit](https://github.com/square/retrofit)
